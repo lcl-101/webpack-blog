@@ -5,6 +5,7 @@ const HTMLWebpackPlugin = require('html-webpack-plugin');  //依据一个简单�
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');  //代码压缩
 const ExtractTextPlugin = require('extract-text-webpack-plugin'); //把css单独抽离出来打包
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin') //把抽离出来的css打包压缩(webpack 3.x 安装 optimize-css-assets-webpack-plugin@3.2.0)
+const CleanWebpackPlugin = require('clean-webpack-plugin'); //用于在构建前清除dist目录中的内容
 
 const vendor = [
   'react',
@@ -88,6 +89,12 @@ const DefinePlugin = new webpack.DefinePlugin({
     }
 });
 
+const CleanWebpackPluginnews = new CleanWebpackPlugin(['dist/**/*.js'],{
+    root: __dirname,       　　　　　　　　　　//根目录
+    verbose:  true,        　　　　　　　　　　//开启在控制台输出信息
+    dry:      false        　　　　　　　　　　//启用删除文件
+});
+
 module.exports = {
   entry:Object.assign(enterJs,{
     'vender': vendor
@@ -125,6 +132,7 @@ module.exports = {
   plugins:[
     CommonsChunkPlugin,
     ExCSS,
-    DefinePlugin
+    DefinePlugin,
+    CleanWebpackPluginnews
   ].concat(plugins)
 }
