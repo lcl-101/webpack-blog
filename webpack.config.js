@@ -83,7 +83,7 @@ const CommonsChunkPlugin = new webpack.optimize.CommonsChunkPlugin({  //提取�
     minChunks: Infinity
 })
 
-const DefinePlugin = new webpack.DefinePlugin({
+const DefinePlugin = new webpack.DefinePlugin({ //设置环境变量
     "process.env": {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV)
     }
@@ -128,6 +128,9 @@ module.exports = {
         })
       }
     ]
+  },
+  resolve: { //定义能够被打包的文件，文件后缀名
+      extensions: ['.js','.jsx','.json','.css']
   },
   plugins:[
     CommonsChunkPlugin,
