@@ -53,8 +53,10 @@ enterJsFile.forEach(function(filePath){
 
 //css
 var ExCSS = '';
+var ExLess = '';
 if(isProduction){
   ExCSS = new ExtractTextPlugin("[name]/[name].[contenthash].css");
+  ExLess = new ExtractTextPlugin("[name]/[name].[contenthash].css");
   const OptimizeCSSAssets = new OptimizeCSSPlugin();
   const UglifyJSPlugins = new UglifyJSPlugin({
     uglifyOptions:{
@@ -73,6 +75,7 @@ if(isProduction){
   plugins.push(OptimizeCSSAssets,UglifyJSPlugins);
 }else {
   ExCSS = new ExtractTextPlugin('[name]/[name].css');
+  ExLess = new ExtractTextPlugin('[name]/[name].css');
 }
 
 
@@ -89,7 +92,7 @@ const DefinePlugin = new webpack.DefinePlugin({ //设置环境变量
     }
 });
 
-const CleanWebpackPluginnews = new CleanWebpackPlugin(['dist/**/*.js'],{
+const CleanWebpackPluginnews = new CleanWebpackPlugin(['dist/**/*.js','dist/index/*'],{
     root: __dirname,       　　　　　　　　　　//根目录
     verbose:  true,        　　　　　　　　　　//开启在控制台输出信息
     dry:      false        　　　　　　　　　　//启用删除文件
@@ -120,12 +123,34 @@ module.exports = {
         exclude:/node_modules/
       },
       {
-        test: /\.css$/,
+        test:/\.css$/,
         exclude: /node_modules/,
         use: ExtractTextPlugin.extract({
           fallback: "style-loader",
           use: "css-loader"
         })
+      },
+      {
+        test:/\.less$/,
+        use:ExtractTextPlugin.extract({
+            fallback:"style-loader",
+            use:[{
+                loader:"css-loader"
+            },{
+                loader:"less-loader"
+            }]
+        })
+      },
+      {
+        test: /\.(png|jpg|gif|JPG)$/,
+        use:[
+          {
+            loader:'url-loader',
+            options:{
+              limit: 8192
+            }
+          }
+        ]
       }
     ]
   },
@@ -135,6 +160,7 @@ module.exports = {
   plugins:[
     CommonsChunkPlugin,
     ExCSS,
+    ExLess,
     DefinePlugin,
     CleanWebpackPluginnews
   ].concat(plugins)
