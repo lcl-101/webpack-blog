@@ -1,6 +1,6 @@
 #!/bin/bash
 
-WEB_PATH='/var/www'
+WEB_PATH='/var/www/blog/webpack-blog'
 WEB_USER='root'
 WEB_USERGROUP='root'
 
