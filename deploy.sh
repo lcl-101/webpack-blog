@@ -15,4 +15,4 @@ echo "changing permissions..."
 chown -R $WEB_USER:$WEB_USERGROUP $WEB_PATH
 echo "Finished."
 
-#nohup node index.js > index.log &
+#nohup node index.js > index.log & 
