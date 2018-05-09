@@ -1,6 +1,6 @@
 #!/bin/bash
 
-WEB_PATH='/var/www'$1
+WEB_PATH='/var/www'
 WEB_USER='root'
 WEB_USERGROUP='root'
 
