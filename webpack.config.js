@@ -111,7 +111,8 @@ module.exports = {
     contentBase:"./dist",
     historyApiFallback: true,
     inline: true,
-    open: true
+    open: true,
+    port: 8080
   },
   module:{
     rules:[
