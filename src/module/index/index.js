@@ -2,16 +2,21 @@ import React,{Component} from 'react';
 import ReactDom from 'react-dom';
 import { Router, Route, hashHistory} from 'react-router';
 
-import StyleLess from './css/index.less'
+import Base from '../../common/css/base.less';
+import StyleLess from './css/index.less';
 
 import Header from './component/Header/Header';
+import Home from './component/Home/Home';
+import About from './component/About/About';
 
 class App extends Component{
   render(){
     return(
       <div>
           <Header />
-          {this.props.children}
+          <div className='box'>
+            {this.props.children}
+          </div>
       </div>
     )
   }
@@ -20,8 +25,10 @@ class App extends Component{
 const routes = {
   path: '/',         // 访问 '/' 路径，component组件 App 就会加载到 document.getElementById('app')
   component: App,
+  indexRoute: { component: Home },
   childRoutes: [
-
+    { path: '/Home', component: Home},
+    { path: '/About', component: About}
   ]
 }
 
