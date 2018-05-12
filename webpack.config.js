@@ -35,7 +35,7 @@ enterHtml.forEach(function(filePath){
   var conf = {
     template: filePath,
     // filename: 'views/' + entryPath + '/'+filename + '.html',
-    chunks:['vender',filename]    //chunks就是你在entry定义的入口的key
+    chunks:['babel-polyfill','vender',filename]    //chunks就是你在entry定义的入口的key
   }
   plugins.push(new HTMLWebpackPlugin(conf));
   entryTpl[filename] = filePath;
@@ -100,7 +100,8 @@ const CleanWebpackPluginnews = new CleanWebpackPlugin(['dist/**/*.js','dist/inde
 
 module.exports = {
   entry:Object.assign(enterJs,{
-    'vender': vendor
+    'vender': vendor,
+    'babel-polyfill':'babel-polyfill'
   }),
   output:{
     path:PATH_DIST,
