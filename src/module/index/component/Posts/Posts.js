@@ -1,15 +1,15 @@
 import React,{Component} from 'react';
 import Header from '../Header/Header';
 
-class About extends Component {
+class Posts extends Component {
   render(){
     return(
       <div>
         <Header/>
-        About开发中....
+        Posts开发中....
       </div>
     )
   }
 }
 
-export default About;
+export default Posts;
