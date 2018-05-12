@@ -8,6 +8,7 @@ import Projects from '../Projects/Projects';
 import Tags from '../Tags/Tags';
 
 import style from '../../css/home.less';
+import img from '../../../../common/images/favicon.png'
 
 class Home extends Component{
   render(){
@@ -17,7 +18,7 @@ class Home extends Component{
         <div className={style.home_box}>
           <div className={style.inner}>
             <div className={style.img_box}>
-              <img src="/common/images/favicon.png" alt="" />
+              <img src={img} alt="" />
             </div>
             <div className={style.link}>
               <Link to="/Posts">POSTS</Link>
