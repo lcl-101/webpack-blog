@@ -1,9 +1,6 @@
 import React,{Component} from 'react';
 import { Router, Route, hashHistory} from 'react-router';
 
-import Base from '../../../common/css/base.less';
-import StyleLess from '../css/index.less';
-
 import App from './App';
 import Header from '../component/Header/Header';
 import Home from '../component/Home/Home';
