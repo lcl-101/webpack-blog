@@ -21,10 +21,10 @@ class Home extends Component{
               <img src={img} alt="" />
             </div>
             <div className={style.link}>
-              <Link to="/Posts">POSTS</Link>
-              <Link to="/About">ABOUT</Link>
-              <Link to="/Projects">PROJECTS</Link>
-              <Link to="/Tags">TAGS</Link>
+              <Link to="/Posts">POSTS <span className={style.link_line}></span></Link>
+              <Link to="/About">ABOUT <span className={style.link_line}></span></Link>
+              <Link to="/Projects">PROJECTS <span className={style.link_line}></span></Link>
+              <Link to="/Tags">TAGS <span className={style.link_line}></span></Link>
             </div>
           </div>
         </div>

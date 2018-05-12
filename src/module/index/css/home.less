@@ -30,12 +30,33 @@ html,body {
       width: 100%;
       text-align: center;
       margin-top: 35px;
+      .link_line {
+        position: relative;
+        display: block;
+        &:before {
+          content: "";
+          display: inline-block;
+          width: 0;
+          height: 2px;
+          background: #ea6f5a;
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+          transition: width .4s;
+        }
+      }
       a{
+        display: inline-block;
         margin: 0 14px;
         color: #333333;
         font-size: 18px;
         &:hover {
           color: #ea6f5a;
+        }
+        &:hover .link_line:before{
+          width: 100%;
         }
       }
     }
