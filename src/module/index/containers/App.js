@@ -1,14 +1,14 @@
 import React,{Component} from 'react';
-import Header from '../component/Header/Header';
+import Footer from '../component/Footer/Footer';
 
 class App extends Component{
   render(){
     return(
-      <div>
-          <Header />
-          <div className='box'>
-            {this.props.children}
-          </div>
+      <div id='app_box'>
+        <div className="app_inner">
+          {this.props.children}
+        </div>
+          <Footer/>
       </div>
     )
   }
