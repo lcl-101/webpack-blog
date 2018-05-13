@@ -18,7 +18,7 @@ class Home extends Component{
     console.log(this);
     console.log(hashHistory);
     let a = this.props.route.path;
-    hashHistory.push(a);
+    hashHistory.push('/Posts');
   }
   render(){
     return(
@@ -30,10 +30,10 @@ class Home extends Component{
               <img src={img} alt="" />
             </div>
             <div className={style.link}>
-              <Link to="/Posts" onClick={this.handleChange.bind(this)}>POSTS <span className={style.link_line}></span></Link>
-              <Link to="/About">ABOUT <span className={style.link_line}></span></Link>
-              <Link to="/Projects">PROJECTS <span className={style.link_line}></span></Link>
-              <Link to="/Tags">TAGS <span className={style.link_line}></span></Link>
+              <span className={style.to}  link="/Posts" onClick={this.handleChange.bind(this)}>POSTS <span className={style.link_line}></span></span>
+              <Link className={style.to} to="/About">ABOUT <span className={style.link_line}></span></Link>
+              <Link className={style.to} to="/Projects">PROJECTS <span className={style.link_line}></span></Link>
+              <Link className={style.to} to="/Tags">TAGS <span className={style.link_line}></span></Link>
             </div>
           </div>
         </div>
