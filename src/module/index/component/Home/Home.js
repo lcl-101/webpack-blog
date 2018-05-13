@@ -15,9 +15,6 @@ class Home extends Component{
     console.log('Component WILL MOUNT!')
   }
   handleChange(name,e){
-    console.log(this);
-    console.log(name);
-    console.log(e);
     hashHistory.push(name);
   }
   render(){
@@ -31,9 +28,9 @@ class Home extends Component{
             </div>
             <div className={style.link}>
               <Link className={style.to} onTouchEnd={this.handleChange.bind(this,'/Posts')} to="/Posts">POSTS <span className={style.link_line}></span></Link>
-              <Link className={style.to} to="/About">ABOUT <span className={style.link_line}></span></Link>
-              <Link className={style.to} to="/Projects">PROJECTS <span className={style.link_line}></span></Link>
-              <Link className={style.to} to="/Tags">TAGS <span className={style.link_line}></span></Link>
+              <Link className={style.to} onTouchEnd={this.handleChange.bind(this,'/About')} to="/About">ABOUT <span className={style.link_line}></span></Link>
+              <Link className={style.to} onTouchEnd={this.handleChange.bind(this,'/Projects')} to="/Projects">PROJECTS <span className={style.link_line}></span></Link>
+              <Link className={style.to} onTouchEnd={this.handleChange.bind(this,'/Tags')} to="/Tags">TAGS <span className={style.link_line}></span></Link>
             </div>
           </div>
         </div>
