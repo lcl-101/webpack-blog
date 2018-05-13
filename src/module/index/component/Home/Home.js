@@ -14,11 +14,11 @@ class Home extends Component{
   componentWillMount(){
     console.log('Component WILL MOUNT!')
   }
-  handleChange(){
+  handleChange(name,e){
     console.log(this);
-    console.log(hashHistory);
-    let a = this.props.route.path;
-    hashHistory.push('/Posts');
+    console.log(name);
+    console.log(e);
+    hashHistory.push(name);
   }
   render(){
     return(
@@ -30,7 +30,7 @@ class Home extends Component{
               <img src={img} alt="" />
             </div>
             <div className={style.link}>
-              <span className={style.to}  link="/Posts" onClick={this.handleChange.bind(this)}>POSTS <span className={style.link_line}></span></span>
+              <Link className={style.to} onTouchEnd={this.handleChange.bind(this,'/Posts')} to="/Posts">POSTS <span className={style.link_line}></span></Link>
               <Link className={style.to} to="/About">ABOUT <span className={style.link_line}></span></Link>
               <Link className={style.to} to="/Projects">PROJECTS <span className={style.link_line}></span></Link>
               <Link className={style.to} to="/Tags">TAGS <span className={style.link_line}></span></Link>
