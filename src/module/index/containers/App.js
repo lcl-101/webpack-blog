@@ -11,7 +11,7 @@ class App extends Component{
         <div className={style.app_inner}>
           {this.props.children}
         </div>
-          <Footer/>
+        <Footer/>
       </div>
     )
   }
