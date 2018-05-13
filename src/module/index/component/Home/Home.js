@@ -27,10 +27,10 @@ class Home extends Component{
               <img src={img} alt="" />
             </div>
             <div className={style.link}>
-              <Link className={style.to} onTouchEnd={this.handleChange.bind(this,'/Posts')} onTouchStart={(event) => {event.preventDefault()}} to="/Posts">POSTS <span className={style.link_line}></span></Link>
-              <Link className={style.to} onTouchEnd={this.handleChange.bind(this,'/About')} onTouchStart={(event) => {event.preventDefault()}} to="/About">ABOUT <span className={style.link_line}></span></Link>
-              <Link className={style.to} onTouchEnd={this.handleChange.bind(this,'/Projects')} onTouchStart={(event) => {event.preventDefault()}} to="/Projects">PROJECTS <span className={style.link_line}></span></Link>
-              <Link className={style.to} onTouchEnd={this.handleChange.bind(this,'/Tags')} onTouchStart={(event) => {event.preventDefault()}} to="/Tags">TAGS <span className={style.link_line}></span></Link>
+              <Link className={style.to} onTouchStart={this.handleChange.bind(this,'/Posts')} to="/Posts">POSTS <span className={style.link_line}></span></Link>
+              <Link className={style.to} onTouchStart={this.handleChange.bind(this,'/About')} to="/About">ABOUT <span className={style.link_line}></span></Link>
+              <Link className={style.to} onTouchStart={this.handleChange.bind(this,'/Projects')} to="/Projects">PROJECTS <span className={style.link_line}></span></Link>
+              <Link className={style.to} onTouchStart={this.handleChange.bind(this,'/Tags')} to="/Tags">TAGS <span className={style.link_line}></span></Link>
             </div>
           </div>
         </div>
