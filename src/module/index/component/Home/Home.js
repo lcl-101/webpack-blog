@@ -2,16 +2,13 @@ import React,{Component} from 'react';
 import { Link,hashHistory} from 'react-router';
 
 import Header from '../Header/Header';
-import Posts from '../Posts/Posts';
-import About from '../About/About';
-import Projects from '../Projects/Projects';
-import Tags from '../Tags/Tags';
 
 import style from '../../css/home.less';
 import img from '../../../../common/images/favicon.png'
 
 class Home extends Component{
   componentWillMount(){
+    console.log(this.state);
     console.log('Component WILL MOUNT!')
   }
   handleChange(name,e){

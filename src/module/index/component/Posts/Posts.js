@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import Header from '../Header/Header';
+import Header from '../Theader/Theader';
 
 class Posts extends Component {
   render(){
