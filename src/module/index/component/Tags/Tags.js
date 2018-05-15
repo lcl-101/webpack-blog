@@ -1,11 +1,11 @@
 import React,{Component} from 'react';
-import Header from '../Header/Header';
+import Theader from '../Theader/Theader';
 
 class Tags extends Component {
   render(){
     return(
       <div>
-        <Header/>
+        <Theader/>
         Tags开发中....
       </div>
     )

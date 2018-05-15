@@ -1,11 +1,11 @@
 import React,{Component} from 'react';
-import Header from '../Header/Header';
+import Theader from '../Theader/Theader';
 
 class Projects extends Component {
   render(){
     return(
       <div>
-        <Header/>
+        <Theader/>
         Projects开发中....
       </div>
     )

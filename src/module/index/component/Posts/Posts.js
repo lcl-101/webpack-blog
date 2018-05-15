@@ -1,11 +1,11 @@
 import React,{Component} from 'react';
-import Header from '../Theader/Theader';
+import Theader from '../Theader/Theader';
 
 class Posts extends Component {
   render(){
     return(
       <div>
-        <Header/>
+        <Theader/>
         Posts开发中....
       </div>
     )
