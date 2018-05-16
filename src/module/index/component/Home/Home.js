@@ -7,8 +7,11 @@ import style from '../../css/home.less';
 import img from '../../../../common/images/favicon.png'
 
 class Home extends Component{
+  constructor(props){
+    super(props);
+    this.state = {isMobile:/Android|webOS|iPhone|iPad|iPod|ucweb|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)};
+  }
   componentWillMount(){
-    console.log(this.state);
     console.log('Component WILL MOUNT!')
   }
   handleChange(name,e){

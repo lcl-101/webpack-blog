@@ -17,4 +17,5 @@ class App extends Component{
   }
 }
 
+// Connected Component
 export default App;
