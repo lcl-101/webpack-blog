@@ -15,16 +15,30 @@
 //   })
 // }
 
-//action
-export const increaseActiom = {type:'increase'};
 
-// Reducer
-export function counter(state = {count:0},action){
-  const count = state.count;
-  switch(action){
-    case 'increase':
-     return { count: count + 1 }
-    default:
-     return state
-  }
+/*
+ * action 类型
+ */
+export const ADD_TODO = 'ADD_TODO';
+export const TOGGLE_TODO = 'TOGGLE_TODO';
+export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER';
+/*
+ * 其它的常量
+ */
+export const VisibilityFilters = {
+  SHOW_ALL: 'SHOW_ALL',
+  SHOW_COMPLETED: 'SHOW_COMPLETED',
+  SHOW_ACTIVE: 'SHOW_ACTIVE'
+}
+/*
+ * action 创建函数
+ */
+export function addTodo(text){
+  return {type:ADD_TODO,text}
+}
+export function toggleTodo(text){
+  return {type:TOGGLE_TODO,text}
+}
+export function setVisibilityFilter(filter){
+  return {type:SET_VISIBILITY_FILTER,filter}
 }
