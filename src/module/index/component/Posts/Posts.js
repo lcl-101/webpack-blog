@@ -16,6 +16,7 @@ class Posts extends Component {
     const { dispatch} = this.props
     // 这里可以传两个值，一个是 reactjs 一个是 frontend
     dispatch(fetchPostsIfNeeded('frontend'))
+    NProgress.start();
   }
   render(){
     if (this.props.isFetching) {
@@ -23,7 +24,6 @@ class Posts extends Component {
     }
     const { posts } = this.props
     const { todos,action } = this.props;
-    NProgress.start();
     return(
       <div id={style.post}>
         <Theader/>

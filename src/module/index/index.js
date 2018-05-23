@@ -2,7 +2,6 @@ import 'babel-polyfill';
 import React,{Component} from 'react';
 import ReactDom from 'react-dom';
 import Root from './containers/Root'
-import NProgress from 'nprogress';
 import { Provider } from 'react-redux'
 import { createStore,applyMiddleware } from 'redux'
 import thunkMiddleware from 'redux-thunk'
@@ -39,10 +38,6 @@ console.log(store.getState())
 // 每次 state 更新时，打印日志
 // 注意 subscribe() 返回一个函数用来注销监听器
 const unsubscribe = store.subscribe(() => {
-  const ds =  store.getState()
-  if(ds.postsByReddit.frontend.isFetching){
-    NProgress.done();
-  }
   console.log(store.getState())
 })
 
