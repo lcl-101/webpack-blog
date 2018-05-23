@@ -8,6 +8,7 @@ import About from '../component/About/About';
 import Posts from '../component/Posts/Posts';
 import Projects from '../component/Projects/Projects';
 import Tags from '../component/Tags/Tags';
+import Detail from '../component/Detail/Detail';
 
 const routes = {
   path: '/',         // 访问 '/' 路径，component组件 App 就会加载到 document.getElementById('app')
@@ -18,7 +19,8 @@ const routes = {
     { path: '/About', component: About},
     { path: '/Posts', component: Posts},
     { path: '/Projects', component: Projects},
-    { path: '/Tags', component: Tags}
+    { path: '/Tags', component: Tags},
+    { path: '/Detail/:id', component: Detail}
   ]
 }
 

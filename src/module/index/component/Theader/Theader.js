@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
 import { Link} from 'react-router';
+import NProgress from 'nprogress';
 
 import style from '../../css/theader.less';
 

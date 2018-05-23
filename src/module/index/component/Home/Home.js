@@ -1,6 +1,5 @@
 import React,{Component} from 'react';
 import { Link,hashHistory} from 'react-router';
-
 import Header from '../Header/Header';
 
 import style from '../../css/home.less';
@@ -12,7 +11,7 @@ class Home extends Component{
     this.state = {isMobile:/Android|webOS|iPhone|iPad|iPod|ucweb|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)};
   }
   componentWillMount(){
-    console.log('Component WILL MOUNT!')
+    console.log('Component WILL MOUNT!');
   }
   handleChange(name,e){
     hashHistory.push(name);

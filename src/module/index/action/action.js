@@ -1,60 +1,46 @@
-// import axios from 'axios';
-//
-// var url = 'https://api.github.com/repos/';
-// var owner = 'lcl-101';
-// var repo = 'webpack-blog'
-//
-// export function fetchIssues() {
-//   axios.get(url+owner+'/'+repo+'/'+'issues').then((res)=>{
-//       if(res.status){
-//         console.log(res.data);
-//         return res.data;
-//       }
-//   }).catch((err)=>{
-//       console.log(err.status);
-//   })
-// }
+import fetch from 'isomorphic-fetch'
+export const RECEIVE_POST = 'RECEIVE_POST'
 
+var url = 'https://api.github.com/repos/';
+var owner = 'lcl-101';
+var repo = 'webpack-blog'
 
-/*
- * action 类型
- */
-export const ADD_TODO = 'ADD_TODO';
-export const TOGGLE_TODO = 'TOGGLE_TODO';
-export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER';
-/*
- * 其它的常量
- */
-export const VisibilityFilters = {
-  SHOW_ALL: 'SHOW_ALL',
-  SHOW_COMPLETED: 'SHOW_COMPLETED',
-  SHOW_ACTIVE: 'SHOW_ACTIVE'
-}
-/*
- * action 创建函数
- */
-export function addTodo(text){
-  return {type:ADD_TODO,text}
-}
-export function toggleTodo(text){
-  return {type:TOGGLE_TODO,text}
-}
-export function setVisibilityFilter(filter){
-  return {type:SET_VISIBILITY_FILTER,filter}
+function receivePostes(reddit,json){
+  return {
+    type:RECEIVE_POST,
+    reddit:reddit,
+    posts:json
+  }
 }
 
+function fetchPosts(subreddit){
+  return function(dispatch){
+    return fetch(url+owner+'/'+repo+'/'+'issues')
+      .then(respones => respones.json())
+      .then(json => dispatch(receivePostes(subreddit,json)))
+  }
+}
 
-export const ADD_NOTE = "ADD_NOTE";
-export const DELETE_NOTE = "DELETE_NOTE";
+function shouldFetchIssues(state) {
+  if (state.postsByReddit.frontend.items == '') {
+    return true;
+  }else {
+    return false;
+  }
+}
 
-let nextTodoId=0;
-export const addNote = (title,text) => ({
-    type: ADD_NOTE,
-    id: nextTodoId++,
-    title:title,
-    note: text
-});
-export const deleteNote = (id) => ({
-    type: DELETE_NOTE,
-    id: id
-});
+export function fetchPostsIfNeeded(subreddit){
+  return (dispatch, getState)=> {
+    // 当已经有issues的时候，则减少网络请求
+
+    if ( shouldFetchIssues(getState()) ) {
+      // 在 thunk 里 dispatch 另一个 thunk！
+      return dispatch(fetchPosts(subreddit))
+    } else {
+      // 告诉调用代码不需要再等待。
+      return Promise.resolve();
+    }
+
+
+  }
+}
