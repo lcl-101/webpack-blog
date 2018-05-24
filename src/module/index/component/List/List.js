@@ -11,7 +11,6 @@ class List extends Component{
         return msg;
   }
   render(){
-    console.log(this.props.posts)
     return(
       <div id={style.list}>
         <ul>

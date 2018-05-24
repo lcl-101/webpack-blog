@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import { Router, Route, hashHistory} from 'react-router';
-
+import NProgress from 'nprogress';
 import App from './App';
 import Header from '../component/Header/Header';
 import Home from '../component/Home/Home';
@@ -16,11 +16,21 @@ const routes = {
   indexRoute: { component: Home },
   childRoutes: [
     { path: '/Home', component: Home},
-    { path: '/About', component: About},
-    { path: '/Posts', component: Posts},
-    { path: '/Projects', component: Projects},
-    { path: '/Tags', component: Tags},
-    { path: '/Detail/:id', component: Detail}
+    { path: '/About', component: About,onEnter: function(nextState, replaceState){
+      // NProgress.start();
+    }},
+    { path: '/Posts', component: Posts,onEnter: function(nextState, replaceState){
+      NProgress.start();
+    }},
+    { path: '/Projects', component: Projects,onEnter: function(nextState, replaceState){
+      // NProgress.start();
+    }},
+    { path: '/Tags', component: Tags,onEnter: function(nextState, replaceState){
+      // NProgress.start();
+    }},
+    { path: '/Detail/:id', component: Detail,onEnter: function(nextState, replaceState){
+      NProgress.start();
+    }}
   ]
 }
 

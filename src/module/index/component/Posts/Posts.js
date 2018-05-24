@@ -5,7 +5,6 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import {fetchPostsIfNeeded} from '../../action/action'
 import style from '../../css/post.less'
-import NProgress from 'nprogress';
 
 class Posts extends Component {
   constructor(props){
@@ -15,20 +14,22 @@ class Posts extends Component {
   componentWillMount() {
     const { dispatch} = this.props
     // 这里可以传两个值，一个是 reactjs 一个是 frontend
-    dispatch(fetchPostsIfNeeded())
-    NProgress.start();
+    dispatch(fetchPostsIfNeeded());
   }
   render(){
-    if (this.props.isFetching) {
-      return null;
-    }
-    console.log(this.props);
+    let view = [];
     const { items } = this.props
+    const { isFetching } = this.props
     const { todos,action } = this.props;
+    if (!isFetching) {
+      view.push(
+        <List posts={items} key='1'/>
+      )
+    }
     return(
       <div id={style.post}>
         <Theader/>
-        <List posts={items} />
+        {view}
       </div>
     )
   }
