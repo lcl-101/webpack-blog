@@ -31,7 +31,8 @@ class Detail extends Component{
       if(item.id == this.props.params.id){
         view.push(
           <div className={style.box} key={index}>
-            <div>{item.title}</div>
+            <div className={style.dTitle}>{item.title}</div>
+            <div className={style.created_at}>{item.created_at}</div>
             <div className="markdown-body" dangerouslySetInnerHTML = {{__html:marked(item.body)}}></div>
           </div>
         )
