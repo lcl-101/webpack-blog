@@ -10,7 +10,11 @@ const CleanWebpackPlugin = require('clean-webpack-plugin'); //用于在构建前
 const vendor = [
   'react',
   'react-dom',
-  'react-router'
+  'react-router',
+  'react-redux',
+  'redux',
+  'redux-thunk',
+  'nprogress'
 ];
 
 //生成环境
@@ -105,7 +109,8 @@ module.exports = {
   }),
   output:{
     path:PATH_DIST,
-    filename:isProduction?'[name]/[name].[chunkhash].bundle.js':'[name]/[name].bundle.js'
+    filename:isProduction?'[name]/[name].[chunkhash].bundle.js':'[name]/[name].bundle.js',
+    chunkFilename:isProduction?'[name]/[name].[chunkhash].bundle.js':'[name]/[name].bundle.js'
   },
   devtool: (isProduction ? '' : 'source-map'),
   devServer:{
