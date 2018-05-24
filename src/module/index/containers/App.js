@@ -37,17 +37,21 @@ class App extends Component{
 }
 
 function mapStateToProps(state) {
-  const { postsByReddit } = state
+  const { postsByReddit } = state;
+  var postsState = postsByReddit;
+  if(Object.keys(postsByReddit) == ''){
+    postsState = false;
+  }
   const {
-    items:posts,
+    items,
     isFetching
 
-  } = postsByReddit['frontend'].items || {
+  } = postsState || {
     items: [],
     isFetching:true
   }
   return {
-    posts,
+    items,
     isFetching
   }
 }

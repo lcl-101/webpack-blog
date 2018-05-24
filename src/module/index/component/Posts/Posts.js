@@ -15,19 +15,20 @@ class Posts extends Component {
   componentWillMount() {
     const { dispatch} = this.props
     // 这里可以传两个值，一个是 reactjs 一个是 frontend
-    dispatch(fetchPostsIfNeeded('frontend'))
+    dispatch(fetchPostsIfNeeded())
     NProgress.start();
   }
   render(){
     if (this.props.isFetching) {
       return null;
     }
-    const { posts } = this.props
+    console.log(this.props);
+    const { items } = this.props
     const { todos,action } = this.props;
     return(
       <div id={style.post}>
         <Theader/>
-        <List posts={posts} />
+        <List posts={items} />
       </div>
     )
   }
@@ -39,17 +40,21 @@ class Posts extends Component {
   然后connect会拿到返回的数据写入到react组件中，然后组件中就可以通过props读取数据啦~~~~
  */
 function mapStateToProps (state){
-  const { postsByReddit } = state
+  const { postsByReddit } = state;
+  var postsState = postsByReddit;
+  if(Object.keys(postsByReddit) == ''){
+    postsState = false;
+  }
   const {
-    items:posts,
+    items,
     isFetching
 
-  } = postsByReddit['frontend'] || {
+  } = postsState || {
     items: [],
     isFetching:true
   }
   return {
-    posts,
+    items,
     isFetching
   }
 }

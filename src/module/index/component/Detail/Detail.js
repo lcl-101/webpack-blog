@@ -18,7 +18,7 @@ class Detail extends Component{
   render(){
     console.log(this.props)
     let view = [];
-    this.props.posts.map((item, index) => {
+    this.props.items.map((item, index) => {
       if(item.id == this.props.params.id){
         view.push(
           <div key={index}>{item.title}</div>
@@ -35,17 +35,21 @@ class Detail extends Component{
 }
 
 function mapStateToProps (state){
-  const { postsByReddit } = state
+  const { postsByReddit } = state;
+  var postsState = postsByReddit;
+  if(Object.keys(postsByReddit) == ''){
+    postsState = false;
+  }
   const {
-    items:posts,
+    items,
     isFetching
 
-  } = postsByReddit['frontend'] || {
+  } = postsState || {
     items: [],
     isFetching:true
   }
   return {
-    posts,
+    items,
     isFetching
   }
 }
