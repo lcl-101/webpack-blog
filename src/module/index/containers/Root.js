@@ -20,6 +20,7 @@ const routes = {
       // NProgress.start();
     }},
     { path: '/Posts', component: Posts,onEnter: function(nextState, replaceState){
+      console.log(nextState);
       NProgress.start();
     }},
     { path: '/Projects', component: Projects,onEnter: function(nextState, replaceState){

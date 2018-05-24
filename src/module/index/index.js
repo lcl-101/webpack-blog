@@ -32,14 +32,11 @@ function configureStore(initialState){
 // 参数2(可选): [], 默认的state值,如果不传, 则为undefined
 let store = configureStore()
 
-// 打印初始状态
-console.log(store.getState())
-
 // 每次 state 更新时，打印日志
 // 注意 subscribe() 返回一个函数用来注销监听器
-const unsubscribe = store.subscribe(() => {
-  console.log(store.getState())
-})
+// const unsubscribe = store.subscribe(() => {
+//
+// })
 
 ReactDom.render(
   <Provider store={store}>

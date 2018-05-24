@@ -11,7 +11,7 @@ class Posts extends Component {
     super(props);
   }
   //初始化渲染后触发
-  componentWillMount() {
+  componentDidMount() {
     const { dispatch} = this.props
     // 这里可以传两个值，一个是 reactjs 一个是 frontend
     dispatch(fetchPostsIfNeeded());

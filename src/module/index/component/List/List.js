@@ -22,7 +22,7 @@ class List extends Component{
                     {item.title}
                   </div>
                   <div className={style.con}>
-                    {this.filterHTMLTag(marked(item.body))}
+                    {this.filterHTMLTag(item.body)}
                   </div>
                   <div className={style.time}>
                     Posted by {item.user.login} {item.created_at}

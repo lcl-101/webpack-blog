@@ -12,11 +12,13 @@ class Detail extends Component{
   constructor(props){
     super(props);
   }
-  //初始化渲染后触发
-  componentWillMount() {
+  componentDidMount(){
     const { dispatch} = this.props
     // 这里可以传两个值，一个是 reactjs 一个是 frontend
     dispatch(fetchPostsIfNeeded('frontend'));
+  }
+  //初始化渲染后触发
+  componentWillMount() {
     window.scrollTo(0, 0);
     // 代码高亮
     marked.setOptions({
