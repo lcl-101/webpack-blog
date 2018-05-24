@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import Theader from '../Theader/Theader';
 import { connect } from 'react-redux'
-import hljs from 'highlight.js';
+import hljs from '../../../../common/js/highlight';
 import marked from 'marked';
 import {fetchPostsIfNeeded} from '../../action/action'
 import style from '../../css/detail.less'
