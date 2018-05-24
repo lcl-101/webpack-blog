@@ -1,7 +1,5 @@
 import React,{Component} from 'react';
-import PropTypes from 'prop-types'
 import Theader from '../Theader/Theader';
-import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import hljs from 'highlight.js';
 import marked from 'marked';
