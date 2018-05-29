@@ -102,6 +102,8 @@ const CleanWebpackPluginnews = new CleanWebpackPlugin(['dist/**/*.js','dist/inde
     dry:      false        　　　　　　　　　　//启用删除文件
 });
 
+var cssIdentName = isProduction ? '[hash:base64:10]' : '[path][name]-[local]-[hash:base64:24]';
+
 module.exports = {
   entry:Object.assign(enterJs,{
     'vender': vendor,
@@ -143,12 +145,14 @@ module.exports = {
             use:[{
                 loader:"css-loader",
                 options:{
-                  modules:true
+                  modules:true,
+                  localIdentName: cssIdentName
                 }
             },{
                 loader:"less-loader",
                 options:{
-                  modules:true
+                  modules:true,
+                  localIdentName: cssIdentName
                 }
             }]
         })
