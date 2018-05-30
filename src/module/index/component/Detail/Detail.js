@@ -32,7 +32,7 @@ class Detail extends Component{
         view.push(
           <div className={style.box} key={index}>
             <div className={style.dTitle}>{item.title}</div>
-            <div className={style.created_at}>{item.created_at}</div>
+            <div className={style.created_at}>{item.created_at.substr(0, 10)}</div>
             <div className="markdown-body" dangerouslySetInnerHTML = {{__html:marked(item.body)}}></div>
           </div>
         )

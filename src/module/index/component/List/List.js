@@ -22,10 +22,10 @@ class List extends Component{
                     {item.title}
                   </div>
                   <div className={style.con}>
-                    {this.filterHTMLTag(item.body)}
+                    {this.filterHTMLTag(marked(item.body))}
                   </div>
                   <div className={style.time}>
-                    Posted by {item.user.login} {item.created_at}
+                    Posted by {item.user.login} {item.created_at.substr(0, 10)}
                   </div>
                 </a>
               </li>
