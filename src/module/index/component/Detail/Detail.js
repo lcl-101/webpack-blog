@@ -25,6 +25,7 @@ class Detail extends Component{
         return hljs.highlightAuto(code).value;
       }
     });
+    changyan
   }
   render(){
     let view = [];
