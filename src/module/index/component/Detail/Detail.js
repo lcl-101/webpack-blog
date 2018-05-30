@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import Theader from '../Theader/Theader';
 import { connect } from 'react-redux'
 import hljs from '../../../../common/js/highlight';
+import changyan from '../../../../common/js/changyan';
 import marked from 'marked';
 import {fetchPostsIfNeeded} from '../../action/action'
 import style from '../../css/detail.less'
@@ -34,6 +35,7 @@ class Detail extends Component{
             <div className={style.dTitle}>{item.title}</div>
             <div className={style.created_at}>{item.created_at.substr(0, 10)}</div>
             <div className="markdown-body" dangerouslySetInnerHTML = {{__html:marked(item.body)}}></div>
+            <div id="SOHUCS" sid={index}></div> 
           </div>
         )
       }

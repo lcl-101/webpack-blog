@@ -102,7 +102,7 @@ const CleanWebpackPluginnews = new CleanWebpackPlugin(['dist/**/*.js','dist/inde
     dry:      false        　　　　　　　　　　//启用删除文件
 });
 
-var cssIdentName = isProduction ? '[hash:base64:10]' : '[path][name]-[local]-[hash:base64:24]';
+var cssIdentName = isProduction ? '[hash:base64:10]' : '[path][name]-[local]';
 
 module.exports = {
   entry:Object.assign(enterJs,{
