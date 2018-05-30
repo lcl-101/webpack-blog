@@ -35,7 +35,8 @@ class Detail extends Component{
             <div className={style.dTitle}>{item.title}</div>
             <div className={style.created_at}>{item.created_at.substr(0, 10)}</div>
             <div className="markdown-body" dangerouslySetInnerHTML = {{__html:marked(item.body)}}></div>
-            <div id="SOHUCS" sid={index}></div> 
+            <div id="cyEmoji" role="cylabs" data-use="emoji"></div>
+            <div id="SOHUCS" sid={index}></div>
           </div>
         )
       }
