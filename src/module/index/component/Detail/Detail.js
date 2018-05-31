@@ -25,7 +25,6 @@ class Detail extends Component{
         return hljs.highlightAuto(code).value;
       }
     });
-    this.commentClick = this.commentClick.bind(this);
   }
   render(){
     let view = [];
