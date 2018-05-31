@@ -14,7 +14,7 @@ class Comment extends Component{
     var gitment = new Gitment({
       id:this.props.cd,
       owner: 'lcl-101',
-      repo: 'webpack-blog',
+      repo: 'www.lichenglong.pw',
       oauth: {
         client_id: '149613f6b828472ab126',
         client_secret: 'c003cfeeafa97ca0f4c756aab3c2051447ddaab7',
