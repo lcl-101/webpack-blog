@@ -1,5 +1,6 @@
 import fetch from 'isomorphic-fetch'
 export const RECEIVE_POST = 'RECEIVE_POST'
+export const RECEIVE_COMMENTS = 'RECEIVE_COMMENTS'
 
 var url = 'https://api.github.com/repos/';
 var owner = 'lcl-101';
@@ -11,7 +12,6 @@ function receivePostes(json){
     posts:json
   }
 }
-
 function fetchPosts(){
   return function(dispatch){
     return fetch(url+owner+'/'+repo+'/'+'issues')
@@ -19,7 +19,6 @@ function fetchPosts(){
       .then(json => dispatch(receivePostes(json)))
   }
 }
-
 function shouldFetchIssues(state) {
   if (Object.keys(state.postsByReddit) == '') {
     return true;
@@ -27,7 +26,6 @@ function shouldFetchIssues(state) {
     return false;
   }
 }
-
 export function fetchPostsIfNeeded(){
   return (dispatch, getState)=> {
     // 当已经有issues的时候，则减少网络请求
@@ -41,5 +39,33 @@ export function fetchPostsIfNeeded(){
     }
 
 
+  }
+}
+
+
+function receiveComments(id,json){
+  return {
+    type:RECEIVE_COMMENTS,
+    id:id,
+    posts:json
+  }
+}
+function fetchComments(id){
+  return function(dispatch){
+    return fetch(url+owner+'/'+repo+'/'+'issues/'+id+'/comments')
+      .then(respones => respones.json())
+      .then(json => dispatch(receiveComments(id,json)))
+  }
+}
+function shouldFetchComments(state){
+  if (Object.keys(state.commentsId) == '') {
+    return true;
+  }else {
+    return false;
+  }
+}
+export function fetchCommentsNeeded(id){
+  return (dispatch, getState)=> {
+    return dispatch(fetchComments(id))
   }
 }

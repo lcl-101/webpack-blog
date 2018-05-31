@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
 import Theader from '../Theader/Theader';
+import Comment from '../Comment/Comment';
 import { connect } from 'react-redux'
 import hljs from '../../../../common/js/highlight';
 import marked from 'marked';
@@ -26,16 +27,6 @@ class Detail extends Component{
     });
     this.commentClick = this.commentClick.bind(this);
   }
-  commentClick(){
-    console.log(this.props);
-    for(var i=0;i<this.props.items.length;i++){
-      if(this.props.params.id == this.props.items[i].id){
-        var index = this.props.items.length - i;
-        let url = 'https://github.com/lcl-101/webpack-blog/issues/'+index;
-        window.location.href = url;
-      }
-    }
-  }
   render(){
     let view = [];
     this.props.items.map((item, index) => {
@@ -45,7 +36,7 @@ class Detail extends Component{
             <div className={style.dTitle}>{item.title}</div>
             <div className={style.created_at}>{item.created_at.substr(0, 10)}</div>
             <div className="markdown-body" dangerouslySetInnerHTML = {{__html:marked(item.body)}}></div>
-            <div className={style.comment} onClick={this.commentClick}>点击评论</div>
+            <Comment cd={item.number}/>
           </div>
         )
       }
@@ -73,6 +64,7 @@ function mapStateToProps (state){
     items: [],
     isFetching:true
   }
+
   return {
     items,
     isFetching
