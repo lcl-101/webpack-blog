@@ -2,7 +2,6 @@ import React,{Component} from 'react';
 import Theader from '../Theader/Theader';
 import { connect } from 'react-redux'
 import hljs from '../../../../common/js/highlight';
-import changyan from '../../../../common/js/changyan';
 import marked from 'marked';
 import {fetchPostsIfNeeded} from '../../action/action'
 import style from '../../css/detail.less'
@@ -25,7 +24,17 @@ class Detail extends Component{
         return hljs.highlightAuto(code).value;
       }
     });
-    changyan
+    this.commentClick = this.commentClick.bind(this);
+  }
+  commentClick(){
+    console.log(this.props);
+    for(var i=0;i<this.props.items.length;i++){
+      if(this.props.params.id == this.props.items[i].id){
+        var index = this.props.items.length - i;
+        let url = 'https://github.com/lcl-101/webpack-blog/issues/'+index;
+        window.location.href = url;
+      }
+    }
   }
   render(){
     let view = [];
@@ -36,8 +45,7 @@ class Detail extends Component{
             <div className={style.dTitle}>{item.title}</div>
             <div className={style.created_at}>{item.created_at.substr(0, 10)}</div>
             <div className="markdown-body" dangerouslySetInnerHTML = {{__html:marked(item.body)}}></div>
-            <div id="cyEmoji" role="cylabs" data-use="emoji"></div>
-            <div id="SOHUCS" sid={index}></div>
+            <div className={style.comment} onClick={this.commentClick}>点击评论</div>
           </div>
         )
       }
