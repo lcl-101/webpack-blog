@@ -6,6 +6,7 @@ var url = 'https://api.github.com/repos/';
 var owner = 'lcl-101';
 var repo = 'webpack-blog'
 
+//获取issuesw文章列表
 function receivePostes(json){
   return {
     type:RECEIVE_POST,
@@ -42,7 +43,7 @@ export function fetchPostsIfNeeded(){
   }
 }
 
-
+//获取issues文章的评论列表
 function receiveComments(id,json){
   return {
     type:RECEIVE_COMMENTS,
@@ -67,5 +68,12 @@ function shouldFetchComments(state){
 export function fetchCommentsNeeded(id){
   return (dispatch, getState)=> {
     return dispatch(fetchComments(id))
+  }
+}
+
+
+function fetchLogin(){
+  return function(){
+
   }
 }
