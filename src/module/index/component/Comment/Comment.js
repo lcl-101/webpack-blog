@@ -12,7 +12,8 @@ class Comment extends Component{
     dispatch(fetchCommentsNeeded(this.props.cd));
     console.log(this);
     var gitment = new Gitment({
-      id:this.props.cd,
+      link: location.href.split("?")[0],
+      id: location.href.split("?")[0],
       owner: 'lcl-101',
       repo: 'webpack-blog',
       oauth: {
