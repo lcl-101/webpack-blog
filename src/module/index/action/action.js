@@ -87,7 +87,7 @@ function receiveLogin(json){
 function fetchLogin(code){
   var opts = {
     method:"GET",
-    mode: "no-cors",
+    mode: "cors",
     credentials: 'include',
     headers: {
       "Content-Type": "application/x-www-form-urlencoded"

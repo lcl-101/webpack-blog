@@ -119,7 +119,14 @@ module.exports = {
     contentBase:"./dist",
     historyApiFallback: true,
     inline: true,
-    open: true
+    open: true,
+    proxy: {
+      '/': {
+         target: 'http://www.lichenglong.pw/',
+         changeOrigin: true,
+         secure: false
+       }
+    }
   },
   module:{
     rules:[
