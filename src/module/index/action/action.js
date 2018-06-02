@@ -1,6 +1,7 @@
 import fetch from 'isomorphic-fetch'
 export const RECEIVE_POST = 'RECEIVE_POST'
 export const RECEIVE_COMMENTS = 'RECEIVE_COMMENTS'
+export const RECEIVE_LOGIN = 'RECEIVE_LOGIN'
 
 var url = 'https://api.github.com/repos/';
 var owner = 'lcl-101';
@@ -71,9 +72,40 @@ export function fetchCommentsNeeded(id){
   }
 }
 
-
-function fetchLogin(){
-  return function(){
-
+//获取第三方登录状态github
+var lUrl = 'https://github.com/login/oauth/access_token'
+var client_id = '149613f6b828472ab126'
+var client_secret = 'c003cfeeafa97ca0f4c756aab3c2051447ddaab7';
+var scope = 'public_repo'
+var redirect_url = window.location.href
+function receiveLogin(json){
+  return {
+    type:RECEIVE_LOGIN,
+    posts:json
+  }
+}
+function fetchLogin(code){
+  var opts = {
+    method:"GET",
+    mode: "no-cors",
+    credentials: 'include',
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded"
+    }
+  }
+  return function(dispatch){
+    return fetch(lUrl+'?client_id='+client_id+'&client_secret='+client_secret+'&code='+code,opts)
+      .then(function(res){
+        console.log("Response succeeded?", JSON.stringify(res.ok));
+        console.log(JSON.stringify(res));
+      })
+      .catch(function(err) {
+        console.log(err)
+      });
+  }
+}
+export function fetchLoginNeeded(code){
+  return (dispatch, getState)=>{
+    return dispatch(fetchLogin(code))
   }
 }
