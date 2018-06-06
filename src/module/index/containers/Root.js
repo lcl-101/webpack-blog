@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import { Router, Route, hashHistory} from 'react-router';
+import { Router, Route, browserHistory} from 'react-router';
 import NProgress from 'nprogress';
 import App from './App';
 
@@ -76,8 +76,9 @@ const routes = {
         // NProgress.start();
       }
     },
-    { path: '/Detail/:id',
+    { path: '/:id',
       getComponent(nextState,callback){
+        console.log(nextState);
         require.ensure([],require=>{
           callback(null,require('../component/Detail/Detail').default);
         },'index/detail');
@@ -91,6 +92,6 @@ const routes = {
 
 export default class Root extends Component {
   render() {
-    return <Router history={hashHistory} routes={routes} />
+    return <Router history={browserHistory} routes={routes} />
   }
 };

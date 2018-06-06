@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import { Link,hashHistory} from 'react-router';
+import { Link} from 'react-router';
 import Header from '../Header/Header';
 import style from '../../css/home.less';
 import img from '../../../../common/images/favicon.png'
@@ -11,9 +11,6 @@ class Home extends Component{
   }
   componentWillMount(){
     console.log('Component WILL MOUNT!');
-  }
-  handleChange(name,e){
-    hashHistory.push(name);
   }
   render(){
     return(

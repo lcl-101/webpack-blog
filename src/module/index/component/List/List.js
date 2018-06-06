@@ -1,4 +1,5 @@
 import React,{Component} from 'react';
+import { Link} from 'react-router';
 import PropTypes from 'prop-types'
 import marked from 'marked';
 import style from '../../css/list.less'
@@ -17,7 +18,7 @@ class List extends Component{
           {
             this.props.posts.map((item, index) => (
               <li key={index}>
-                <a href={'#Detail/' + item.id}>
+                <Link to={'/' + item.id}>
                   <div className={style.title}>
                     {item.title}
                   </div>
@@ -27,7 +28,7 @@ class List extends Component{
                   <div className={style.time}>
                     Posted by {item.user.login} {item.created_at.substr(0, 10)}
                   </div>
-                </a>
+                </Link>
               </li>
             ))
           }
