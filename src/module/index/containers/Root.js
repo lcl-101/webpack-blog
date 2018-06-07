@@ -79,9 +79,14 @@ const routes = {
     { path: '/:id',
       getComponent(nextState,callback){
         console.log(nextState);
-        require.ensure([],require=>{
-          callback(null,require('../component/Detail/Detail').default);
-        },'index/detail');
+        if(nextState.location.key){
+          require.ensure([],require=>{
+            callback(null,require('../component/Detail/Detail').default);
+          },'index/detail');
+        }else {
+          document.write('<h1>Not Found</h1><p>The requested URL '+nextState.location.pathname+' was not found on this server.</p>');
+          NProgress.done();
+        }
       },
       onEnter: function(nextState, replaceState){
         NProgress.start();
