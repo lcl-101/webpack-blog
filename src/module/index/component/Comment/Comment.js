@@ -62,7 +62,7 @@ class Comment extends Component{
   render(){
     return(
       <div className="">
-        <div className="" onClick={this.loginTo}>登录测试ddds</div>
+        <div className="" onClick={this.loginTo}>登录测试cecece</div>
         <div id="container" key='1'></div>
       </div>
     )
