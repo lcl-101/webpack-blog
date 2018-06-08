@@ -1,4 +1,5 @@
 var gulp = require('gulp'),
+    cleanCSS = require('gulp-clean-css');
     plugins = require('gulp-load-plugins')();
 
 //拷贝 favicon.ico
@@ -11,6 +12,7 @@ gulp.task('move:favicon.ico',function(){
 //拷贝
 gulp.task('move:css',function(){
     var stream = gulp.src('./src/common/css/other/*')
+        .pipe(cleanCSS({compatibility: 'ie8'}))
         .pipe(gulp.dest('./dist/common/css'))
 })
 
