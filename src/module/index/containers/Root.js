@@ -79,7 +79,7 @@ const routes = {
     { path: '/:id',
       getComponent(nextState,callback){
         console.log(nextState);
-        if(nextState.location.key){
+        if(nextState.location.key || Object.keys(nextState.location.query).length>0 ){
           require.ensure([],require=>{
             callback(null,require('../component/Detail/Detail').default);
           },'index/detail');
