@@ -1,84 +1,66 @@
 import React,{Component} from 'react';
 import { Router, Route, browserHistory} from 'react-router';
 import NProgress from 'nprogress';
+import Loadable from 'react-loadable';
 import App from './App';
 
-// import Home from '../component/Home/Home';
-// import About from '../component/About/About';
-// import Posts from '../component/Posts/Posts';
-// import Projects from '../component/Projects/Projects';
-// import Tags from '../component/Tags/Tags';
-// import Detail from '../component/Detail/Detail';
 
-// const Home =() => import(/* webpackChunkName: "home" */'../component/Home/Home.js');
-// const About = () => import(/* webpackChunkName: "about" */'../component/About/About');
-// const Posts = () => import(/* webpackChunkName: "posts" */'../component/Posts/Posts');
-// const Projects = () => import(/* webpackChunkName: "projects" */'../component/Projects/Projects');
-// const Tags = () => import(/* webpackChunkName: "tags" */'../component/Tags/Tags');
-// const Detail = () => import(/* webpackChunkName: "detail" */'../component/Detail/Detail');
+const Loading = () => <div>Loading...</div>;
+
+const Home = Loadable({
+  loader: () => import(/* webpackChunkName: "index/home" */'../component/Home/Home.js'),
+  loading: Loading,
+});
+const About = Loadable({
+  loader: () => import(/* webpackChunkName: "index/about" */'../component/About/About.js'),
+  loading: Loading,
+});
+const Posts = Loadable({
+  loader: () => import(/* webpackChunkName: "index/posts" */'../component/Posts/Posts.js'),
+  loading: Loading,
+});
+const Projects = Loadable({
+  loader: () => import(/* webpackChunkName: "index/projects" */'../component/Projects/Projects'),
+  loading: Loading,
+});
+const Tags = Loadable({
+  loader: () => import(/* webpackChunkName: "index/tags" */'../component/Tags/Tags'),
+  loading: Loading,
+});
+// const Detail = Loadable({
+//   loader: () => import(/* webpackChunkName: "index/detail" */'../component/Detail/Detail'),
+//   loading: Loading,
+// });
 
 const routes = {
   path: '/',         // 访问 '/' 路径，component组件 App 就会加载到 document.getElementById('app')
   component: App,
-  indexRoute: {
-    getComponent(nextState,callback){
-      require.ensure([],require=>{
-        callback(null,require('../component/Home/Home').default);
-      },'index/home');
-    }
-  },
+  indexRoute: {component:Home},
   childRoutes: [
-    { path: '/Home',
-      getComponent(nextState,callback){
-        require.ensure([],require=>{
-          callback(null,require('../component/Home/Home').default);
-        },'index/home');
-      }
-    },
-    { path: '/About',
-      getComponent(nextState,callback){
-        require.ensure([],require=>{
-          callback(null,require('../component/About/About').default);
-        },'index/about');
-      },
+    { path: '/Home', component: Home},
+    { path: '/About',component: About,
       onEnter: function(nextState, replaceState){
-        // NProgress.start();
+        NProgress.done();
       }
     },
-    { path: '/Posts',
-      getComponent(nextState,callback){
-        require.ensure([],require=>{
-          callback(null,require('../component/Posts/Posts').default);
-        },'index/posts');
-      },
+    { path: '/Posts',component: Posts,
       onEnter: function(nextState, replaceState){
         console.log(nextState);
         NProgress.start();
       }
     },
-    { path: '/Projects',
-      getComponent(nextState,callback){
-        require.ensure([],require=>{
-          callback(null,require('../component/Projects/Projects').default);
-        },'index/projects');
-      },
+    { path: '/Projects',component: Projects,
       onEnter: function(nextState, replaceState){
-        // NProgress.start();
+        NProgress.done();
       }
     },
-    { path: '/Tags',
-      getComponent(nextState,callback){
-        require.ensure([],require=>{
-          callback(null,require('../component/Tags/Tags').default);
-        },'index/tags');
-      },
+    { path: '/Tags',component: Tags,
       onEnter: function(nextState, replaceState){
-        // NProgress.start();
+        NProgress.done();
       }
     },
     { path: '/:id',
       getComponent(nextState,callback){
-        console.log(nextState);
         if(nextState.location.key || Object.keys(nextState.location.query).length>0 ){
           require.ensure([],require=>{
             callback(null,require('../component/Detail/Detail').default);

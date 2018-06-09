@@ -11,18 +11,18 @@ class Comment extends Component{
     const { dispatch} = this.props
     dispatch(fetchCommentsNeeded(this.props.cd));
     var code = this.localQuery(window.location.href,'code');
-    dispatch(fetchLoginNeeded(code));
-    var gitment = new Gitment({
-      link: location.href.split("?")[0],
-      id: location.href.split("?")[0],
-      owner: 'lcl-101',
-      repo: 'webpack-blog',
-      oauth: {
-        client_id: '149613f6b828472ab126',
-        client_secret: 'c003cfeeafa97ca0f4c756aab3c2051447ddaab7',
-      }
-    });
-    gitment.render('container');
+    // dispatch(fetchLoginNeeded(code));
+    // var gitment = new Gitment({
+    //   link: location.href.split("?")[0],
+    //   id: location.href.split("?")[0],
+    //   owner: 'lcl-101',
+    //   repo: 'webpack-blog',
+    //   oauth: {
+    //     client_id: '149613f6b828472ab126',
+    //     client_secret: 'c003cfeeafa97ca0f4c756aab3c2051447ddaab7',
+    //   }
+    // });
+    // gitment.render('container');
   }
   getQueryString(name) {
     let reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
@@ -60,7 +60,7 @@ class Comment extends Component{
   render(){
     return(
       <div className="">
-        <div className="" onClick={this.loginTo}>登录测试s</div>
+        {/* <div className="" onClick={this.loginTo}>登录测试s</div> */}
         <div id="container" key='1'></div>
       </div>
     )
