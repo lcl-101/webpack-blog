@@ -6,7 +6,7 @@ import App from './App';
 import Loading from '../component/Loading/Loading'
 
 const Home = Loadable({
-  loader: () => import(/* webpackChunkName: "index/home" */'../component/Loading/Loading'),
+  loader: () => import(/* webpackChunkName: "index/home" */'../component/Home/Home.js'),
   loading: Loading,
 });
 const About = Loadable({
