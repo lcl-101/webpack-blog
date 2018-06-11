@@ -3,9 +3,7 @@ import { Router, Route, browserHistory} from 'react-router';
 import NProgress from 'nprogress';
 import Loadable from 'react-loadable';
 import App from './App';
-
-
-const Loading = () => <div>Loading...</div>;
+import Loading from '../component/Loading/Loading'
 
 const Home = Loadable({
   loader: () => import(/* webpackChunkName: "index/home" */'../component/Home/Home.js'),
@@ -59,9 +57,10 @@ const routes = {
         NProgress.done();
       }
     },
-    { path: '/:id',
+    { path: '/:id(?*)',
       getComponent(nextState,callback){
-        if(nextState.location.key || Object.keys(nextState.location.query).length>0 ){
+        console.log(nextState);
+        if(nextState.location.key){
           require.ensure([],require=>{
             callback(null,require('../component/Detail/Detail').default);
           },'index/detail');
