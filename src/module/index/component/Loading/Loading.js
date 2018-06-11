@@ -1,10 +1,9 @@
 import React,{Component} from 'react';
-import style from '../../css/loading.less';
 
 class Loading extends Component{
   render(){
     return (
-      <div id={style.loading}>
+      <div id='loading'>
         <span></span>
         <span></span>
         <span></span>
