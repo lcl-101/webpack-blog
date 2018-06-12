@@ -43,7 +43,6 @@ const routes = {
     },
     { path: '/Posts',component: Posts,
       onEnter: function(nextState, replaceState){
-        console.log(nextState);
         NProgress.start();
       }
     },
@@ -59,7 +58,6 @@ const routes = {
     },
     { path: '/:id(?*)',
       getComponent(nextState,callback){
-        console.log(nextState);
         if(nextState.location.key){
           require.ensure([],require=>{
             callback(null,require('../component/Detail/Detail').default);
