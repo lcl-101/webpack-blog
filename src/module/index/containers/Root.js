@@ -35,7 +35,11 @@ const routes = {
   component: App,
   indexRoute: {component:Home},
   childRoutes: [
-    { path: '/Home', component: Home},
+    { path: '/Home', component: Home,
+      onEnter: function(nextState, replaceState){
+        NProgress.done();
+      }
+    },
     { path: '/About',component: About,
       onEnter: function(nextState, replaceState){
         NProgress.done();

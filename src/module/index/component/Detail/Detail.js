@@ -32,10 +32,12 @@ class Detail extends Component{
       if(item.id == this.props.params.id){
         view.push(
           <div className={style.box} key={index}>
-            <div className={style.dTitle}>{item.title}</div>
-            <div className={style.created_at}>{item.created_at.substr(0, 10)}</div>
-            <div className="markdown-body" dangerouslySetInnerHTML = {{__html:marked(item.body)}}></div>
-            <Comment cd={item.number}/>
+            <div className={style.detailBox}>
+              <div className={style.dTitle}>{item.title}</div>
+              <div className={style.created_at}>{item.created_at.substr(0, 10)}</div>
+              <div className="markdown-body" dangerouslySetInnerHTML = {{__html:marked(item.body)}}></div>
+              <Comment cd={item.number}/>
+            </div>
           </div>
         )
       }
