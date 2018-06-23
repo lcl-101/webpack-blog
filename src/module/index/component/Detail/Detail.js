@@ -28,8 +28,10 @@ class Detail extends Component{
   }
   render(){
     let view = [];
+    var flag = false;
     this.props.items.map((item, index) => {
       if(item.id == this.props.params.id){
+        flag = true;
         view.push(
           <div className={style.box} key={index}>
             <div className={style.detailBox}>
@@ -42,6 +44,13 @@ class Detail extends Component{
         )
       }
     })
+    if(!flag){
+      view.push(
+        <div key='404'>
+          <h1>404</h1>
+        </div>
+      );
+    }
     return(
       <div id={style.detail}>
         <Theader/>
