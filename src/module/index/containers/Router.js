@@ -29,7 +29,7 @@ const Detail = Loadable({
 
 export default {
   path: '/',         // 访问 '/' 路径，component组件 App 就会加载到 document.getElementById('app')
-  component: Loading,
+  component: App,
   indexRoute: {component:Home},
   childRoutes: [
     { path: '/Home', component: Home,
