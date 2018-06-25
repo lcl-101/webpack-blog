@@ -364,6 +364,7 @@
     height: 40px;
     margin: 0 auto;
     margin-top: -20px;
+    margin-left: -40px;
 }
 #loading span{
     display: inline-block;
