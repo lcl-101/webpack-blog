@@ -13,6 +13,28 @@ class Home extends Component{
     console.log('Component WILL MOUNT!');
   }
   render(){
+    let view = [];
+    var isMobile = this.state.isMobile;
+    if(isMobile){
+      view.push(
+        <div key='0' className={style.link}>
+          <Link className={style.to} to="/Posts">POSTS <span className={style.link_line_to}></span></Link>
+          <Link className={style.to} to="/About">ABOUT <span className={style.link_line_to}></span></Link>
+          <Link className={style.to} to="/Projects">PROJECTS <span className={style.link_line_to}></span></Link>
+          <Link className={style.to} to="/Tags">TAGS <span className={style.link_line_to}></span></Link>
+        </div>
+      )
+    }else {
+      view.push(
+        <div key='1' className={style.link}>
+          <Link className={style.to} to="/Posts">POSTS <span className={style.link_line}></span></Link>
+          <Link className={style.to} to="/About">ABOUT <span className={style.link_line}></span></Link>
+          <Link className={style.to} to="/Projects">PROJECTS <span className={style.link_line}></span></Link>
+          <Link className={style.to} to="/Tags">TAGS <span className={style.link_line}></span></Link>
+        </div>
+      )
+    }
+    console.log(this);
     return(
       <div id={style.home}>
         <Header/>
@@ -21,12 +43,7 @@ class Home extends Component{
             <div className={style.img_box}>
               <img src={img} alt="" />
             </div>
-            <div className={style.link}>
-              <Link className={style.to} to="/Posts">POSTS <span className={style.link_line}></span></Link>
-              <Link className={style.to} to="/About">ABOUT <span className={style.link_line}></span></Link>
-              <Link className={style.to} to="/Projects">PROJECTS <span className={style.link_line}></span></Link>
-              <Link className={style.to} to="/Tags">TAGS <span className={style.link_line}></span></Link>
-            </div>
+            {view}
           </div>
         </div>
       </div>
