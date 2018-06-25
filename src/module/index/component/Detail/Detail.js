@@ -30,6 +30,7 @@ class Detail extends Component{
     let view = [];
     const { isFetching } = this.props
     var flag = false;
+    if (isFetching) return;
     this.props.items.map((item, index) => {
       if(item.id == this.props.params.id){
         flag = true;
