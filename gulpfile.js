@@ -1,6 +1,8 @@
 var gulp = require('gulp'),
-    cleanCSS = require('gulp-clean-css');
-    plugins = require('gulp-load-plugins')();
+    cleanCSS = require('gulp-clean-css'),
+    plugins = require('gulp-load-plugins')(),
+    hash = require('gulp-hash'),
+    useref = require('gulp-useref');  //它可以把html里零碎的这些引入合并成一个文件，但是它不负责代码压缩。
 
 //拷贝 favicon.ico
 gulp.task('move:favicon.ico',function(){
