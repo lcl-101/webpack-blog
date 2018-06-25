@@ -28,6 +28,7 @@ class Detail extends Component{
   }
   render(){
     let view = [];
+    const { isFetching } = this.props
     var flag = false;
     this.props.items.map((item, index) => {
       if(item.id == this.props.params.id){
@@ -44,7 +45,7 @@ class Detail extends Component{
         )
       }
     })
-    if(!flag){
+    if(!flag && !isFetching){
       view.push(
         <div key='404'>
           <h1>404</h1>
