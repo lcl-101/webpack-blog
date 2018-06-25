@@ -34,7 +34,6 @@ class Home extends Component{
         </div>
       )
     }
-    console.log(this);
     return(
       <div id={style.home}>
         <Header/>
