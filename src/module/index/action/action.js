@@ -16,7 +16,7 @@ function receivePostes(json){
 }
 function fetchPosts(){
   return function(dispatch){
-    return fetch(url+owner+'/'+repo+'/'+'issues?access_token=5593ffdb842c5c3d46a347a3e5e62313155fe820')
+    return fetch(url+owner+'/'+repo+'/'+'issues')
       .then(respones => respones.json())
       .then(json => dispatch(receivePostes(json)))
   }
