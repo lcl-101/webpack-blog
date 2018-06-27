@@ -119,7 +119,15 @@ module.exports = {
     contentBase:"./dist",
     historyApiFallback: true,
     inline: true,
-    open: true
+    open: true,
+    proxy:{
+      '/api': {
+        target: 'https://lcl101.cn',
+        secure: true,
+  			changeOrigin: true,
+  			logLevel: 'error'
+      }
+    }
   },
   module:{
     rules:[

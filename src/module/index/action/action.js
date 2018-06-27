@@ -3,10 +3,6 @@ export const RECEIVE_POST = 'RECEIVE_POST'
 export const RECEIVE_COMMENTS = 'RECEIVE_COMMENTS'
 export const RECEIVE_LOGIN = 'RECEIVE_LOGIN'
 
-var url = 'https://api.github.com/repos/';
-var owner = 'lcl-101';
-var repo = 'webpack-blog'
-
 //获取issuesw文章列表
 function receivePostes(json){
   return {
@@ -16,7 +12,7 @@ function receivePostes(json){
 }
 function fetchPosts(){
   return function(dispatch){
-    return fetch(url+owner+'/'+repo+'/'+'issues')
+    return fetch('/api/getList')
       .then(respones => respones.json())
       .then(json => dispatch(receivePostes(json)))
   }
