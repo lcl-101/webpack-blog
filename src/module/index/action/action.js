@@ -3,6 +3,10 @@ export const RECEIVE_POST = 'RECEIVE_POST'
 export const RECEIVE_COMMENTS = 'RECEIVE_COMMENTS'
 export const RECEIVE_LOGIN = 'RECEIVE_LOGIN'
 
+var url = 'https://api.github.com/repos/';
+var owner = 'lcl-101';
+var repo = 'webpack-blog'
+
 //获取issuesw文章列表
 function receivePostes(json){
   return {
