@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import Theader from '../Theader/Theader';
+import Header from '../Header/Header';
 import Comment from '../Comment/Comment';
 import { connect } from 'react-redux'
 import hljs from '../../../../common/js/highlight';
@@ -54,7 +54,7 @@ class Detail extends Component{
     }
     return(
       <div id={style.detail}>
-        <Theader/>
+        <Header/>
         {view}
       </div>
     )
