@@ -1,7 +1,5 @@
 import fetch from 'isomorphic-fetch'
-export const RECEIVE_POST = 'RECEIVE_POST'
-export const RECEIVE_COMMENTS = 'RECEIVE_COMMENTS'
-export const RECEIVE_LOGIN = 'RECEIVE_LOGIN'
+import { RECEIVE_POST,RECEIVE_COMMENTS,RECEIVE_LOGIN } from '../constants/ActionTypes';
 
 var url = 'https://api.github.com/repos/';
 var owner = 'lcl-101';

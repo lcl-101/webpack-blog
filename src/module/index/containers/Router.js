@@ -14,6 +14,14 @@ const Posts = Loadable({
   loader: () => import(/* webpackChunkName: "index/posts" */'../component/Posts/Posts.js'),
   loading: Loading,
 });
+const Archive = Loadable({
+  loader: () => import(/* webpackChunkName: "index/archive" */'../component/Archive/Archive.js'),
+  loading: Loading,
+});
+const Label = Loadable({
+  loader: () => import(/* webpackChunkName: "index/label" */'../component/Label/Label.js'),
+  loading: Loading,
+});
 const Projects = Loadable({
   loader: () => import(/* webpackChunkName: "index/projects" */'../component/Projects/Projects'),
   loading: Loading,
@@ -43,6 +51,16 @@ export default {
       }
     },
     { path: '/Posts',component: Posts,
+      onEnter: function(nextState, replaceState){
+        NProgress.start();
+      }
+    },
+    { path: '/Archive',component: Archive,
+      onEnter: function(nextState, replaceState){
+        NProgress.start();
+      }
+    },
+    { path: '/Label',component: Label,
       onEnter: function(nextState, replaceState){
         NProgress.start();
       }

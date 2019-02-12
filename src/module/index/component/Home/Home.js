@@ -10,7 +10,7 @@ class Home extends Component{
     this.state = {isMobile:/Android|webOS|iPhone|iPad|iPod|ucweb|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)};
   }
   componentWillMount(){
-    console.log('Component WILL MOUNT!');
+    // console.log('Component WILL MOUNT!');
   }
   render(){
     let view = [];
@@ -18,19 +18,17 @@ class Home extends Component{
     if(isMobile){
       view.push(
         <div key='0' className={style.link}>
-          <Link className={style.to} to="/Posts">POSTS <span className={style.link_line_to}></span></Link>
-          <Link className={style.to} to="/About">ABOUT <span className={style.link_line_to}></span></Link>
-          <Link className={style.to} to="/Projects">PROJECTS <span className={style.link_line_to}></span></Link>
-          <Link className={style.to} to="/Tags">TAGS <span className={style.link_line_to}></span></Link>
+          <Link className={style.to} to="/Posts">全部 <span className={style.link_line_to}></span></Link>
+          <Link className={style.to} to="/Archive">归档 <span className={style.link_line_to}></span></Link>
+          <Link className={style.to} to="/Label">标签 <span className={style.link_line_to}></span></Link>
         </div>
       )
     }else {
       view.push(
         <div key='1' className={style.link}>
-          <Link className={style.to} to="/Posts">POSTS <span className={style.link_line}></span></Link>
-          <Link className={style.to} to="/About">ABOUT <span className={style.link_line}></span></Link>
-          <Link className={style.to} to="/Projects">PROJECTS <span className={style.link_line}></span></Link>
-          <Link className={style.to} to="/Tags">TAGS <span className={style.link_line}></span></Link>
+          <Link className={style.to} to="/Posts">全部 <span className={style.link_line}></span></Link>
+          <Link className={style.to} to="/Archive">归档 <span className={style.link_line_to}></span></Link>
+          <Link className={style.to} to="/Label">标签 <span className={style.link_line_to}></span></Link>
         </div>
       )
     }

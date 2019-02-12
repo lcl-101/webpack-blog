@@ -7,7 +7,7 @@ class Header extends Component {
   render(){
     return(
       <div id={style.header}>
-        <Link to="/Home">Home</Link>
+        <Link to="/Home">lcl101.cn</Link>
       </div>
     )
   }

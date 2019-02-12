@@ -4,6 +4,8 @@ import NProgress from 'nprogress';
 import Footer from '../component/Footer/Footer';
 
 import base from '../../../common/css/base.less';
+import iconfont from '../../../common/font/iconfont.css';
+import flexible from '../../../common/js/flexible';
 import style from '../css/index.less';
 
 class App extends Component{
@@ -12,6 +14,7 @@ class App extends Component{
   }
 
   componentDidMount() {
+    flexible(750,750);
     if (!this.props.isFetching) {
       NProgress.done();
     }

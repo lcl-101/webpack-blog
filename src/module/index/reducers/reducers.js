@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import {RECEIVE_POST,FETCH_ISSUES,RECEIVE_COMMENTS,RECEIVE_LOGIN} from '../action/action'
+import { RECEIVE_POST,FETCH_ISSUES,RECEIVE_COMMENTS,RECEIVE_LOGIN } from '../constants/ActionTypes';
 
 //获取issuesw文章列表
 var initState = {

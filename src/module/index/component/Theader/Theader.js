@@ -9,7 +9,7 @@ class Header extends Component {
     return(
       <div id={style.theader} className='clearfix'>
         <div className={style.H_left}>
-          <Link to="/Home">Home</Link>
+          <Link to="/Home">lcl101.cn</Link>
         </div>
         <div className={style.H_right}>
           <Link className={style.to} to="/Posts">POSTS</Link>

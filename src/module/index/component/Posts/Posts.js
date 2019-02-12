@@ -1,9 +1,10 @@
 import React,{Component} from 'react';
 import Theader from '../Theader/Theader';
-import List from '../List/List'
+// import List from '../List/List'
+import Cell from '../Cell/Cell';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import {fetchPostsIfNeeded} from '../../action/action'
+import { fetchPostsIfNeeded } from '../../action/action'
 import style from '../../css/post.less'
 
 class Posts extends Component {
@@ -23,13 +24,17 @@ class Posts extends Component {
     const { todos,action } = this.props;
     if (!isFetching) {
       view.push(
-        <List posts={items} key='1'/>
+        // <List posts={items} key='1'/>
+        <Cell list={items} key='1'/>
       )
     }
     return(
       <div id={style.post}>
         <Theader/>
-        {view}
+        <div className={style.post_box}>
+          <div className={style.posts_category}>全部</div>
+          {view}
+        </div>
       </div>
     )
   }
@@ -61,7 +66,8 @@ function mapStateToProps (state){
 }
 /*
   字面意思：匹配dispatch给组件。
-  与mapStateToProps很像，接收store中的dispatch和props，使页面可以复写dispatch方法。我的理解，就是通过mapDispatchToProps这个方法，把actionCreator变成方法赋值到props，每当调用这个方法，就会更新State。有点小头晕。
+  与mapStateToProps很像，接收store中的dispatch和props，使页面可以复写dispatch方法。我的理解，就是通过mapDispatchToProps这个方法，把actionCreator变成方法赋值到props，
+  每当调用这个方法，就会更新State。有点小头晕。
  */
 // function mapDispatchToProps (dispatch){
 //   return {
