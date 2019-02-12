@@ -12,7 +12,7 @@ node v8.4.0+
 ```
 1. npm install        //安装node运行环境
 2. npm run dev        //开发环境构建
-3. npm run start      //开发环境构建
+3. npm run server     //开发环境构建
 4. npm run build      //生产环境构建
 ```
 
