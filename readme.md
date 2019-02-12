@@ -1,6 +1,6 @@
 ##  webpack+gulp+react+react-router+issues+webhoot 构建的个人博客系统
 
-> 作者：李成龙 <lichenglong@kongfz.com>
+> 作者：李成龙 <554675188@qq.com>
 
 ### 环境依赖
 
