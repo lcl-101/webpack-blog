@@ -48,7 +48,7 @@ class Detail extends Component{
     if(!flag && !isFetching){
       view.push(
         <div key='404'>
-          <h1>404</h1>
+          <h1>notFount</h1>
         </div>
       );
     }
