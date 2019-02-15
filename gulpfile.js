@@ -18,11 +18,18 @@ gulp.task('move:css',function(){
         .pipe(gulp.dest('./dist/common/css'))
 })
 
+//拷贝
+gulp.task('move:tpl',function(){
+    var stream = gulp.src('./src/templete/*')
+        .pipe(gulp.dest('./dist'))
+})
+
 //默认生成环境任务
 gulp.task('default', function(callback) {
     // 将你的默认的任务代码放在这
     plugins.sequence(
       'move:favicon.ico',
-      'move:css'
+      'move:css',
+      'move:tpl'
     )(callback);
 });

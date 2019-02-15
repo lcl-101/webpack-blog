@@ -1,4 +1,4 @@
-##  webpack+gulp+react+react-router+issues+webhoot 构建的个人博客系统
+##  webpack+gulp+react+react-router+issues+webhoot+koa2 构建的个人博客系统
 
 > 作者：李成龙 <554675188@qq.com>
 
@@ -35,3 +35,4 @@ node v8.4.0+
 | :--: | :--: | :--: | :--: |
 | 1.0.0 | 首页,详情页,列表 | 李成龙 | 2018.05.08 |
 | 1.0.1 | 首页,详情页,归档,标签,列表 | 李成龙 | 2019.02.12 |
+| 1.0.1 | 服务由express迁移到koa2 | 李成龙 | 2019.02.15 |
