@@ -10,12 +10,14 @@ class Comment extends Component{
     super(props);
   }
   componentDidMount(){
-    const { dispatch} = this.props
+    // const { dispatch} = this.props
     // dispatch(fetchCommentsNeeded(this.props.cd));
     // var code = this.localQuery(window.location.href,'code');
 
+    console.log(this.props.ids);
+
     var gitment = new Gitment({
-      id: location.href.split("?")[0],
+      id: 'i'+this.props.ids,
       owner: 'lcl-101',
       repo: 'lcl-101.github.io',
       oauth: {
@@ -108,5 +110,5 @@ function mapStateToProps (state){
 }
 
 export default connect(
-  mapStateToProps
+
 )(Comment)
