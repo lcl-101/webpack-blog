@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import { connect } from 'react-redux'
-import Gitment from 'gitment';
+import Gitalk from 'gitalk'
 import {fetchCommentsNeeded,fetchLoginNeeded} from '../../action/action'
 
 class Comment extends Component{
@@ -11,19 +11,31 @@ class Comment extends Component{
     const { dispatch} = this.props
     dispatch(fetchCommentsNeeded(this.props.cd));
     var code = this.localQuery(window.location.href,'code');
-    dispatch(fetchLoginNeeded(code));
-    console.log(this);
-    var gitment = new Gitment({
-      link: location.href.split("?")[0],
-      id: location.href.split("?")[0],
+    // dispatch(fetchLoginNeeded(code));
+    console.log(this.props.cd);
+    // var gitment = new Gitment({
+    //   link: location.href.split("?")[0],
+    //   id: this.props.cd,
+    //   owner: 'lcl-101',
+    //   repo: 'webpack-blog',
+    //   oauth: {
+    //     client_id: '149613f6b828472ab126',
+    //     client_secret: 'c003cfeeafa97ca0f4c756aab3c2051447ddaab7',
+    //   }
+    // });
+    // gitment.render('container');
+
+    var gitalk = new Gitalk({
+      // gitalk的主要参数
+      clientID: `149613f6b828472ab126`,
+      clientSecret: `c003cfeeafa97ca0f4c756aab3c2051447ddaab7`,
+      repo: `lcl-101.github.io`,
       owner: 'lcl-101',
-      repo: 'webpack-blog',
-      oauth: {
-        client_id: '149613f6b828472ab126',
-        client_secret: 'c003cfeeafa97ca0f4c756aab3c2051447ddaab7',
-      }
+      admin: ['lcl-101'],
+      id: location.href.split("?")[0],
+      distractionFreeMode: true
     });
-    gitment.render('container');
+    gitalk.render('gitalk-container');
   }
   getQueryString(name) {
     let reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
@@ -62,7 +74,7 @@ class Comment extends Component{
     return(
       <div className="">
         {/* <div className="" onClick={this.loginTo}>登录测试s</div> */}
-        <div id="container" key='1'></div>
+        <div id="gitalk-container" key='1'></div>
       </div>
     )
   }
