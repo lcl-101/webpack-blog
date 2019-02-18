@@ -39,7 +39,7 @@ class Detail extends Component{
               <div className={style.dTitle}>{item.title}</div>
               <div className={style.created_at}>{item.created_at.substr(0, 10)}</div>
               <div className="markdown-body" dangerouslySetInnerHTML = {{__html:marked(item.body)}}></div>
-              <Comment cd={item.number}/>
+              <Comment cd={item.number} title={item.title}/>
             </div>
           </div>
         )
