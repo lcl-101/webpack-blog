@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 // import Gitalk from 'gitalk'
 import Gitment from 'gitment';
 import {fetchCommentsNeeded,fetchLoginNeeded} from '../../action/action'
+import style from '../../css/detail.less'
 
 class Comment extends Component{
   constructor(props){
@@ -71,7 +72,7 @@ class Comment extends Component{
   }
   render(){
     return(
-      <div className="">
+      <div className={style.container}>
         {/* <div className="" onClick={this.loginTo}>登录测试s</div> */}
         <div id="container" key='1'></div>
       </div>
