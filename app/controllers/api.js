@@ -59,3 +59,16 @@ module.exports.getList = async function (ctx, next) {
   }
   ctx.body = resData;
 }
+
+module.exports.getOauthAccesstoken = async function (ctx, next) {
+  let resData = '';
+  try {
+    const params = ctx.query;
+    //获取access_token
+    var res = await axios.post('https://github.com/login/oauth/access_token',params);
+    resData = res.data.split('&')[0].split('=')[1];
+  } catch(e) {
+    resData.message = '数据请求失败';
+  }
+  ctx.body = resData;
+}
