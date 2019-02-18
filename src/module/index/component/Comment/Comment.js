@@ -9,21 +9,8 @@ class Comment extends Component{
   }
   componentDidMount(){
     const { dispatch} = this.props
-    dispatch(fetchCommentsNeeded(this.props.cd));
-    var code = this.localQuery(window.location.href,'code');
-    // dispatch(fetchLoginNeeded(code));
-    console.log(this.props.cd);
-    // var gitment = new Gitment({
-    //   link: location.href.split("?")[0],
-    //   id: this.props.cd,
-    //   owner: 'lcl-101',
-    //   repo: 'webpack-blog',
-    //   oauth: {
-    //     client_id: '149613f6b828472ab126',
-    //     client_secret: 'c003cfeeafa97ca0f4c756aab3c2051447ddaab7',
-    //   }
-    // });
-    // gitment.render('container');
+    // dispatch(fetchCommentsNeeded(this.props.cd));
+    // var code = this.localQuery(window.location.href,'code');
 
     var gitalk = new Gitalk({
       // gitalk的主要参数
