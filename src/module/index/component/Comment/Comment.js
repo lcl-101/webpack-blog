@@ -22,7 +22,10 @@ class Comment extends Component{
       id: location.href.split("?")[0],
       distractionFreeMode: true
     });
-    gitalk.render('gitalk-container');
+    var t = setTimeout(() => {
+      gitalk.render('gitalk-container');
+      clearTimeout(t);
+    }, 500)
   }
   getQueryString(name) {
     let reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
