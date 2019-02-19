@@ -1,4 +1,4 @@
-##  webpack+gulp+react+react-router+issues+webhoot+koa2+gitment 构建的个人博客系统
+##  webpack+gulp+react+react-router+issues+webhoot+koa2+pm2+gitment 构建的个人博客系统
 
 > 作者：李成龙 <554675188@qq.com>
 

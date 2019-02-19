@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Header from '../Header/Header';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { fetchPostsIfNeeded } from '../../action/action';
@@ -47,7 +46,6 @@ class Label extends Component {
 
     return(
       <div>
-        <Header/>
         <div className={style.posts_box}>
           {view}
         </div>

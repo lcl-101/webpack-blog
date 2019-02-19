@@ -1,6 +1,5 @@
 import React,{Component} from 'react';
 import { Link} from 'react-router';
-import Header from '../Header/Header';
 import style from '../../css/home.less';
 import img from '../../../../common/images/favicon.png'
 
@@ -34,7 +33,6 @@ class Home extends Component{
     }
     return(
       <div id={style.home}>
-        <Header/>
         <div className={style.home_box}>
           <div className={style.inner}>
             <div className={style.img_box}>

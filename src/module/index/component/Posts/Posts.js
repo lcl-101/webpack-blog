@@ -1,5 +1,4 @@
 import React,{Component} from 'react';
-import Header from '../Header/Header';
 // import List from '../List/List'
 import Cell from '../Cell/Cell';
 import { bindActionCreators } from 'redux'
@@ -30,7 +29,6 @@ class Posts extends Component {
     }
     return(
       <div id={style.post}>
-        <Header/>
         <div className={style.post_box}>
           <div className={style.posts_category}>全部</div>
           {view}

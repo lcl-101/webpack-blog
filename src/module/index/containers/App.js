@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import { connect } from 'react-redux';
 import NProgress from 'nprogress';
 import Footer from '../component/Footer/Footer';
+import Header from '../component/Header/Header';
 
 import base from '../../../common/css/base.less';
 import iconfont from '../../../common/font/iconfont.css';
@@ -30,6 +31,7 @@ class App extends Component{
   render(){
     return(
       <div id={style.app_box}>
+        <Header/>
         <div className={style.app_inner}>
           {this.props.children}
         </div>

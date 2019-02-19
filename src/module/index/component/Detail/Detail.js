@@ -1,5 +1,4 @@
 import React,{Component} from 'react';
-import Header from '../Header/Header';
 import Comment from '../Comment/Comment';
 import { connect } from 'react-redux'
 import hljs from '../../../../common/js/highlight';
@@ -47,14 +46,13 @@ class Detail extends Component{
     })
     if(!flag && !isFetching){
       view.push(
-        <div key='404'>
-          <h1>notFount</h1>
+        <div className={style.b_f} key='404'>
+          <h1>404</h1>
         </div>
       );
     }
     return(
       <div id={style.detail}>
-        <Header/>
         {view}
       </div>
     )
