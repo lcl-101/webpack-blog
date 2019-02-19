@@ -1,6 +1,6 @@
 {
-  "app":[{
-    "name": "lcl101-blog",
+  "apps":[{
+    "name": "webpack-blog",
     "script": "./app/app.js",
     "log_date_format": "YYYY-MM-DD HH:mm Z",
     "error_file": "/var/www/logs/blog/lcl101-app.stderr.log",
