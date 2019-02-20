@@ -5,12 +5,17 @@ import Root from './containers/Root'
 import { Provider } from 'react-redux'
 import { createStore,applyMiddleware } from 'redux'
 import thunkMiddleware from 'redux-thunk'
-import { createLogger } from 'redux-logger'
 import todoApp from './reducers/reducers'
+
+const middlewares = [];
+if (process.env.NODE_ENV === `development`) {
+  const { logger } = require('redux-logger');
+  middlewares.push(logger);
+}
 
 const createStoreWithMiddleware = applyMiddleware(
   thunkMiddleware,
-  createLogger()
+  ...middlewares
 )(createStore)
 
 // 创建store, 传入两个参数
