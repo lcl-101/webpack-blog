@@ -14,8 +14,6 @@ class Comment extends Component{
     // dispatch(fetchCommentsNeeded(this.props.cd));
     // var code = this.localQuery(window.location.href,'code');
 
-    console.log(this.props.ids);
-
     var gitment = new Gitment({
       id: 'i'+this.props.ids,
       owner: 'lcl-101',
