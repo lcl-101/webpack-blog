@@ -82,9 +82,16 @@ module.exports.getReslog = async function (ctx, next) {
     message: null,
     errType: null
   };
+  function toJSONStr(str) {
+    return str.replace(/([\$\w]+)\s*:/g, function(_, $1){return '"'+$1+'":'});
+  }
+  function toJSON(str) {
+    return JSON.parse(str);
+  }
+
   try {
     var res = fs.readFileSync('/var/www/log4/blog/jsonlog/rule-res-json.log', 'utf8');
-    res = "{"+res+"}";
+    res = toJSON(toJSONStr(res));
     resData.data= res;
   } catch(e) {
     resData.message = '数据请求失败';
