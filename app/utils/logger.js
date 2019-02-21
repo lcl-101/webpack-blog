@@ -35,7 +35,7 @@ var formatRes = function (ctx, resTime, type) {
     if(type == 'json') {
       logInfo = formatReqLogJson(ctx.request, resTime);
       //响应状态码
-      logInfo['response-status'] = ctx.status;
+      logInfo['response-status'] = ctx.status  || '';
       return logInfo;
     }
     //添加请求日志
@@ -56,9 +56,9 @@ var formatError = function (ctx, err, resTime, type) {
     var logInfo = '';
     if(type == 'json') {
       formatReqLogJson(ctx.request, resTime);
-      logInfo['err-name'] = err.name;
-      logInfo['err-message'] = err.message;
-      logInfo['err-stack'] = err.stack;
+      logInfo['err-name'] = err.name  || '';
+      logInfo['err-message'] = err.message || '';
+      logInfo['err-stack'] = err.stack || '';
       return logInfo;
     }
     //添加请求日志
@@ -121,25 +121,25 @@ var formatReqLogJson = function (req, resTime) {
   var logText = {};
 
   //访问方法
-  logText['request-method'] = req.method;
+  logText['request-method'] = req.method || '';
 
   //请求原始地址
-  logText['request-originalUrl'] = req.originalUrl;
+  logText['request-originalUrl'] = req.originalUrl || '';
 
   //客户端ip
-  logText['request-client-ip'] = getIp(req);
+  logText['request-client-ip'] = getIp(req) || '';
 
   //userAgent
-  logText['user-agent'] = JSON.stringify(req.header['user-agent']);
+  logText['user-agent'] = JSON.stringify(req.header['user-agent']) || '';
 
   //请求参数
   if (req.method === 'GET') {
-      logText['request-query'] = JSON.stringify(req.query);
+      logText['request-query'] = JSON.stringify(req.query) || '';
   } else {
-      logText['request-body'] = JSON.stringify(req.body);
+      logText['request-body'] = JSON.stringify(req.body) || '';
   }
   //服务器响应时间
-  logText['response-time'] = resTime
+  logText['response-time'] = resTime || '';
 
   return logText;
 }
