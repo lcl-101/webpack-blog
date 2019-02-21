@@ -1,11 +1,17 @@
 const log4js = require('log4js');
 const log_conf = require('../../config/log4_config');
 
+log4js.addLayout('json', function(config) {
+  return function(logEvent) { return JSON.stringify(logEvent) + config.separator; }
+});
+
 log4js.configure(log_conf);
 
-var errorLogger = log4js.getLogger('rule-error');
-var resLogger = log4js.getLogger('rule-res');
-var consoleLogger = log4js.getLogger();
+const errorLogger = log4js.getLogger('rule-error');
+const resLogger = log4js.getLogger('rule-res');
+const consoleLogger = log4js.getLogger();
+const errorLoggerJson = log4js.getLogger('rule-error-json');
+const resLoggerJson = log4js.getLogger('rule-res-json');
 
 let logger = {};
 
@@ -100,7 +106,8 @@ var formatReqLog = function (req, resTime) {
 //封装错误日志
 logger.logError = (ctx, error, resTime) => {
   if(ctx && error){
-    errorLogger.error(formatError(ctx, error, resTime))
+    errorLogger.error(formatError(ctx, error, resTime));
+    errorLoggerJson.error(formatError(ctx, error, resTime));
   }
 }
 
@@ -115,6 +122,7 @@ logger.logResponse = (ctx, resTime) => {
 logger.logInfo = (info) => {
   if (info){
     consoleLogger.info(formatInfo(info));
+    resLoggerJson.info(formatInfo(info));
   }
 }
 

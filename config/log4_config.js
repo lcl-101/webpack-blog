@@ -15,12 +15,29 @@ module.exports = {
       filename: '/var/www/log4/blog/rule-res.log',
       "encoding":"utf-8",
       "maxLogSize": 104800
+    },
+    "rule-error-json": {
+      type: 'stdout',
+      layout: { type: 'json', separator: ',' }
+      //文件名为= filename + pattern, 设置为alwaysIncludePattern：true
+      filename: '/var/www/log4/blog/rule-error.json',
+      "encoding":"utf-8",
+      "maxLogSize": 104800
+    },
+    "rule-res-json": {
+      type: 'stdout',
+      layout: { type: 'json', separator: ',' }
+      filename: '/var/www/log4/blog/rule-res.json',
+      "encoding":"utf-8",
+      "maxLogSize": 104800
     }
   },
   categories: {
     "default": {"appenders": ["rule-console"], "level": "all"},
     "rule-error": {"appenders": ['rule-error'],"level": "error"},
-    "rule-res": {"appenders": ['rule-res'], "level": "info"}
+    "rule-res": {"appenders": ['rule-res'], "level": "info"},
+    "rule-error-json": {"appenders": ['rule-error-json'], "level": "error"},
+    "rule-res-json": {"appenders": ['rule-res-json'], "level": "info"}
   },
   replaceConsole: false,
   pm2: true,
