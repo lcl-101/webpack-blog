@@ -29,9 +29,15 @@ var formatInfo = function (info) {
 }
 
 //格式化响应日志
-var formatRes = function (ctx, resTime) {
+var formatRes = function (ctx, resTime, type) {
     var logText = new String();
-
+    var logInfo = '';
+    if(type == 'json') {
+      logInfo = formatReqLogJson(ctx.request, resTime);
+      //响应状态码
+      logInfo['response-status'] = ctx.status;
+      return logInfo;
+    }
     //添加请求日志
     logText += formatReqLog(ctx.request, resTime);
 
@@ -103,6 +109,34 @@ var formatReqLog = function (req, resTime) {
     return logText;
 }
 
+//json格式化请求日志
+var formatReqLogJson = function (req, resTime) {
+  var logText = {};
+
+  //访问方法
+  logText['request-method'] = req.method;
+
+  //请求原始地址
+  logText['request-originalUrl'] = req.originalUrl;
+
+  //客户端ip
+  logText['request-client-ip'] = getIp(req);
+
+  //userAgent
+  logText['user-agent'] = JSON.stringify(req.header['user-agent']);
+
+  //请求参数
+  if (req.method === 'GET') {
+      logText['request-query'] = JSON.stringify(req.query);
+  } else {
+      logText['request-body'] = JSON.stringify(req.body);
+  }
+  //服务器响应时间
+  logText['response-time'] = resTime
+
+  return logText;
+}
+
 //封装错误日志
 logger.logError = (ctx, error, resTime) => {
   if(ctx && error){
@@ -115,7 +149,7 @@ logger.logError = (ctx, error, resTime) => {
 logger.logResponse = (ctx, resTime) => {
   if(ctx){
     resLogger.info(formatRes(ctx, resTime));
-    resLoggerJson.info('resLoggerJson');
+    resLoggerJson.info(formatRes(ctx, resTime, 'json'));
   }
 }
 
