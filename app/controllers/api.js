@@ -36,7 +36,7 @@ function scheduleCronstyle(){
   });
 }
 scheduleCronstyle();
-
+// getList
 module.exports.getList = async function (ctx, next) {
   let resData = '';
   const getIssuesData = getIssues();
@@ -59,7 +59,7 @@ module.exports.getList = async function (ctx, next) {
   }
   ctx.body = resData;
 }
-
+// getOauthAccesstoken
 module.exports.getOauthAccesstoken = async function (ctx, next) {
   let resData = '';
   try {
@@ -67,6 +67,17 @@ module.exports.getOauthAccesstoken = async function (ctx, next) {
     //获取access_token
     var res = await axios.post('https://github.com/login/oauth/access_token',params);
     resData = res.data.split('&')[0].split('=')[1];
+  } catch(e) {
+    resData.message = '数据请求失败';
+  }
+  ctx.body = resData;
+}
+// getReslog
+module.exports.getReslog = async function (ctx, next) {
+  let resData = '';
+  try {
+    var res = await axios.get('/var/www/log4/blog/rule-res.log');
+    resData = res;
   } catch(e) {
     resData.message = '数据请求失败';
   }
