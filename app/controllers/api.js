@@ -84,7 +84,7 @@ module.exports.getReslog = async function (ctx, next) {
   };
   try {
     var res = fs.readFileSync('/var/www/log4/blog/jsonlog/rule-res-json.log', 'utf8');
-    resData.data = JSON.parse(res);
+    resData.data = eval(res);
   } catch(e) {
     resData.message = '数据请求失败';
     resData.errType = 1001;
