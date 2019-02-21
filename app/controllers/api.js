@@ -78,13 +78,14 @@ module.exports.getOauthAccesstoken = async function (ctx, next) {
 module.exports.getReslog = async function (ctx, next) {
   let resData = {
     status: 1,
-    data: [],
+    data: null,
     message: null,
     errType: null
   };
   try {
     var res = fs.readFileSync('/var/www/log4/blog/jsonlog/rule-res-json.log', 'utf8');
-    resData.data.push(JSON.stringify(res));
+    res = "{"+res+"}";
+    resData.data= res;
   } catch(e) {
     resData.message = '数据请求失败';
     resData.errType = 1001;
