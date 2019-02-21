@@ -46,7 +46,6 @@ var formatRes = function (ctx, resTime, type) {
 
     //响应内容
     // logText += "response body: " + "\n" + JSON.stringify(ctx.body) + "|";
-
     return logText;
 }
 
