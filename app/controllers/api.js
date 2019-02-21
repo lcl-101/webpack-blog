@@ -84,9 +84,12 @@ module.exports.getReslog = async function (ctx, next) {
   };
   try {
     var res = fs.readFileSync('/var/www/log4/blog/jsonlog/rule-res-json.log', 'utf8');
-    // res = res.substr(0, res.length - 1);
-    console.log(res.split('↵'));
-    resData.data.push(res);
+
+    var res1 = res.replace(/[\r\n]/g,"-tab-");
+    var res2 = res1.substring(0,res1.length-6);
+    for(var i=0;i<res2.split(',-tab-').length;i++){
+      resData.data.push(eval ("(" + res2.split(',-tab-')[i] + ")"));
+    }
   } catch(e) {
     resData.message = '数据请求失败';
     resData.errType = 1001;
