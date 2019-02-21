@@ -17,17 +17,17 @@ module.exports = {
       "maxLogSize": 104800
     },
     "rule-error-json": {
-      type: 'stdout',
+      type: 'dateFile',
       layout: { type: 'json', separator: ',' },
       //文件名为= filename + pattern, 设置为alwaysIncludePattern：true
-      filename: '/var/www/log4/blog/rule-error.json',
+      filename: '/var/www/log4/blog/rule-error.log',
       "encoding":"utf-8",
       "maxLogSize": 104800
     },
     "rule-res-json": {
-      type: 'stdout',
+      type: 'dateFile',
       layout: { type: 'json', separator: ',' },
-      filename: '/var/www/log4/blog/rule-res.json',
+      filename: '/var/www/log4/blog/rule-res.log',
       "encoding":"utf-8",
       "maxLogSize": 104800
     }

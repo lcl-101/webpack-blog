@@ -107,7 +107,7 @@ var formatReqLog = function (req, resTime) {
 logger.logError = (ctx, error, resTime) => {
   if(ctx && error){
     errorLogger.error(formatError(ctx, error, resTime));
-    errorLoggerJson.error(formatError(ctx, error, resTime));
+    errorLoggerJson.error('errorLoggerJson');
   }
 }
 
@@ -115,6 +115,7 @@ logger.logError = (ctx, error, resTime) => {
 logger.logResponse = (ctx, resTime) => {
   if(ctx){
     resLogger.info(formatRes(ctx, resTime));
+    resLoggerJson.info('resLoggerJson');
   }
 }
 
@@ -122,7 +123,6 @@ logger.logResponse = (ctx, resTime) => {
 logger.logInfo = (info) => {
   if (info){
     consoleLogger.info(formatInfo(info));
-    resLoggerJson.info(formatInfo(info));
   }
 }
 
