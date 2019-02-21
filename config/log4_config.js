@@ -18,7 +18,7 @@ module.exports = {
     },
     "rule-error-json": {
       type: 'stdout',
-      layout: { type: 'json', separator: ',' }
+      layout: { type: 'json', separator: ',' },
       //文件名为= filename + pattern, 设置为alwaysIncludePattern：true
       filename: '/var/www/log4/blog/rule-error.json',
       "encoding":"utf-8",
@@ -26,7 +26,7 @@ module.exports = {
     },
     "rule-res-json": {
       type: 'stdout',
-      layout: { type: 'json', separator: ',' }
+      layout: { type: 'json', separator: ',' },
       filename: '/var/www/log4/blog/rule-res.json',
       "encoding":"utf-8",
       "maxLogSize": 104800
