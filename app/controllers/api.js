@@ -88,6 +88,7 @@ module.exports.getReslog = async function (ctx, next) {
     var res1 = res.replace(/[\r\n]/g,"-tab-");
     var res2 = res1.substring(0,res1.length-6);
     for(var i=0;i<res2.split(',-tab-').length;i++){
+      res2.split(',-tab-')[i].startTime = new Date(res2.split(',-tab-')[i].startTime);
       resData.data.push(eval ("(" + res2.split(',-tab-')[i] + ")"));
     }
   } catch(e) {
