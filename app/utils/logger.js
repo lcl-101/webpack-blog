@@ -7,8 +7,8 @@ log4js.addLayout('json', function(config) {
 
 log4js.configure(log_conf);
 
-// const errorLogger = log4js.getLogger('rule-error');
-// const resLogger = log4js.getLogger('rule-res');
+const errorLogger = log4js.getLogger('rule-error');
+const resLogger = log4js.getLogger('rule-res');
 const consoleLogger = log4js.getLogger();
 const errorLoggerJson = log4js.getLogger('rule-error-json');
 const resLoggerJson = log4js.getLogger('rule-res-json');
@@ -106,7 +106,7 @@ var formatReqLog = function (req, resTime) {
 //封装错误日志
 logger.logError = (ctx, error, resTime) => {
   if(ctx && error){
-    // errorLogger.error(formatError(ctx, error, resTime));
+    errorLogger.error(formatError(ctx, error, resTime));
     errorLoggerJson.error('errorLoggerJson');
   }
 }
@@ -114,7 +114,7 @@ logger.logError = (ctx, error, resTime) => {
 //封装响应日志
 logger.logResponse = (ctx, resTime) => {
   if(ctx){
-    // resLogger.info(formatRes(ctx, resTime));
+    resLogger.info(formatRes(ctx, resTime));
     resLoggerJson.info('resLoggerJson');
   }
 }

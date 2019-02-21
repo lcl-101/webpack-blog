@@ -3,39 +3,39 @@
 module.exports = {
   appenders: {
     "rule-console": {"type": "console"},
-    // "rule-error": {
-    //   type: 'dateFile',
-    //   //文件名为= filename + pattern, 设置为alwaysIncludePattern：true
-    //   filename: '/var/www/log4/blog/rule-error.log',
-    //   "encoding":"utf-8",
-    //   "maxLogSize": 104800
-    // },
-    // "rule-res": {
-    //   type: 'dateFile',
-    //   filename: '/var/www/log4/blog/rule-res.log',
-    //   "encoding":"utf-8",
-    //   "maxLogSize": 104800
-    // },
+    "rule-error": {
+      type: 'dateFile',
+      //文件名为= filename + pattern, 设置为alwaysIncludePattern：true
+      filename: '/var/www/log4/blog/rule-error.log',
+      "encoding":"utf-8",
+      "maxLogSize": 104800
+    },
+    "rule-res": {
+      type: 'dateFile',
+      filename: '/var/www/log4/blog/rule-res.log',
+      "encoding":"utf-8",
+      "maxLogSize": 104800
+    },
     "rule-error-json": {
       type: 'dateFile',
       layout: { type: 'json', separator: ',' },
       //文件名为= filename + pattern, 设置为alwaysIncludePattern：true
-      filename: '/var/www/log4/blog/rule-error.log',
+      filename: '/var/www/log4/blog/rule-error-json.log',
       "encoding":"utf-8",
       "maxLogSize": 104800
     },
     "rule-res-json": {
       type: 'dateFile',
       layout: { type: 'json', separator: ',' },
-      filename: '/var/www/log4/blog/rule-res.log',
+      filename: '/var/www/log4/blog/rule-res-json.log',
       "encoding":"utf-8",
       "maxLogSize": 104800
     }
   },
   categories: {
     "default": {"appenders": ["rule-console"], "level": "all"},
-    // "rule-error": {"appenders": ['rule-error'],"level": "error"},
-    // "rule-res": {"appenders": ['rule-res'], "level": "info"},
+    "rule-error": {"appenders": ['rule-error'],"level": "error"},
+    "rule-res": {"appenders": ['rule-res'], "level": "info"},
     "rule-error-json": {"appenders": ['rule-error-json'], "level": "error"},
     "rule-res-json": {"appenders": ['rule-res-json'], "level": "info"}
   },
