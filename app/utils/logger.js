@@ -51,9 +51,16 @@ var formatRes = function (ctx, resTime, type) {
 }
 
 //格式化错误日志
-var formatError = function (ctx, err, resTime) {
+var formatError = function (ctx, err, resTime, type) {
     var logText = new String();
-
+    var logInfo = '';
+    if(type == 'json') {
+      formatReqLogJson(ctx.request, resTime);
+      logInfo['err-name'] = err.name;
+      logInfo['err-message'] = err.message;
+      logInfo['err-stack'] = err.stack;
+      return logInfo;
+    }
     //添加请求日志
     logText += formatReqLog(ctx.request, resTime);
 
@@ -141,7 +148,7 @@ var formatReqLogJson = function (req, resTime) {
 logger.logError = (ctx, error, resTime) => {
   if(ctx && error){
     errorLogger.error(formatError(ctx, error, resTime));
-    errorLoggerJson.error('errorLoggerJson');
+    errorLoggerJson.error(formatError(ctx, error, resTime, 'json'));
   }
 }
 

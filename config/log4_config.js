@@ -20,14 +20,14 @@ module.exports = {
       type: 'dateFile',
       layout: { type: 'json', separator: ',' },
       //文件名为= filename + pattern, 设置为alwaysIncludePattern：true
-      filename: '/var/www/log4/blog/rule-error-json.log',
+      filename: '/var/www/log4/blog/jsonlog/rule-error-json.log',
       "encoding":"utf-8",
       "maxLogSize": 104800
     },
     "rule-res-json": {
       type: 'dateFile',
       layout: { type: 'json', separator: ',' },
-      filename: '/var/www/log4/blog/rule-res-json.log',
+      filename: '/var/www/log4/blog/jsonlog/rule-res-json.log',
       "encoding":"utf-8",
       "maxLogSize": 104800
     }
