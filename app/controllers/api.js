@@ -4,6 +4,11 @@ const schedule = require('node-schedule');
 //链接redis服务器;
 const client = redis.createClient('6379', '127.0.0.1');
 const service = 'https://api.github.com';
+const fs = require('fs');
+
+fs.readFile('/var/www/log4/blog/rule-res.log', 'utf8', function(err, data){
+  console.log(data);
+});
 
 //test redis
 client.set('hello', {a:1, b:2}) // 注意，value会被转为字符串,所以存的时候要先把value 转为json字符串
