@@ -78,7 +78,7 @@ module.exports.getOauthAccesstoken = async function (ctx, next) {
 module.exports.getReslog = async function (ctx, next) {
   let resData = {
     status: 1,
-    data: '',
+    data: null,
     message: null,
     errType: null
   };
