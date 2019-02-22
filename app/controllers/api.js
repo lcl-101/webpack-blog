@@ -56,7 +56,6 @@ module.exports.getList = async function (ctx, next) {
     }
   } catch(e) {
     resData.message = '服务连接异常';
-    console.log(e);
   }
   ctx.body = resData;
 }
@@ -103,7 +102,12 @@ module.exports.getReslog = async function (ctx, next) {
     errType: null
   };
   try {
-    var res = fs.readFileSync('/var/www/log4/blog/jsonlog/rule-res-json.log', 'utf8');
+    let params = '';
+    console.log(params);
+    if(ctx.query){
+      params = '.'+ctx.query.time;
+    }
+    var res = fs.readFileSync('/var/www/log4/blog/jsonlog/rule-res-json.log'+params, 'utf8');
     if(res) {
       var res1 = res.replace(/[\r\n]/g,"-tab-");
       var res2 = res1.substring(0,res1.length-6);
