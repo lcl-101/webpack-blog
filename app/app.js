@@ -6,7 +6,10 @@ const render = require('koa-ejs');
 const static = require('koa-static');
 const bodyParser = require('koa-bodyparser');
 const app = new Koa();
-const logger = require('./utils/logger');
+console.log(process.env.NODE_ENV)
+if (process.env.NODE_ENV != `development`) {
+  const logger = require('./utils/logger');
+}
 
 // bodyParser //解析request的body
 app.use(bodyParser());
@@ -40,10 +43,14 @@ app.use(async (ctx, next) => {
   try {
     await next();
     ms = new Date() - start;
-    logger.logResponse(ctx, ms);
+    if (process.env.NODE_ENV != `development`) {
+      logger.logResponse(ctx, ms);
+    }
   } catch (err) {
     ms = new Date() - start;
-    logger.logError(ctx, err ,ms);
+    if (process.env.NODE_ENV != `development`) {
+      logger.logError(ctx, err ,ms);
+    }
   }
   console.log(`Process ${ctx.request.method} ${ctx.request.url}...`);
 });
@@ -54,7 +61,9 @@ app.use(apiRouter.routes(), apiRouter.allowedMethods());
 
 // error-handling
 app.on('error', (err, ctx) => {
-  logger.logError(ctx, err);
+  if (process.env.NODE_ENV != `development`) {
+    logger.logError(ctx, err);
+  }
 });
 
 // 在端口3000监听:
