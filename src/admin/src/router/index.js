@@ -48,7 +48,7 @@ export const constantRouterMap = [
         path: 'res',
         name: 'res',
         component: () => import('@/views/log/res'),
-        meta: { title: 'reslog', icon: 'tree' }
+        meta: { title: 'reslog', icon: 'table' }
       },
       {
         path: 'error',
