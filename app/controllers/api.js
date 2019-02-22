@@ -104,17 +104,20 @@ module.exports.getReslog = async function (ctx, next) {
   };
   try {
     var res = fs.readFileSync('/var/www/log4/blog/jsonlog/rule-res-json.log', 'utf8');
-
-    var res1 = res.replace(/[\r\n]/g,"-tab-");
-    var res2 = res1.substring(0,res1.length-6);
-    var rt = res2.split(',-tab-');
-    for(var i=0;i<rt.length;i++){
-      var d = eval ("(" + rt[i] + ")")
-      d.id = rt.length - i;
-      d.startTime = formatDateTime(new Date(d.startTime));
-      resData.data.push(d);
+    if(res) {
+      var res1 = res.replace(/[\r\n]/g,"-tab-");
+      var res2 = res1.substring(0,res1.length-6);
+      var rt = res2.split(',-tab-');
+      for(var i=0;i<rt.length;i++){
+        var d = eval ("(" + rt[i] + ")")
+        d.id = rt.length - i;
+        d.startTime = formatDateTime(new Date(d.startTime));
+        resData.data.push(d);
+      }
+      resData.data.sort(up);
+    }else {
+      resData.message = '数据为空';
     }
-    resData.data.sort(up);
   } catch(e) {
     resData.status = 0;
     resData.data = [];
