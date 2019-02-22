@@ -2,7 +2,7 @@
   <div class="app-container">
     <el-table v-loading="listLoading" :data="list" border style="width: 100%">
       <el-table-column prop="id" label="id" width="90" sortable></el-table-column>
-      <el-table-column prop="startTime" label="time" width="180" sortable></el-table-column>
+      <el-table-column prop="startTime" label="startTime" width="180" sortable></el-table-column>
       <el-table-column prop="data[0].request-client-ip" label="ip" width="180"></el-table-column>
       <el-table-column prop="data[0].request-method" label="method"></el-table-column>
       <el-table-column prop="data[0].request-originalUrl" label="originalUrl" width="180"></el-table-column>
