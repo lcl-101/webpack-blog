@@ -103,7 +103,7 @@ module.exports.getReslog = async function (ctx, next) {
     var res2 = res1.substring(0,res1.length-6);
     for(var i=0;i<res2.split(',-tab-').length;i++){
       var d = eval ("(" + res2.split(',-tab-')[i] + ")")
-      d.id = i+1;
+      d.id = (i+1)-1;
       d.startTime = formatDateTime(new Date(d.startTime));
       resData.data.push(d);
     }
