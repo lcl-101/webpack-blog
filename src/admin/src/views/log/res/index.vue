@@ -1,5 +1,13 @@
 <template >
   <div class="app-container">
+    <el-date-picker
+      v-model="value"
+      type="date"
+      placeholder="选择日期"
+      style="margin-bottom:20px;"
+      @change="changeDate"
+    >
+    </el-date-picker>
     <el-table v-loading="listLoading" :data="list" border style="width: 100%">
       <el-table-column prop="id" label="id" width="90" sortable></el-table-column>
       <el-table-column prop="startTime" label="time" width="180" sortable></el-table-column>
@@ -25,20 +33,26 @@ export default {
   data() {
     return {
       listLoading: true,
-      list: null
+      list: null,
+      value: Date.now()
     }
   },
   created() {
     this.fetchData()
   },
   methods: {
-    fetchData() {
+    fetchData(data) {
+      const param = {}
       this.listLoading = true
-      getResLogs().then(res => {
+      if (data) {
+        param.time = data
+      }
+      getResLogs(param).then(res => {
         this.listLoading = false
         if (res.status) {
           this.list = res.data
         } else {
+          this.list = ''
           Message({
             message: res.message,
             type: 'error',
@@ -46,6 +60,26 @@ export default {
           })
         }
       })
+    },
+    formatDateTime(date) {
+      var y = date.getFullYear()
+      var m = date.getMonth() + 1
+      m = m < 10 ? ('0' + m) : m
+      var d = date.getDate()
+      d = d < 10 ? ('0' + d) : d
+      // var h = date.getHours()
+      // h = h < 10 ? ('0' + h) : h
+      // var minute = date.getMinutes()
+      // minute = minute < 10 ? ('0' + minute) : minute
+      // var second = date.getSeconds()
+      // second = second < 10 ? ('0' + second) : second
+      return y + '-' + m + '-' + d
+      // return y + '-' + m + '-' + d+' '+h+':'+minute+':'+second;
+    },
+    changeDate(value) {
+      const date = new Date(value)
+      const formatData = this.formatDateTime(date)
+      this.fetchData(formatData)
     }
   }
 }
