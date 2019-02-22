@@ -191,6 +191,11 @@ module.exports = {
       objectsInObjects: false
     }],
     'array-bracket-spacing': [2, 'never'],
-    "vue/html-self-closing": "off"
+    "vue/html-self-closing": "off",
+    'vue/html-indent': 0,
+    'vue/max-attributes-per-line': 0,
+    'vue/order-in-components': 0,
+    'vue/html-end-tags': 0,
+    'vue/no-parsing-error': 0
   }
 }

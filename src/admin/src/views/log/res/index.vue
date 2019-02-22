@@ -8,7 +8,7 @@
       @change="changeDate"
     >
     </el-date-picker>
-    <el-table v-loading="listLoading" :data="list" border style="width: 100%">
+    <el-table v-loading="listLoading" :data="list.slice((currpage - 1) * pagesize, currpage * pagesize)" border style="width: 100%">
       <el-table-column prop="id" label="id" width="90" sortable></el-table-column>
       <el-table-column prop="startTime" label="time" width="180" sortable></el-table-column>
       <el-table-column prop="data[0].request-client-ip" label="ip" width="180"></el-table-column>
@@ -24,6 +24,17 @@
         </template>
       </el-table-column>
     </el-table>
+    <el-pagination
+      background
+			layout="prev, pager, next, sizes, total, jumper"
+      :page-sizes="[5, 10, 15, 20]"
+			:page-size="pagesize"
+			:total="list.length"
+			@current-change="handleCurrentChange"
+			@size-change="handleSizeChange"
+      style="float:right;margin:20px 0;"
+			>
+		</el-pagination>
   </div>
 </template>
 <script>
@@ -33,8 +44,10 @@ export default {
   data() {
     return {
       listLoading: true,
-      list: null,
-      value: Date.now()
+      list: [],
+      value: Date.now(),
+      pagesize: 10,
+			currpage: 1
     }
   },
   created() {
@@ -83,7 +96,13 @@ export default {
       }
       const formatData = this.formatDateTime(new Date(value))
       this.fetchData(formatData)
-    }
+    },
+    handleCurrentChange(cpage) {
+			this.currpage = cpage
+		},
+		handleSizeChange(psize) {
+			this.pagesize = psize
+		}
   }
 }
 </script>
