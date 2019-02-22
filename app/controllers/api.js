@@ -103,7 +103,7 @@ module.exports.getReslog = async function (ctx, next) {
     errType: null
   };
   try {
-    var res = fs.readFileSync('/var/www/log4/blog/jsonlog/rule-error-json.log', 'utf8');
+    var res = fs.readFileSync('/var/www/log4/blog/jsonlog/rule-res-json.log', 'utf8');
 
     var res1 = res.replace(/[\r\n]/g,"-tab-");
     var res2 = res1.substring(0,res1.length-6);
