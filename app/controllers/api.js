@@ -103,8 +103,7 @@ module.exports.getReslog = async function (ctx, next) {
   };
   try {
     let params = '';
-    console.log(params);
-    if(ctx.query){
+    if(Object.keys(ctx.query).length > 0){
       params = '.'+ctx.query.time;
     }
     var res = fs.readFileSync('/var/www/log4/blog/jsonlog/rule-res-json.log'+params, 'utf8');
