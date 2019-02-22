@@ -8,4 +8,7 @@ viewRouter.get('/Archive', viewHandlers.Archive);
 viewRouter.get('/Label', viewHandlers.Label);
 viewRouter.get('/:id', viewHandlers.Detail);
 
+// admin
+viewRouter.get('/admin', viewHandlers.Admin);
+
 module.exports = viewRouter;

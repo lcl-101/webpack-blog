@@ -11,17 +11,25 @@ gulp.task('move:favicon.ico',function(){
     return stream;
 })
 
-//拷贝
+//拷贝css
 gulp.task('move:css',function(){
     var stream = gulp.src('./src/common/css/other/*')
         .pipe(cleanCSS({compatibility: 'ie8'}))
         .pipe(gulp.dest('./dist/common/css'))
 })
 
-//拷贝
+//拷贝tpl
 gulp.task('move:tpl',function(){
     var stream = gulp.src('./src/templete/*')
         .pipe(gulp.dest('./dist'))
+})
+
+//拷贝admin
+gulp.task('move:admin',function(){
+    var stream = gulp.src('./src/admin/dist/*.*')
+        .pipe(gulp.dest('./dist/admin/'))
+    var statics = gulp.src('./src/admin/dist/static/**')
+        .pipe(gulp.dest('./dist/static/'))
 })
 
 //默认生成环境任务
@@ -30,6 +38,7 @@ gulp.task('default', function(callback) {
     plugins.sequence(
       'move:favicon.ico',
       'move:css',
-      'move:tpl'
+      'move:tpl',
+      'move:admin'
     )(callback);
 });

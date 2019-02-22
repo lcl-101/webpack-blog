@@ -18,3 +18,7 @@ module.exports.Label = async function (ctx, next) {
 module.exports.Detail = async function (ctx, next) {
   await ctx.render('index');
 }
+// Admin
+module.exports.Admin = async function (ctx, next) {
+  await ctx.render('admin/index');
+}
