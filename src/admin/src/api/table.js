@@ -31,3 +31,11 @@ export function getResLogs(params) {
     params
   })
 }
+
+export function getErrorlog(params) {
+  return request({
+    url: 'api/getErrorlog',
+    method: 'get',
+    params
+  })
+}

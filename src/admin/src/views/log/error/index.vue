@@ -1,20 +1,24 @@
 <template >
   <div class="app-container">
     <el-table v-loading="listLoading" :data="list" border style="width: 100%">
-      <el-table-column prop="id" label="id" width="180" sortable></el-table-column>
-      <el-table-column prop="name" label="name" width="180"></el-table-column>
-      <el-table-column prop="code" label="code"></el-table-column>
-      <el-table-column prop="contentId" label="contentId"></el-table-column>
-      <el-table-column prop="contentName" label="contentName"></el-table-column>
-      <el-table-column prop="createTime" label="createTime"></el-table-column>
-      <el-table-column prop="modifyTime" label="modifyTime"></el-table-column>
-      <el-table-column prop="status" label="status"></el-table-column>
-      <el-table-column prop="type" label="type"></el-table-column>
+      <el-table-column prop="id" label="id" width="90" sortable></el-table-column>
+      <el-table-column prop="startTime" label="time" width="180" sortable></el-table-column>
+      <el-table-column prop="data[0].request-client-ip" label="ip" width="180"></el-table-column>
+      <el-table-column prop="data[0].request-method" label="method"></el-table-column>
+      <el-table-column prop="data[0].request-originalUrl" label="originalUrl"></el-table-column>
+      <el-table-column prop="data[0].request-query" label="query"></el-table-column>
+      <!-- <el-table-column prop="data[0].response-status" label="status" width="100"></el-table-column> -->
+      <el-table-column prop="data[0].response-time" label="time" width="60"></el-table-column>
+      <el-table-column prop="data[0].user-agent" label="agent" width="400"></el-table-column>
+      <el-table-column prop="data[0].err-name" label="name" width="100"></el-table-column>
+      <el-table-column prop="data[0].err-message" label="message" width="100"></el-table-column>
+      <el-table-column prop="data[0].err-stack" label="stack" width="100"></el-table-column>
+      <el-table-column prop="level.levelStr" label="level" width="90"></el-table-column>
     </el-table>
   </div>
 </template>
 <script>
-import { setEvent } from '@/api/table'
+import { getErrorlog } from '@/api/table'
 import { Message } from 'element-ui'
 export default {
   data() {
@@ -29,13 +33,13 @@ export default {
   methods: {
     fetchData() {
       this.listLoading = true
-      setEvent('get', '').then(res => {
+      getErrorlog('get', '').then(res => {
         this.listLoading = false
         if (res.status) {
-          this.list = res.result
+          this.list = res.data
         } else {
           Message({
-            message: res.errMessage,
+            message: res.message,
             type: 'error',
             duration: 1 * 1000
           })
