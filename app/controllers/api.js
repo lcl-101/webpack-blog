@@ -109,10 +109,11 @@ module.exports.getReslog = async function (ctx, next) {
       var d = eval ("(" + rt[i] + ")")
       d.id = rt.length - i;
       d.startTime = formatDateTime(new Date(d.startTime));
-      d.sort(up);
       resData.data.push(d);
     }
+    resData.sort(up);
   } catch(e) {
+    resData.status = 0;
     resData.message = '数据请求失败';
     resData.errType = 1001;
   }
