@@ -106,6 +106,11 @@ module.exports.getReslog = async function (ctx, next) {
     if(Object.keys(ctx.query).length > 0){
       params = '.'+ctx.query.time;
     }
+    var isExits = fs.existsSync('/var/www/log4/blog/jsonlog/rule-res-json.log'+params);
+    if(!isExits) {
+      resData.message = '数据为空';
+      return;
+    }
     var res = fs.readFileSync('/var/www/log4/blog/jsonlog/rule-res-json.log'+params, 'utf8');
     if(res) {
       var res1 = res.replace(/[\r\n]/g,"-tab-");
