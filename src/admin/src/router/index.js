@@ -40,7 +40,7 @@ export const constantRouterMap = [
   {
     path: '/log',
     component: Layout,
-    redirect: '/log/reslog',
+    redirect: '/log/res',
     name: 'config',
     meta: { title: '日志', icon: 'example' },
     children: [
