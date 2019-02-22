@@ -77,8 +77,11 @@ export default {
       // return y + '-' + m + '-' + d+' '+h+':'+minute+':'+second;
     },
     changeDate(value) {
-      const date = new Date(value)
-      const formatData = this.formatDateTime(date)
+      if (this.formatDateTime(new Date()) === this.formatDateTime(new Date(value))) {
+        this.fetchData()
+        return
+      }
+      const formatData = this.formatDateTime(new Date(value))
       this.fetchData(formatData)
     }
   }
