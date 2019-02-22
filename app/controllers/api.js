@@ -101,9 +101,10 @@ module.exports.getReslog = async function (ctx, next) {
 
     var res1 = res.replace(/[\r\n]/g,"-tab-");
     var res2 = res1.substring(0,res1.length-6);
-    for(var i=0;i<res2.split(',-tab-').length;i++){
-      var d = eval ("(" + res2.split(',-tab-')[i] + ")")
-      d.id = i+1;
+    var rt = res2.split(',-tab-');
+    for(var i=0;i<rt.length;i++){
+      var d = eval ("(" + rt[i] + ")")
+      d.id = rt.length - i;
       d.startTime = formatDateTime(new Date(d.startTime));
       resData.data.push(d);
     }
