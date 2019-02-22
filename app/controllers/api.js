@@ -111,7 +111,7 @@ module.exports.getReslog = async function (ctx, next) {
       d.startTime = formatDateTime(new Date(d.startTime));
       resData.data.push(d);
     }
-    resData.sort(up);
+    resData.data.sort(up);
   } catch(e) {
     resData.status = 0;
     resData.message = '数据请求失败';
