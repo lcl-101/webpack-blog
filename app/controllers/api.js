@@ -114,6 +114,7 @@ module.exports.getReslog = async function (ctx, next) {
     resData.data.sort(up);
   } catch(e) {
     resData.status = 0;
+    resData.data = [];
     resData.message = '数据请求失败';
     resData.errType = 1001;
   }
