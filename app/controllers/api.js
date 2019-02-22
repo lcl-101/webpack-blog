@@ -82,6 +82,9 @@ module.exports.getReslog = async function (ctx, next) {
     message: null,
     errType: null
   };
+  function up(x ,y) {
+    return x.id - y.id
+  }
   var formatDateTime = function (date) {
       var y = date.getFullYear();
       var m = date.getMonth() + 1;
@@ -106,6 +109,7 @@ module.exports.getReslog = async function (ctx, next) {
       var d = eval ("(" + rt[i] + ")")
       d.id = rt.length - i;
       d.startTime = formatDateTime(new Date(d.startTime));
+      d.sort(up);
       resData.data.push(d);
     }
   } catch(e) {
