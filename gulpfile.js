@@ -27,9 +27,11 @@ gulp.task('move:tpl',function(){
 //拷贝admin
 gulp.task('move:admin',function(){
     var stream = gulp.src('./src/admin/dist/*.*')
-        .pipe(gulp.dest('./dist/admin/'))
+        .pipe(gulp.dest('./dist/admin/'));
     var statics = gulp.src('./src/admin/dist/static/**')
-        .pipe(gulp.dest('./dist/static/'))
+        .pipe(gulp.dest('./dist/static/'));
+    var fav = gulp.src('./src/common/images/favicon.png')
+        .pipe(gulp.dest('./dist/admin/'));
 })
 
 //默认生成环境任务
