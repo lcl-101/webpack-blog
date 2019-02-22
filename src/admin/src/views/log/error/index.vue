@@ -33,7 +33,7 @@ export default {
   methods: {
     fetchData() {
       this.listLoading = true
-      getErrorlog('get', '').then(res => {
+      getErrorlog().then(res => {
         this.listLoading = false
         if (res.status) {
           this.list = res.data
