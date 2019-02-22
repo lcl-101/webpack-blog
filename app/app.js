@@ -6,9 +6,9 @@ const render = require('koa-ejs');
 const static = require('koa-static');
 const bodyParser = require('koa-bodyparser');
 const app = new Koa();
-console.log(process.env.NODE_ENV)
+let logger = '';
 if (process.env.NODE_ENV != `development`) {
-  const logger = require('./utils/logger');
+   logger = require('./utils/logger');
 }
 
 // bodyParser //解析request的body
