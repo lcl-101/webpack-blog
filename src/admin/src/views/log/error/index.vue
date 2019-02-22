@@ -5,7 +5,7 @@
       <el-table-column prop="startTime" label="time" width="180" sortable></el-table-column>
       <el-table-column prop="data[0].request-client-ip" label="ip" width="180"></el-table-column>
       <el-table-column prop="data[0].request-method" label="method"></el-table-column>
-      <el-table-column prop="data[0].request-originalUrl" label="originalUrl"></el-table-column>
+      <el-table-column prop="data[0].request-originalUrl" label="originalUrl" width="180"></el-table-column>
       <el-table-column prop="data[0].request-query" label="query"></el-table-column>
       <!-- <el-table-column prop="data[0].response-status" label="status" width="100"></el-table-column> -->
       <el-table-column prop="data[0].response-time" label="time" width="60"></el-table-column>
