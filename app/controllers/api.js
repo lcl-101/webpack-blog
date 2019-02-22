@@ -74,6 +74,26 @@ module.exports.getOauthAccesstoken = async function (ctx, next) {
   ctx.body = resData;
 }
 
+// up
+function up(x ,y) {
+  return x.id - y.id
+}
+// formatDateTime
+var formatDateTime = function (date) {
+    var y = date.getFullYear();
+    var m = date.getMonth() + 1;
+    m = m < 10 ? ('0' + m) : m;
+    var d = date.getDate();
+    d = d < 10 ? ('0' + d) : d;
+    var h = date.getHours();
+    h=h < 10 ? ('0' + h) : h;
+    var minute = date.getMinutes();
+    minute = minute < 10 ? ('0' + minute) : minute;
+    var second=date.getSeconds();
+    second=second < 10 ? ('0' + second) : second;
+    return y + '-' + m + '-' + d+' '+h+':'+minute+':'+second;
+}
+
 // getReslog
 module.exports.getReslog = async function (ctx, next) {
   let resData = {
@@ -82,23 +102,36 @@ module.exports.getReslog = async function (ctx, next) {
     message: null,
     errType: null
   };
-  function up(x ,y) {
-    return x.id - y.id
+  try {
+    var res = fs.readFileSync('/var/www/log4/blog/jsonlog/rule-error-json.log', 'utf8');
+
+    var res1 = res.replace(/[\r\n]/g,"-tab-");
+    var res2 = res1.substring(0,res1.length-6);
+    var rt = res2.split(',-tab-');
+    for(var i=0;i<rt.length;i++){
+      var d = eval ("(" + rt[i] + ")")
+      d.id = rt.length - i;
+      d.startTime = formatDateTime(new Date(d.startTime));
+      resData.data.push(d);
+    }
+    resData.data.sort(up);
+  } catch(e) {
+    resData.status = 0;
+    resData.data = [];
+    resData.message = '数据请求失败';
+    resData.errType = 1001;
   }
-  var formatDateTime = function (date) {
-      var y = date.getFullYear();
-      var m = date.getMonth() + 1;
-      m = m < 10 ? ('0' + m) : m;
-      var d = date.getDate();
-      d = d < 10 ? ('0' + d) : d;
-      var h = date.getHours();
-      h=h < 10 ? ('0' + h) : h;
-      var minute = date.getMinutes();
-      minute = minute < 10 ? ('0' + minute) : minute;
-      var second=date.getSeconds();
-      second=second < 10 ? ('0' + second) : second;
-      return y + '-' + m + '-' + d+' '+h+':'+minute+':'+second;
-  }
+  ctx.body = resData;
+}
+
+// getErrorlog
+module.exports.getErrorlog = async function (ctx, next) {
+  let resData = {
+    status: 1,
+    data: [],
+    message: null,
+    errType: null
+  };
   try {
     var res = fs.readFileSync('/var/www/log4/blog/jsonlog/rule-res-json.log', 'utf8');
 
