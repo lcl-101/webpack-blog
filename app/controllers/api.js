@@ -79,7 +79,7 @@ function up(x ,y) {
   return x.id - y.id
 }
 // formatDateTime
-var formatDateTime = function (date) {
+function formatDateTime(date) {
     var y = date.getFullYear();
     var m = date.getMonth() + 1;
     m = m < 10 ? ('0' + m) : m;
