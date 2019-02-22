@@ -38,45 +38,23 @@ export const constantRouterMap = [
   },
 
   {
-    path: '/config',
+    path: '/log',
     component: Layout,
-    redirect: '/config/event',
+    redirect: '/log/reslog',
     name: 'config',
-    meta: { title: '管理员配置配置', icon: 'example' },
+    meta: { title: '日志', icon: 'example' },
     children: [
       {
-        path: 'event',
-        name: 'event',
-        component: () => import('@/views/config/event'),
-        meta: { title: '事件配置', icon: 'table' }
+        path: 'res',
+        name: 'res',
+        component: () => import('@/views/log/res'),
+        meta: { title: 'reslog', icon: 'tree' }
       },
       {
-        path: 'page',
-        name: 'page',
-        component: () => import('@/views/config/page'),
-        meta: { title: '页面配置', icon: 'tree' }
-      }
-    ]
-  },
-
-  {
-    path: '/example',
-    component: Layout,
-    redirect: '/example/table',
-    name: 'Example',
-    meta: { title: 'Example', icon: 'example' },
-    children: [
-      {
-        path: 'table',
-        name: 'Table',
-        component: () => import('@/views/table/index'),
-        meta: { title: 'Table', icon: 'table' }
-      },
-      {
-        path: 'tree',
-        name: 'Tree',
-        component: () => import('@/views/tree/index'),
-        meta: { title: 'Tree', icon: 'tree' }
+        path: 'error',
+        name: 'error',
+        component: () => import('@/views/log/error'),
+        meta: { title: 'errorlog', icon: 'tree' }
       }
     ]
   },
@@ -148,17 +126,6 @@ export const constantRouterMap = [
         path: 'menu2',
         component: () => import('@/views/nested/menu2/index'),
         meta: { title: 'menu2' }
-      }
-    ]
-  },
-
-  {
-    path: 'external-link',
-    component: Layout,
-    children: [
-      {
-        path: 'https://panjiachen.github.io/vue-element-admin-site/#/',
-        meta: { title: 'External Link', icon: 'link' }
       }
     ]
   },
