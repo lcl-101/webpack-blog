@@ -168,3 +168,8 @@ module.exports.getErrorlog = async function (ctx, next) {
   }
   ctx.body = resData;
 }
+
+// login
+module.exports.login = async function (ctx, next) {
+  
+}
