@@ -1,0 +1,11 @@
+@media (max-width: 750px){
+  .page_boxs .el-pager {
+    display: none;
+  }
+  .page_boxs .el-pagination__sizes {
+    min-width: 20px!important;
+  }
+  .page_boxs .el-input--mini.el-input--suffix {
+    display: none;
+  }
+}

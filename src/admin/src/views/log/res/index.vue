@@ -25,6 +25,7 @@
       </el-table-column>
     </el-table>
     <el-pagination
+      class="page_boxs"
       background
 			layout="prev, pager, next, sizes, total, jumper"
       :page-sizes="[5, 10, 15, 20]"
@@ -40,6 +41,7 @@
 <script>
 import { getResLogs } from '@/api/table'
 import { Message } from 'element-ui'
+import '@/styles/logres.css'
 export default {
   data() {
     return {
