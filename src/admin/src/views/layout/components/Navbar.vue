@@ -16,6 +16,9 @@
         <el-dropdown-item divided>
           <span style="display:block;" @click="logout">LogOut</span>
         </el-dropdown-item>
+        <el-dropdown-item divided>
+          <a href="/">博客</a>
+        </el-dropdown-item>
       </el-dropdown-menu>
     </el-dropdown>
   </el-menu>

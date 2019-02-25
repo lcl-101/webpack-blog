@@ -207,7 +207,6 @@ module.exports.userInfo = async function (ctx, next) {
     errType: null
   };
   let params = ctx.query //获取post提交的数据;
-  console.log(params);
   if(params.token == 'ddsdfeee33433') {
     resData.status = 1;
     resData.data = {
