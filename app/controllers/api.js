@@ -210,10 +210,8 @@ module.exports.userInfo = async function (ctx, next) {
   if(params.token == 'ddsdfeee33433') {
     resData.status = 1;
     resData.data = {
-      roles: [
-        {name: 'lcl-101'}
-      ],
-      name: 'lcl-101',
+      roles: ['lcl-101'],
+      name: 'admin',
       avatar: 'lcl-101'
     }
   }else {
