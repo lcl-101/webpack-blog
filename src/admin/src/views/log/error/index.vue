@@ -8,7 +8,7 @@
       <el-table-column prop="data[0].request-originalUrl" label="originalUrl" width="180"></el-table-column>
       <el-table-column prop="data[0].request-query" label="query"></el-table-column>
       <!-- <el-table-column prop="data[0].response-status" label="status" width="100"></el-table-column> -->
-      <el-table-column prop="data[0].response-time" label="time" width="60"></el-table-column>
+      <el-table-column prop="data[0].response-time" label="time(ms)" width="60"></el-table-column>
       <el-table-column prop="data[0].user-agent" label="agent" width="400"></el-table-column>
       <el-table-column prop="data[0].err-name" label="name" width="100"></el-table-column>
       <el-table-column prop="data[0].err-message" label="message" width="100"></el-table-column>
