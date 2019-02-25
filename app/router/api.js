@@ -8,6 +8,8 @@ apiRouter.get('/api/getOauthAccesstoken', apiHandlers.getOauthAccesstoken);
 apiRouter.get('/api/getReslog', apiHandlers.getReslog);
 apiRouter.get('/api/getErrorlog', apiHandlers.getErrorlog);
 // login
-apiRouter.get('/api/login', apiHandlers.login);
+apiRouter.post('/api/login', apiHandlers.login);
+apiRouter.post('/api/loginOut', apiHandlers.loginOut);
+apiRouter.get('/api/userInfo', apiHandlers.userInfo);
 
 module.exports = apiRouter;
