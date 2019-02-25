@@ -20,6 +20,7 @@ class Home extends Component{
           <Link className={style.to} to="/Posts">全部 <span className={style.link_line_to}></span></Link>
           <Link className={style.to} to="/Archive">归档 <span className={style.link_line_to}></span></Link>
           <Link className={style.to} to="/Label">标签 <span className={style.link_line_to}></span></Link>
+          <a className={style.to} href="/admin#/" target="_blank">日志<span className={style.link_line_to}></span></a>
         </div>
       )
     }else {
@@ -28,6 +29,7 @@ class Home extends Component{
           <Link className={style.to} to="/Posts">全部 <span className={style.link_line}></span></Link>
           <Link className={style.to} to="/Archive">归档 <span className={style.link_line}></span></Link>
           <Link className={style.to} to="/Label">标签 <span className={style.link_line}></span></Link>
+          <a className={style.to} href="/admin#/" target="_blank">日志<span className={style.link_line}></span></a>
         </div>
       )
     }
