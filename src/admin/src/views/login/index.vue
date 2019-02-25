@@ -38,9 +38,16 @@
 
 <script>
 import { isvalidUsername } from '@/utils/validate'
+import { Message } from 'element-ui'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'Login',
+  computed: {
+    ...mapGetters([
+      'message'
+    ])
+  },
   data() {
     const validateUsername = (rule, value, callback) => {
       if (!isvalidUsername(value)) {
@@ -76,6 +83,13 @@ export default {
         this.redirect = route.query && route.query.redirect
       },
       immediate: true
+    },
+    message: {
+      handler: function(msg) {
+        if(msg) {
+          Message.error(msg)
+        }
+      }
     }
   },
   methods: {
@@ -90,10 +104,10 @@ export default {
       this.$refs.loginForm.validate(valid => {
         if (valid) {
           this.loading = true
-          this.$store.dispatch('Login', this.loginForm).then(() => {
+          this.$store.dispatch('Login', this.loginForm).then((res) => {
             this.loading = false
             this.$router.push({ path: this.redirect || '/' })
-          }).catch(() => {
+          }).catch((err) => {
             this.loading = false
           })
         } else {
