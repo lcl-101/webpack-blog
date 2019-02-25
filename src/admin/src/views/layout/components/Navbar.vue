@@ -14,10 +14,10 @@
           </el-dropdown-item>
         </router-link>
         <el-dropdown-item divided>
-          <span style="display:block;" @click="logout">LogOut</span>
+          <span @click="goHome">Blog</span>
         </el-dropdown-item>
         <el-dropdown-item divided>
-          <a href="/">博客</a>
+          <span style="display:block;" @click="logout">LogOut</span>
         </el-dropdown-item>
       </el-dropdown-menu>
     </el-dropdown>
@@ -54,6 +54,9 @@ export default {
       this.$store.dispatch('LogOut').then(() => {
         location.reload() // 为了重新实例化vue-router对象 避免bug
       })
+    },
+    goHome() {
+      location.href = '/'
     }
   }
 }
