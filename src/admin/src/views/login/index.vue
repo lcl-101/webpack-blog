@@ -83,13 +83,6 @@ export default {
         this.redirect = route.query && route.query.redirect
       },
       immediate: true
-    },
-    message: {
-      handler: function(msg) {
-        if(msg) {
-          Message.error(msg)
-        }
-      }
     }
   },
   methods: {
@@ -107,6 +100,10 @@ export default {
           this.$store.dispatch('Login', this.loginForm).then((res) => {
             this.loading = false
             this.$router.push({ path: this.redirect || '/' })
+            if(this.message){
+              Message.error(this.message)
+              return;
+            }
           }).catch((err) => {
             this.loading = false
           })
