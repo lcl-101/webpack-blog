@@ -84,6 +84,10 @@ export default {
     },
     setOptions({ expectedData, actualData } = {}) {
       this.chart.setOption({
+        title: {
+          text: 'reslogs',
+          x: 'center',
+        },
         xAxis: {
           data: this.chartXdata,
           boundaryGap: false,
@@ -111,23 +115,24 @@ export default {
           }
         },
         legend: {
-          data: ['reslogs']
+          data: ['','']
         },
-        series: [{
-          name: 'expected', itemStyle: {
-            normal: {
-              color: '#FF005A',
-              lineStyle: {
+        series: [
+          {
+            name: 'expected', itemStyle: {
+              normal: {
                 color: '#FF005A',
-                width: 2
+                lineStyle: {
+                  color: '#FF005A',
+                  width: 2
+                }
               }
-            }
-          },
-          smooth: true,
-          type: 'line',
-          data: expectedData,
-          animationDuration: 2800,
-          animationEasing: 'cubicInOut'
+            },
+            smooth: true,
+            type: 'line',
+            data: expectedData,
+            animationDuration: 2800,
+            animationEasing: 'cubicInOut'
         },
         {
           name: 'reslogs',
@@ -149,10 +154,11 @@ export default {
           animationDuration: 2800,
           animationEasing: 'quadraticOut'
         }]
-      })
+      });
     },
     initChart() {
       this.chart = echarts.init(this.$el, 'macarons')
+      // this.chart.showLoading()
       this.setOptions(this.chartData)
     }
   }
