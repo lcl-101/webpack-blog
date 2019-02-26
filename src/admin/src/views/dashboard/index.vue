@@ -2,8 +2,8 @@
   <div class="dashboard-container">
     <div style="margin-bottom: 15px;">Your name：{{ name }} </div>
     <div style="margin-bottom: 15px;">Your roles：<span v-for="role in roles" key="123">{{ [role] }}</span> </div>
-    <el-row style="background:#fff;margin-bottom:32px;">
-      <line-chart :chart-data="lineChartData"/>
+    <el-row style="background:#fff;margin-bottom:32px;margin-top:40px;">
+      <line-chart :chart-data="yData" :chart-xdata="xData"/>
     </el-row>
   </div>
 </template>
@@ -11,6 +11,8 @@
 <script>
 import { mapGetters } from 'vuex'
 import LineChart from './components/LineChart'
+import { Message } from 'element-ui'
+import { getResLogs } from '@/api/table'
 
 const lineChartData = {
   newVisitis: {
@@ -38,7 +40,11 @@ export default {
   },
   data() {
     return {
-      lineChartData: lineChartData.newVisitis
+      lineChartData: lineChartData.newVisitis,
+      xData: [],
+      yData:{
+        actualData: []
+      }
     }
   },
   computed: {
@@ -46,6 +52,65 @@ export default {
       'name',
       'roles'
     ])
+  },
+  created() {
+    this.fetchData()
+  },
+  methods: {
+    /*
+    * 速度最快， 占空间最多（空间换时间）
+    *
+    * 该方法执行的速度比其他任何方法都快， 就是占用的内存大一些。
+    * 现思路：新建一js对象以及新数组，遍历传入数组时，判断值是否为js对象的键，
+    * 不是的话给对象新增该键并放入新数组。
+    * 注意点：判断是否为js对象键时，会自动对传入的键执行“toString()”，
+    * 不同的键可能会被误认为一样，例如n[val]-- n[1]、n["1"]；
+    * 解决上述问题还是得调用“indexOf”。
+    * */
+    uniq(array) {
+        var temp = {}, r = [], len = array.length, val, type;
+        for (var i = 0; i < len; i++) {
+            val = array[i];
+            type = typeof val;
+            if (!temp[val]) {
+                temp[val] = [type];
+                r.push(val);
+            } else if (temp[val].indexOf(type) < 0) {
+                temp[val].push(type);
+                r.push(val);
+            }
+        }
+        return r;
+    },
+    fetchData() {
+      getResLogs().then(res => {
+        if (res.status) {
+          var time = []
+          var listData = {}
+          this.list = res.data
+          for(var i=0;i<res.data.length;i++){
+            time.push(res.data[i].startTime.split(' ')[1].split(':')[0])
+          }
+          var untime = this.uniq(time)
+          this.$data.xData = untime.sort();
+          for(var j=0;j<untime.length;j++){
+            listData[untime[j]] = [];
+          }
+          for(var k=0;k<res.data.length;k++){
+            listData[res.data[k].startTime.split(' ')[1].split(':')[0]].push(res.data[k])
+          }
+          for(var j=0;j<untime.length;j++){
+            this.$data.yData['actualData'].push(listData[untime[j]].length);
+          }
+        }else {
+          Message({
+            message: res.message,
+            type: 'error',
+            duration: 1 * 1000
+          })
+        }
+      })
+    }
   }
 }
 </script>
