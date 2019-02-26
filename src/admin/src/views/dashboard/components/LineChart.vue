@@ -155,10 +155,12 @@ export default {
           animationEasing: 'quadraticOut'
         }]
       });
+      this.chart.resize()
+      this.chart.hideLoading();
     },
     initChart() {
       this.chart = echarts.init(this.$el, 'macarons')
-      // this.chart.showLoading()
+      this.chart.showLoading()
       this.setOptions(this.chartData)
     }
   }
