@@ -1,7 +1,7 @@
 <template>
   <div class="dashboard-container">
-    <div class="dashboard-text">name:{{ name }}</div>
-    <div class="dashboard-text">roles:<span v-for="role in roles" key="123">{{ role }}</span></div>
+    <div style="margin-bottom: 15px;">Your name：{{ name }} </div>
+    <div style="margin-bottom: 15px;">Your roles：<span v-for="role in roles" key="123">{{ [role] }}</span> </div>
     <el-row style="background:#fff;margin-bottom:32px;">
       <line-chart :chart-data="lineChartData"/>
     </el-row>
