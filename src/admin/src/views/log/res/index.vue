@@ -31,6 +31,7 @@
       :page-sizes="[5, 10, 15, 20]"
 			:page-size="pagesize"
 			:total="list.length"
+      :current-page="currpage"
 			@current-change="handleCurrentChange"
 			@size-change="handleSizeChange"
       style="float:right;margin:20px 0;"
@@ -92,6 +93,7 @@ export default {
       // return y + '-' + m + '-' + d+' '+h+':'+minute+':'+second;
     },
     changeDate(value) {
+      this.$data.currpage = 1;
       if (this.formatDateTime(new Date()) === this.formatDateTime(new Date(value))) {
         this.fetchData()
         return
