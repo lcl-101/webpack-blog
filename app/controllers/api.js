@@ -169,6 +169,24 @@ module.exports.getErrorlog = async function (ctx, next) {
   ctx.body = resData;
 }
 
+//对字符串进行加密
+const compileStr  = async (code) => {
+  var c=String.fromCharCode(code.charCodeAt(0)+code.length);
+  for(var i=1;i<code.length;i++){
+   c+=String.fromCharCode(code.charCodeAt(i)+code.charCodeAt(i-1));
+  }
+  return escape(c);
+}
+//对字符串进行解密
+const uncompileStr = async (code) => {
+  code=unescape(code);
+  var c=String.fromCharCode(code.charCodeAt(0)-code.length);
+  for(var i=1;i<code.length;i++){
+    c+=String.fromCharCode(code.charCodeAt(i)-c.charCodeAt(i-1));
+  }
+ return c;
+}
+
 // login
 module.exports.login = async function (ctx, next) {
   let resData = {
@@ -190,10 +208,11 @@ module.exports.login = async function (ctx, next) {
     resData.errType = 1002;
   }else {
     resData.status = 1;
+    const token = await compileStr('ddsdfeee33433');
     resData.data = {
       username: params.username,
       passsword: params.passsword,
-      token: 'ddsdfeee33433'
+      token: token
     }
   }
   ctx.body = resData;
@@ -207,7 +226,8 @@ module.exports.userInfo = async function (ctx, next) {
     errType: null
   };
   let params = ctx.query //获取post提交的数据;
-  if(params.token == 'ddsdfeee33433') {
+  const token = await uncompileStr(params.token);
+  if(token == 'ddsdfeee33433') {
     resData.status = 1;
     resData.data = {
       roles: ['admin'],
