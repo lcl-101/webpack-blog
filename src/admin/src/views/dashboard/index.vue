@@ -2,7 +2,7 @@
   <div class="dashboard-container">
     <div class="dashboard-text">name:{{ name }}</div>
     <div class="dashboard-text">roles:<span v-for="role in roles" key="123">{{ role }}</span></div>
-    <el-row style="background:#fff;padding:16px 16px 0;margin-bottom:32px;">
+    <el-row style="background:#fff;margin-bottom:32px;">
       <line-chart :chart-data="lineChartData"/>
     </el-row>
   </div>
