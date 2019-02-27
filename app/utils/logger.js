@@ -1,5 +1,5 @@
 const log4js = require('log4js');
-const log_conf = require('../../config/log4_config');
+const log_conf = require('../../config');
 
 log4js.addLayout('json', function(config) {
   return function(logEvent) { return JSON.stringify(logEvent) + config.separator; }
