@@ -45,6 +45,9 @@ app.use(async (ctx, next) => {
     ms = new Date() - start;
     logger.logError(ctx, err ,ms);
   }
+  if(ctx.status == '404'){
+    await ctx.render('notFound');
+  }
   console.log(`Process ${ctx.request.method} ${ctx.request.url}...`);
 });
 
@@ -55,6 +58,7 @@ app.use(apiRouter.routes(), apiRouter.allowedMethods());
 // error-handling
 app.on('error', (err, ctx) => {
   logger.logError(ctx, err);
+  console.error('server error', err, ctx);
 });
 
 // 在端口3000监听:
