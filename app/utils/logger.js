@@ -1,5 +1,6 @@
 const log4js = require('log4js');
 const log_conf = require('../../config');
+const NODE_ENV = process.env.NODE_ENV;
 
 log4js.addLayout('json', function(config) {
   return function(logEvent) { return JSON.stringify(logEvent) + config.separator; }
@@ -147,7 +148,7 @@ var formatReqLogJson = function (req, resTime) {
 logger.logError = (ctx, error, resTime) => {
   if(ctx && error){
     errorLogger.error(formatError(ctx, error, resTime));
-    errorLoggerJson.error(formatError(ctx, error, resTime, 'json'));
+    (NODE_ENV != `development`) && errorLoggerJson.error(formatError(ctx, error, resTime, 'json'));
   }
 }
 
@@ -155,7 +156,7 @@ logger.logError = (ctx, error, resTime) => {
 logger.logResponse = (ctx, resTime) => {
   if(ctx){
     resLogger.info(formatRes(ctx, resTime));
-    resLoggerJson.info(formatRes(ctx, resTime, 'json'));
+    (NODE_ENV != `development`) && resLoggerJson.info(formatRes(ctx, resTime, 'json'));
   }
 }
 

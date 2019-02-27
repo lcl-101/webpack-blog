@@ -145,6 +145,12 @@ module.exports.getErrorlog = async function (ctx, next) {
     errType: null
   };
   try {
+    var isExits = await fs.existsSync('/var/www/log4/blog/jsonlog/rule-error-json.log');
+    if(!isExits) {
+      resData.message = '数据为空';
+      ctx.body = resData;
+      return;
+    }
     var res = fs.readFileSync('/var/www/log4/blog/jsonlog/rule-error-json.log', 'utf8');
     if(res){
       var res1 = res.replace(/[\r\n]/g,"-tab-");
