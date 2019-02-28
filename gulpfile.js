@@ -26,9 +26,9 @@ gulp.task('move:tpl',function(){
 
 //拷贝admin
 gulp.task('move:admin',function(){
-    var stream = gulp.src('./src/admin/dist/*.*')
+    var stream = gulp.src('./admin/dist/*.*')
         .pipe(gulp.dest('./dist/admin/'));
-    var statics = gulp.src('./src/admin/dist/static/**')
+    var statics = gulp.src('./admin/dist/static/**')
         .pipe(gulp.dest('./dist/static/'));
 })
 
