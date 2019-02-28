@@ -18,12 +18,6 @@ gulp.task('move:css',function(){
         .pipe(gulp.dest('./dist/common/css'))
 })
 
-//拷贝tpl
-gulp.task('move:tpl',function(){
-    var stream = gulp.src('./src/templete/*')
-        .pipe(gulp.dest('./dist'))
-})
-
 //拷贝admin
 gulp.task('move:admin',function(){
     var stream = gulp.src('./admin/dist/*.*')
@@ -38,7 +32,6 @@ gulp.task('default', function(callback) {
     plugins.sequence(
       'move:favicon.ico',
       'move:css',
-      'move:tpl',
       'move:admin'
     )(callback);
 });

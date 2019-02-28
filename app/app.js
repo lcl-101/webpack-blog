@@ -46,7 +46,7 @@ app.use(async (ctx, next) => {
     logger.logError(ctx, err ,ms);
   }
   if(ctx.status == '404'){
-    await ctx.render('notFound');
+    await ctx.render('views/404/404');
   }
   console.log(`Process ${ctx.request.method} ${ctx.request.url}...`);
 });
