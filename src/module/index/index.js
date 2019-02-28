@@ -1,12 +1,11 @@
 import 'babel-polyfill';
 import React,{Component} from 'react';
 import ReactDom from 'react-dom';
-// import Root from './containers/Root'
+import Root from './containers/Root'
 import { Provider } from 'react-redux'
 import { createStore,applyMiddleware } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 import todoApp from './reducers/reducers'
-const Root = process.env.NODE_ENV === `development`?require('./containers/devRoot'):require('./containers/Root');
 
 const middlewares = [];
 if (process.env.NODE_ENV === `development`) {

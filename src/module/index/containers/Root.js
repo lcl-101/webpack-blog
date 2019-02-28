@@ -1,9 +1,9 @@
-import React,{Component} from 'react';
-import { Router, Route, browserHistory} from 'react-router';
-import routes from './Router';
+var Root = '';
 
-module.exports = class Root extends Component {
-  render() {
-    return <Router history={browserHistory} routes={routes} />
-  }
-};
+if (process.env.NODE_ENV === `development`){
+  Root = require('./rootDev/devRoot');
+}else {
+  Root = require('./rootPro/Root');
+}
+
+module.exports = Root;
