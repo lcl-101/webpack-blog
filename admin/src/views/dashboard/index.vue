@@ -101,6 +101,14 @@ export default {
       this.$data.yData['actualData'] = []
       getResLogs(param).then(res => {
         if (res.status) {
+          if(res.data.length <= 0){
+            Message({
+              message: res.message,
+              type: 'error',
+              duration: 1 * 1000
+            })
+            return
+          }
           var time = []
           var listData = {}
           this.list = res.data
