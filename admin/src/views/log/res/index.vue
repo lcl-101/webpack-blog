@@ -6,6 +6,8 @@
       placeholder="选择日期"
       style="margin-bottom:20px;"
       @change="changeDate"
+      :clearable='clearable'
+      :editable = 'editable'
     >
     </el-date-picker>
     <el-table v-loading="listLoading" :data="list.slice((currpage - 1) * pagesize, currpage * pagesize)" border style="width: 100%">
@@ -46,6 +48,8 @@ import '@/styles/logres.css'
 export default {
   data() {
     return {
+      clearable: false,
+      editable: false,
       listLoading: true,
       list: [],
       value: Date.now(),

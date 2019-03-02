@@ -8,6 +8,8 @@
       placeholder="选择日期"
       style="margin-top:30px;"
       @change="changeDate"
+      :clearable='clearable'
+      :editable = 'editable'
     >
     </el-date-picker>
     <el-row style="background:#fff;margin-bottom:32px;margin-top:20px;">
@@ -49,6 +51,8 @@ export default {
   data() {
     return {
       value: Date.now(),
+      clearable: false,
+      editable: false,
       lineChartData: lineChartData.newVisitis,
       xData: [],
       yData:{
