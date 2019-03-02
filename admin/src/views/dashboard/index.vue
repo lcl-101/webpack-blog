@@ -6,11 +6,11 @@
       v-model="value"
       type="date"
       placeholder="选择日期"
-      style="margin-bottom:20px;margin-top:20px;"
+      style="margin-top:30px;"
       @change="changeDate"
     >
     </el-date-picker>
-    <el-row style="background:#fff;margin-bottom:32px;margin-top:40px;">
+    <el-row style="background:#fff;margin-bottom:32px;margin-top:20px;">
       <line-chart :chart-data="yData" :chart-xdata="xData"/>
     </el-row>
   </div>
