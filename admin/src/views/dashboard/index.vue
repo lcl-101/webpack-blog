@@ -2,6 +2,14 @@
   <div class="dashboard-container">
     <div style="margin-bottom: 15px;">Your name：{{ name }} </div>
     <div style="margin-bottom: 15px;">Your roles：<span v-for="role in roles" key="123">{{ [role] }}</span> </div>
+    <el-date-picker
+      v-model="value"
+      type="date"
+      placeholder="选择日期"
+      style="margin-bottom:20px;margin-top:20px;"
+      @change="changeDate"
+    >
+    </el-date-picker>
     <el-row style="background:#fff;margin-bottom:32px;margin-top:40px;">
       <line-chart :chart-data="yData" :chart-xdata="xData"/>
     </el-row>
@@ -40,6 +48,7 @@ export default {
   },
   data() {
     return {
+      value: Date.now(),
       lineChartData: lineChartData.newVisitis,
       xData: [],
       yData:{
@@ -82,8 +91,15 @@ export default {
         }
         return r;
     },
-    fetchData() {
-      getResLogs().then(res => {
+    fetchData(data) {
+      const param = {}
+      this.listLoading = true
+      if (data) {
+        param.time = data
+      }
+      this.$data.xData = []
+      this.$data.yData['actualData'] = []
+      getResLogs(param).then(res => {
         if (res.status) {
           var time = []
           var listData = {}
@@ -110,7 +126,30 @@ export default {
           })
         }
       })
-    }
+    },
+    formatDateTime(date) {
+      var y = date.getFullYear()
+      var m = date.getMonth() + 1
+      m = m < 10 ? ('0' + m) : m
+      var d = date.getDate()
+      d = d < 10 ? ('0' + d) : d
+      // var h = date.getHours()
+      // h = h < 10 ? ('0' + h) : h
+      // var minute = date.getMinutes()
+      // minute = minute < 10 ? ('0' + minute) : minute
+      // var second = date.getSeconds()
+      // second = second < 10 ? ('0' + second) : second
+      return y + '-' + m + '-' + d
+      // return y + '-' + m + '-' + d+' '+h+':'+minute+':'+second;
+    },
+    changeDate(value) {
+      if (this.formatDateTime(new Date()) === this.formatDateTime(new Date(value))) {
+        this.fetchData()
+        return
+      }
+      const formatData = this.formatDateTime(new Date(value))
+      this.fetchData(formatData)
+    },
   }
 }
 </script>
