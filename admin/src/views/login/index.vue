@@ -40,6 +40,7 @@
 import { isvalidUsername } from '@/utils/validate'
 import { Message } from 'element-ui'
 import { mapGetters } from 'vuex'
+import _ from 'lodash'
 
 export default {
   name: 'Login',
@@ -93,11 +94,11 @@ export default {
         this.pwdType = 'password'
       }
     },
-    handleLogin() {
+    handleLogin: _.throttle(function(){
       this.$refs.loginForm.validate(valid => {
         if (valid) {
           this.loading = true
-          this.$store.dispatch('Login', this.loginForm).then((res) => {
+          this.$store.dispatch('Login', this.loginForm).then(() => {
             this.loading = false
             this.$router.push({ path: this.redirect || '/' })
             if(this.message){
@@ -112,7 +113,7 @@ export default {
           return false
         }
       })
-    }
+    },1000)
   }
 }
 </script>

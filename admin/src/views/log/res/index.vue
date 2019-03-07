@@ -106,6 +106,7 @@ export default {
       this.fetchData(formatData)
     },
     handleCurrentChange(cpage) {
+      window.scroll(0, 0) 
 			this.currpage = cpage
 		},
 		handleSizeChange(psize) {
