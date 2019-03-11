@@ -17,7 +17,7 @@ module.exports = {
     return c;
   },
   // formatDateTime
-  formatDateTime: function(data){
+  formatDateTime: function(date){
     var y = date.getFullYear();
     var m = date.getMonth() + 1;
     m = m < 10 ? ('0' + m) : m;
