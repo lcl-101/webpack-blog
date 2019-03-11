@@ -5,6 +5,8 @@ const schedule = require('node-schedule');
 const client = redis.createClient('6379', '127.0.0.1');
 const service = 'https://api.github.com';
 const fs = require('fs');
+// utils
+const { formatDateTime, up } = require('../utils/util');
 
 //test redis
 client.set('hello', {a:1, b:2}) // 注意，value会被转为字符串,所以存的时候要先把value 转为json字符串
@@ -71,26 +73,6 @@ module.exports.getOauthAccesstoken = async function (ctx, next) {
     resData.message = '数据请求失败';
   }
   ctx.body = resData;
-}
-
-// up
-function up(x ,y) {
-  return x.id - y.id
-}
-// formatDateTime
-function formatDateTime(date) {
-    var y = date.getFullYear();
-    var m = date.getMonth() + 1;
-    m = m < 10 ? ('0' + m) : m;
-    var d = date.getDate();
-    d = d < 10 ? ('0' + d) : d;
-    var h = date.getHours();
-    h=h < 10 ? ('0' + h) : h;
-    var minute = date.getMinutes();
-    minute = minute < 10 ? ('0' + minute) : minute;
-    var second=date.getSeconds();
-    second=second < 10 ? ('0' + second) : second;
-    return y + '-' + m + '-' + d+' '+h+':'+minute+':'+second;
 }
 
 // getReslog

@@ -1,3 +1,4 @@
+const { compileStr, uncompileStr } = require('../utils/util');
 // login
 module.exports.login = async function (ctx, next) {
   let resData = {
@@ -62,22 +63,4 @@ module.exports.loginOut = async function (ctx, next) {
     errType: null
   };
   ctx.body = resData;
-}
-
-//对字符串进行加密
-const compileStr  = async (code) => {
-  var c=String.fromCharCode(code.charCodeAt(0)+code.length);
-  for(var i=1;i<code.length;i++){
-   c+=String.fromCharCode(code.charCodeAt(i)+code.charCodeAt(i-1));
-  }
-  return escape(c);
-}
-//对字符串进行解密
-const uncompileStr = async (code) => {
-  code=unescape(code);
-  var c=String.fromCharCode(code.charCodeAt(0)-code.length);
-  for(var i=1;i<code.length;i++){
-    c+=String.fromCharCode(code.charCodeAt(i)-c.charCodeAt(i-1));
-  }
- return c;
 }
