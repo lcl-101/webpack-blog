@@ -32,7 +32,7 @@ module.exports = {
     return y + '-' + m + '-' + d+' '+h+':'+minute+':'+second;
   },
   // sort(up) 数组升序
-  up: function(){
+  up: function(x ,y){
     return x.id - y.id
   }
 }
