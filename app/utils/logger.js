@@ -55,7 +55,7 @@ var formatError = function (ctx, err, resTime, type) {
     var logText = new String();
     var logInfo = '';
     if(type == 'json') {
-      formatReqLogJson(ctx.request, resTime);
+      logInfo = formatReqLogJson(ctx.request, resTime);
       logInfo['err-name'] = err.name  || '';
       logInfo['err-message'] = err.message || '';
       logInfo['err-stack'] = err.stack || '';
@@ -148,6 +148,7 @@ var formatReqLogJson = function (req, resTime) {
 logger.logError = (ctx, error, resTime) => {
   if(ctx && error){
     errorLogger.error(formatError(ctx, error, resTime));
+    formatError(ctx, error, resTime, 'json')
     (NODE_ENV != `development`) && errorLoggerJson.error(formatError(ctx, error, resTime, 'json'));
   }
 }
