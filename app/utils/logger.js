@@ -148,7 +148,6 @@ var formatReqLogJson = function (req, resTime) {
 logger.logError = (ctx, error, resTime) => {
   if(ctx && error){
     errorLogger.error(formatError(ctx, error, resTime));
-    formatError(ctx, error, resTime, 'json')
     (NODE_ENV != `development`) && errorLoggerJson.error(formatError(ctx, error, resTime, 'json'));
   }
 }
