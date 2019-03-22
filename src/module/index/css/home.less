@@ -23,6 +23,11 @@ html,body {
       padding-top: 10px;
       img {
         width: 100%;
+        transition: all 0.3s ease;
+        animation: light 2s ease infinite;
+        -webkit-animation: light 2s ease infinite;
+        -mos-animation: light 2s ease infinite;
+        -o-animation: light 2s ease infinite;
       }
     }
     .link {
@@ -82,4 +87,21 @@ html,body {
       margin: 0 14px 0 0;
     }
   }
+}
+
+@keyframes light {
+    0% {
+        -webkit-filter: drop-shadow(0 0 1px rgba(33,150,243,.72));
+        filter: drop-shadow(0 0 1px rgba(33,150,243,.72))
+    }
+
+    50% {
+        -webkit-filter: drop-shadow(0 0 5px rgba(33,150,243,.72));
+        filter: drop-shadow(0 0 5px rgba(33,150,243,.72))
+    }
+
+    to {
+        -webkit-filter: drop-shadow(0 0 1px rgba(33,150,243,.72));
+        filter: drop-shadow(0 0 1px rgba(33,150,243,.72))
+    }
 }
