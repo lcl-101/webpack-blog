@@ -1,5 +1,15 @@
 <template >
   <div class="app-container">
+    <el-date-picker
+      v-model="value"
+      type="date"
+      placeholder="选择日期"
+      style="margin-bottom:20px;"
+      @change="changeDate"
+      :clearable='clearable'
+      :editable = 'editable'
+    >
+    </el-date-picker>
     <el-table v-loading="listLoading" :data="list" border style="width: 100%">
       <el-table-column prop="id" label="id" width="90" sortable></el-table-column>
       <el-table-column prop="startTime" label="startTime" width="180" sortable></el-table-column>
@@ -28,16 +38,23 @@ export default {
   data() {
     return {
       listLoading: true,
-      list: null
+      list: null,
+      value: Date.now(),
+      clearable: false,
+      editable: false
     }
   },
   created() {
     this.fetchData()
   },
   methods: {
-    fetchData() {
+    fetchData(data) {
+      const param = {}
       this.listLoading = true
-      getErrorlog().then(res => {
+      if (data) {
+        param.time = data
+      }
+      getErrorlog(param).then(res => {
         this.listLoading = false
         if (res.status) {
           this.list = res.data
@@ -49,7 +66,24 @@ export default {
           })
         }
       })
-    }
+    },
+    formatDateTime(date) {
+      var y = date.getFullYear()
+      var m = date.getMonth() + 1
+      m = m < 10 ? ('0' + m) : m
+      var d = date.getDate()
+      d = d < 10 ? ('0' + d) : d
+      return y + '-' + m + '-' + d
+    },
+    changeDate(value) {
+      this.$data.currpage = 1;
+      if (this.formatDateTime(new Date()) === this.formatDateTime(new Date(value))) {
+        this.fetchData()
+        return
+      }
+      const formatData = this.formatDateTime(new Date(value))
+      this.fetchData(formatData)
+    },
   }
 }
 </script>
