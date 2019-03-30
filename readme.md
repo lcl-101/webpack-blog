@@ -28,6 +28,8 @@ node v8.4.0+
 └── readme.md                   // help
 </pre>
 
+### 依赖收集
+![analyzer.png](https://lcl101.cn/common/images/analyzer.png)
 
 ### 版本更新日志
 
