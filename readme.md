@@ -19,8 +19,12 @@
 14. issues
 15. webhoot
 16. gitment
+17. vue
+18. vuex
+19. vue-router
+20. echarts
 
-就先列出来这么多吧....
+技术点较多就先列出来这么多吧....
 
 ### 环境依赖
 
