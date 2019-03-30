@@ -1,6 +1,26 @@
-##  webpack+gulp+react+react-router+issues+webhoot+koa2+pm2+log4+gitment 构建的个人博客系统
+##  人博客系统
 
 > 作者：李成龙 <554675188@qq.com>
+
+### 相关技术点
+1. nginx
+2. node
+3. webpack
+4. gulp
+5. react
+6. react-router
+7. redux
+8. koa2
+9. pm2
+10. log4
+11. axios
+12. fetch
+13. less
+14. issues
+15. webhoot
+16. gitment
+
+就先列出来这么多吧....
 
 ### 环境依赖
 
