@@ -19,12 +19,22 @@ node v8.4.0+
 ### 目录结构描述
 
 <pre>
+├── admin                       // 管理后台
+├── app                         // app
+│   ├── controllers             // 控制器
+│   ├── router                  // 路由
+│   ├── utils                   // 工具库
+│   └── app.js                  // app.js
+├── config                      // 配置信息
 ├── dist                        // 生产环境
 ├── src                         // 开发项目目录
-├── .babelrc
-├── .gitignore                  
-├── package.json
-├── webpack.config.babel.js
+│   ├── common                  // 公共目录
+│   ├── module                  // 模块目录
+│   └── views                   // 视图目录
+├── .babelrc                    // 语法转义
+├── .gitignore                  // 忽略文件
+├── package.json                // npm包管理器
+├── webpack.config.babel.js     // 构建工具
 └── readme.md                   // help
 </pre>
 
