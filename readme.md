@@ -1,4 +1,4 @@
-##  人博客系统
+##  人博客系统(原创)
 
 > 作者：李成龙 <554675188@qq.com>
 
@@ -26,6 +26,14 @@
 21. echarts
 
 技术点较多就先列出来这么多吧....
+
+### 设计图纸
+![home.png](https://lcl101.cn/common/images/home.png)
+
+![list.png](https://lcl101.cn/common/images/list.png)
+
+![detail.png](https://lcl101.cn/common/images/detail.png)
+
 
 ### 环境依赖
 
