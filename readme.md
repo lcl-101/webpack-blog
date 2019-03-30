@@ -18,7 +18,7 @@ node v8.4.0+
 
 ### 目录结构描述
 
-<pre>
+```
 ├── admin                       // 管理后台
 ├── app                         // app
 │   ├── controllers             // 控制器
@@ -36,7 +36,7 @@ node v8.4.0+
 ├── package.json                // npm包管理器
 ├── webpack.config.babel.js     // 构建工具
 └── readme.md                   // help
-</pre>
+```
 
 ### 依赖收集
 ![analyzer.png](https://lcl101.cn/common/images/analyer.png)
