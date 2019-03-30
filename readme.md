@@ -29,7 +29,7 @@ node v8.4.0+
 </pre>
 
 ### 依赖收集
-![analyzer.png](https://lcl101.cn/common/images/analyzer.png)
+![analyzer.png](https://lcl101.cn/common/images/analyer.png)
 
 ### 版本更新日志
 
