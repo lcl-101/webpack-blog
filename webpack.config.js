@@ -6,6 +6,7 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin');  //代码压缩
 const ExtractTextPlugin = require('extract-text-webpack-plugin'); //把css单独抽离出来打包
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin') //把抽离出来的css打包压缩(webpack 3.x 安装 optimize-css-assets-webpack-plugin@3.2.0)
 const CleanWebpackPlugin = require('clean-webpack-plugin'); //用于在构建前清除dist目录中的内容
+const bundleAnalyzerReport = process.env.npm_config_report || false;  //依赖收集插件
 
 const vendor = [
   'react',
@@ -103,6 +104,16 @@ const CleanWebpackPluginnews = new CleanWebpackPlugin(['dist/**/*.js','dist/inde
 });
 
 var cssIdentName = isProduction ? '[hash:base64:10]' : '[path][name]-[local]';
+
+if(bundleAnalyzerReport){
+  const  BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+  plugins.push(
+    new BundleAnalyzerPlugin({
+      analyzerPort: 8080,
+      generateStatsFile: false
+    })
+  );
+}
 
 module.exports = {
   entry:Object.assign(enterJs,{
