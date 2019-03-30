@@ -34,7 +34,7 @@ node v10.15.3
 
 ### 部署步骤
 
-```
+```bash
 # 安装node运行环境
 npm install
 
@@ -42,16 +42,16 @@ npm install
 npm start
 
 # 开发环境构建
-3. npm run dev
+npm run dev
 
 # 开发环境构建
-4. npm run server
+npm run server
 
 # 生产环境构建
-5. npm run build
+npm run build
 
 # 依赖分析
-6. npm run build:report
+npm run build:report
 ```
 
 ### 目录结构描述
