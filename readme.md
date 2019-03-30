@@ -5,24 +5,25 @@
 ### 相关技术点
 1. nginx
 2. node
-3. webpack
-4. gulp
-5. react
-6. react-router
-7. redux
-8. koa2
-9. pm2
-10. log4
-11. axios
-12. fetch
-13. less
-14. issues
-15. webhoot
-16. gitment
-17. vue
-18. vuex
-19. vue-router
-20. echarts
+3. redis
+4. webpack
+5. gulp
+6. react
+7. react-router
+8. redux
+9. koa2
+10. pm2
+11. log4
+12. axios
+13. fetch
+14. less
+15. issues
+16. webhoot
+17. gitment
+18. vue
+19. vuex
+20. vue-router
+21. echarts
 
 技术点较多就先列出来这么多吧....
 
@@ -34,10 +35,12 @@ node v10.15.3
 ### 部署步骤
 
 ```
-1. npm install        //安装node运行环境
-2. npm run dev        //开发环境构建
-3. npm run server     //开发环境构建
-4. npm run build      //生产环境构建
+1. npm install            //安装node运行环境
+2. npm start              //本地node环境启动
+3. npm run dev            //开发环境构建
+4. npm run server         //开发环境构建
+5. npm run build          //生产环境构建
+6. npm run build:report   //依赖分析
 ```
 
 ### 目录结构描述
