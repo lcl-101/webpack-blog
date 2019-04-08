@@ -48,7 +48,7 @@ onMessage = async(msg) => {
 // 添加定时提醒
 addSchedule = async(obj) => {
   console.log(obj);
-  request(host + '/api/addSchedule', 'POST', '', obj).then(async(res) => {
+  request(host + 'api/addSchedule', 'POST', '', obj).then(async(res) => {
     res = JSON.parse(res.text);
     let nickName = res.subscribe
     let time = res.time
