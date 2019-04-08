@@ -1,34 +1,32 @@
-const Assistant = require('./schema');
-/**
- * 插入
- */
+const Assistants = require('./schema');
 
-function insert(){
-  var user = new Assistant({
-    name : '123456'                //用户账号
-  });
+module.exports = {
+    insert: (conditions) => { // 添加定时任务
+        return new Promise((resolve, reject) => {
+            Assistants.create(conditions, (err, doc) => {
+                if (err) return reject(err)
+                console.log('创建成功', doc)
+                return resolve(doc)
+            })
+        })
+    },
 
-  user.save(function (err, res) {
-
-    if (err) {
-        console.log("Error:" + err);
-    }else {
-        console.log("Res:" + res);
+    find: (conditions) => { // 获取定时任务列表
+        return new Promise((resolve, reject) => {
+            Assistants.find(conditions, (err, doc) => {
+                if (err) return reject(err)
+                return resolve(doc)
+            })
+        })
+    },
+    update: (conditions) => { // 更新定时任务状态
+        return new Promise((resolve, reject) => {
+            Assistants.updateOne(conditions, { hasExpired: true }, (err, doc) => {
+                if (err) return reject(err)
+                return resolve(doc)
+            })
+        })
     }
-
-  });
 }
 
-
-function findIns(){
-  var wherestr = {'name' : 'lcl'};
-  Assistant.find(wherestr, function(err, res){
-    if(err){
-      console.log("Error:" + err);
-    }else {
-      console.log("Res:" + res);
-    }
-  })
-}
-
-findIns();
+// findIns();

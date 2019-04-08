@@ -1,6 +1,11 @@
 const apiRouter = require('koa-router')();
 const apiHandlers = require('../controllers/api');
 const authHandlers = require('../controllers/auth');
+const wechatHandlers = require('../controllers/wechat');
+
+// wechat
+apiRouter.post('/api/addSchedule', wechatHandlers.addSchedule);
+apiRouter.post('/api/updateSchedule', wechatHandlers.updateSchedule);
 
 // getList
 apiRouter.get('/api/getList', apiHandlers.getList);
