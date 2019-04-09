@@ -57,7 +57,21 @@ export const constantRouterMap = [
       }
     ]
   },
-
+  {
+    path: '/wechaty',
+    component: Layout,
+    redirect: '/wechaty/xiaoyu',
+    name: 'wechaty',
+    meta: { title: 'wechaty', icon: 'wechat' },
+    children: [
+      {
+        path: 'xiaoyu',
+        name: 'xiaoyu',
+        component: () => import('@/views/wechaty/xiaoyu'),
+        meta: { title: 'wechaty', icon: 'wechat' }
+      }
+    ]
+  },
   {
     path: '/form',
     component: Layout,
