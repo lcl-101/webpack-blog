@@ -6,6 +6,7 @@ const wechatHandlers = require('../controllers/wechat');
 // wechat
 apiRouter.post('/api/addSchedule', wechatHandlers.addSchedule);
 apiRouter.post('/api/updateSchedule', wechatHandlers.updateSchedule);
+apiRouter.get('/api/getScheduleList', wechatHandlers.getScheduleList);
 
 // getList
 apiRouter.get('/api/getList', apiHandlers.getList);
