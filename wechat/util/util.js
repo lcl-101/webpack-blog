@@ -26,6 +26,11 @@ contentDistinguish = (contact, keywordArray) => {
         scheduleObj.isLoop = false
         scheduleObj.time = keywordArray[2] + ' ' + keywordArray[3].replace('：', ':')
         scheduleObj.content = (scheduleObj.setter === scheduleObj.subscribe) ? scheduleObj.content = "可爱的" + scheduleObj.subscribe + "，温馨提醒：" + keywordArray[4].replace('我', '你') : "可爱的" + scheduleObj.subscribe + "，" + scheduleObj.setter + "委托我提醒你，" + keywordArray[4].replace('我', '你')
+    }else if(keywordArray[1] === "取消"){
+        console.log('已删除设置任务')
+        scheduleObj.isLoop = false;
+        scheduleObj.time = today + keywordArray[2].replace('：', ':');
+        scheduleObj.content = (scheduleObj.setter === scheduleObj.subscribe) ? scheduleObj.content = "可爱的" + scheduleObj.subscribe + "，温馨提醒：" + keywordArray[3].replace('我', '你') : "可爱的" + scheduleObj.subscribe + "，" + scheduleObj.setter + "委托我提醒你，" + keywordArray[3].replace('我', '你');
     } else {
         console.log('已设置当天任务')
         scheduleObj.isLoop = false

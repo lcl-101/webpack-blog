@@ -10,7 +10,6 @@ module.exports = {
             })
         })
     },
-
     find: (conditions) => { // 获取定时任务列表
         return new Promise((resolve, reject) => {
             Assistants.find(conditions, (err, doc) => {
@@ -26,6 +25,14 @@ module.exports = {
                 return resolve(doc)
             })
         })
+    },
+    delete: (conditions) = {  //删除定时任务
+      return new Promise((resolve, reject) => {
+          Assistants.findByIdAndRemove(conditions, (err, doc) => {
+              if (err) return reject(err)
+              return resolve(doc)
+          })
+      })
     }
 }
 
