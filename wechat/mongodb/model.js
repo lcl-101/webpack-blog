@@ -26,7 +26,7 @@ module.exports = {
             })
         })
     },
-    delete: (conditions) = {  //删除定时任务
+    delete: (conditions) => {  //删除定时任务
       return new Promise((resolve, reject) => {
           Assistants.findByIdAndRemove(conditions, (err, doc) => {
               if (err) return reject(err)
