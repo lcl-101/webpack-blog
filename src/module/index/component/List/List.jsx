@@ -1,18 +1,19 @@
 import React,{Component} from 'react';
 import { Link} from 'react-router';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 import marked from 'marked';
-import style from '../../css/list.less'
+import style from '../../css/list.less';
 
 class List extends Component{
-  filterHTMLTag(msg) {
-    var msg = msg.replace(/<\/?[^>]*>/g, ''); //去除HTML Tag
-    msg = msg.replace(/[|]*\n/, '') //去除行尾空格
+  filterHTMLTag(msgs) {
+    var msg = msgs.replace(/<\/?[^>]*>/g, ''); //去除HTML Tag
+    msg = msg.replace(/[|]*\n/, ''); //去除行尾空格
     msg = msg.replace(/&npsp;/ig, ''); //去掉npsp
     return msg;
   }
   render(){
     return(
+      /* jshint ignore:start */
       <div id={style.list}>
         <ul>
           {
@@ -34,12 +35,13 @@ class List extends Component{
           }
         </ul>
       </div>
-    )
+      /* jshint ignore:end */
+    );
   }
 }
 
 List.propTypes = {
   posts: PropTypes.array.isRequired
-}
+};
 
-export default List
+export default List;

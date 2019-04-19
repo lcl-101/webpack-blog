@@ -1,10 +1,10 @@
 import React,{Component} from 'react';
 // import List from '../List/List'
 import Cell from '../Cell/Cell';
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
-import { fetchPostsIfNeeded } from '../../action/action'
-import style from '../../css/post.less'
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { fetchPostsIfNeeded } from '../../action/action';
+import style from '../../css/post.less';
 
 class Posts extends Component {
   constructor(props){
@@ -12,29 +12,33 @@ class Posts extends Component {
   }
   //初始化渲染后触发
   componentDidMount() {
-    const { dispatch} = this.props
+    const { dispatch} = this.props;
     // 这里可以传两个值，一个是 reactjs 一个是 frontend
     dispatch(fetchPostsIfNeeded());
   }
   render(){
     let view = [];
-    const { items } = this.props
-    const { isFetching } = this.props
+    const { items } = this.props;
+    const { isFetching } = this.props;
     const { todos,action } = this.props;
     if (!isFetching) {
       view.push(
+        /* jshint ignore:start */
         // <List posts={items} key='1'/>
         <Cell list={items} key='1'/>
-      )
+        /* jshint ignore:end */
+      );
     }
     return(
+      /* jshint ignore:start */
       <div id={style.post}>
         <div className={style.post_box}>
           <div className={style.posts_category}>全部</div>
           {view}
         </div>
       </div>
-    )
+      /* jshint ignore:end */
+    );
   }
 }
 
@@ -56,11 +60,11 @@ function mapStateToProps (state){
   } = postsState || {
     items: [],
     isFetching:true
-  }
+  };
   return {
     items,
     isFetching
-  }
+  };
 }
 /*
   字面意思：匹配dispatch给组件。

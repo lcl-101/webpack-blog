@@ -36,21 +36,25 @@ class Archive extends Component{
     }
 
     if (!isFetching) {
+      /* jshint ignore:start */
       view = data.map((item, index) =>
         <div key={index}>
           <div className={style.posts_category}>{item[0].created_at.substring(0, 4)}</div>
           <Cell list={item}/>
         </div>
       )
+      /* jshint ignore:end */
     }
 
     return(
+      /* jshint ignore:start */
       <div>
         <div className={style.posts_box}>
           {view}
         </div>
       </div>
-    )
+      /* jshint ignore:end */
+    );
   }
 }
 
@@ -67,11 +71,11 @@ function mapStateToProps (state){
   } = postsState || {
     items: [],
     isFetching:true
-  }
+  };
   return {
     items,
     isFetching
-  }
+  };
 }
 
 export default connect(

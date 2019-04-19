@@ -1,12 +1,12 @@
 import React,{Component} from 'react';
 import { Link} from 'react-router';
 import NProgress from 'nprogress';
-
 import style from '../../css/theader.less';
 
 class Header extends Component {
   render(){
     return(
+      /* jshint ignore:start */
       <div id={style.theader} className='clearfix'>
         <div className={style.H_left}>
           <Link to="/Home">lcl101.cn</Link>
@@ -18,7 +18,8 @@ class Header extends Component {
           <Link className={style.to} to="/Tags">TAGS</Link>
         </div>
       </div>
-    )
+      /* jshint ignore:end */
+    );
   }
 }
 

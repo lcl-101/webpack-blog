@@ -16,24 +16,29 @@ class Home extends Component{
     var isMobile = this.state.isMobile;
     if(isMobile){
       view.push(
+        /* jshint ignore:start */
         <div key='0' className={style.link}>
           <Link className={style.to} to="/Posts">全部 <span className={style.link_line_to}></span></Link>
           <Link className={style.to} to="/Archive">归档 <span className={style.link_line_to}></span></Link>
           <Link className={style.to} to="/Label">标签 <span className={style.link_line_to}></span></Link>
           <a className={style.to} href="/admin#/" target="_blank">日志<span className={style.link_line_to}></span></a>
         </div>
-      )
+        /* jshint ignore:end */
+      );
     }else {
       view.push(
+        /* jshint ignore:start */
         <div key='1' className={style.link}>
           <Link className={style.to} to="/Posts">全部 <span className={style.link_line}></span></Link>
           <Link className={style.to} to="/Archive">归档 <span className={style.link_line}></span></Link>
           <Link className={style.to} to="/Label">标签 <span className={style.link_line}></span></Link>
           <a className={style.to} href="/admin#/" target="_blank">日志<span className={style.link_line}></span></a>
         </div>
-      )
+        /* jshint ignore:end */
+      );
     }
     return(
+      /* jshint ignore:start */
       <div id={style.home}>
         <div className={style.home_box}>
           <div className={style.inner}>
@@ -45,7 +50,8 @@ class Home extends Component{
           </div>
         </div>
       </div>
-    )
+      /* jshint ignore:end */
+    );
   }
 }
 

@@ -6,6 +6,7 @@ import style from '../../css/archive.less';
 class Cell extends Component {
   render() {
     return (
+      /* jshint ignore:start */
       <ul>
         {
           this.props.list.map((item, index) => (
@@ -18,12 +19,13 @@ class Cell extends Component {
           ))
         }
       </ul>
-    )
+      /* jshint ignore:end */
+    );
   }
 }
 
 Cell.propTypes = {
   list: PropTypes.array.isRequired
-}
+};
 
-export default Cell
+export default Cell;

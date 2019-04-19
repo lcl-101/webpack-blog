@@ -30,6 +30,7 @@ class App extends Component{
 
   render(){
     return(
+      /* jshint ignore:start */
       <div id={style.app_box}>
         <Header/>
         <div className={style.app_inner}>
@@ -37,7 +38,8 @@ class App extends Component{
         </div>
         <Footer/>
       </div>
-    )
+      /* jshint ignore:end */
+    );
   }
 }
 
@@ -54,11 +56,11 @@ function mapStateToProps(state) {
   } = postsState || {
     items: [],
     isFetching:true
-  }
+  };
   return {
     items,
     isFetching
-  }
+  };
 }
 
 export default connect(mapStateToProps)(App);

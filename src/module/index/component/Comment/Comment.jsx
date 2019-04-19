@@ -1,9 +1,9 @@
 import React,{Component} from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 // import Gitalk from 'gitalk'
 import Gitment from 'gitment';
-import {fetchCommentsNeeded,fetchLoginNeeded} from '../../action/action'
-import style from '../../css/detail.less'
+import {fetchCommentsNeeded,fetchLoginNeeded} from '../../action/action';
+import style from '../../css/detail.less';
 
 class Comment extends Component{
   constructor(props){
@@ -40,7 +40,9 @@ class Comment extends Component{
   getQueryString(name) {
     let reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
     let r = window.location.search.substr(1).match(reg);
-    if (r !== null) return unescape(r[2]);
+    if (r !== null){
+      return unescape(r[2]);
+    }
     return null;
   }
   localQuery(_that, name) {
@@ -68,15 +70,17 @@ class Comment extends Component{
     var client_secret = 'c003cfeeafa97ca0f4c756aab3c2051447ddaab7';
     var scope = 'public_repo';
     var redirect_url = escape(window.location.href);
-    window.location.href = url+'?scope='+scope+'&redirect_uri='+redirect_url+'&client_id='+client_id+'&client_secret='+client_secret
+    window.location.href = url+'?scope='+scope+'&redirect_uri='+redirect_url+'&client_id='+client_id+'&client_secret='+client_secret;
   }
   render(){
     return(
+      /* jshint ignore:start */
       <div className={style.container}>
         {/* <div className="" onClick={this.loginTo}>登录测试s</div> */}
         <div id="container" key='1'></div>
       </div>
-    )
+      /* jshint ignore:end */
+    );
   }
 }
 
@@ -92,21 +96,21 @@ function mapStateToProps (state){
   } = commentsId || {
     id: '',
     data: []
-  }
+  };
 
   const {
     login
   } = loginGet || {
     login:''
-  }
+  };
 
   return {
     id,
     data,
     login
-  }
+  };
 }
 
 export default connect(
 
-)(Comment)
+)(Comment);

@@ -4,6 +4,7 @@ import style from '../../css/footer.less';
 class Footer extends Component {
   render(){
     return(
+      /* jshint ignore:start */
       <div id={style.footer}>
         <div className={style.footer_box}>
           <a target="_blank" href="https://www.zhihu.com/people/li-cheng-long-3-99" className={style.footer_li}>知</a>
@@ -13,7 +14,8 @@ class Footer extends Component {
         </div>
         <div className={style.footer_Copy}>Copyright © lichenglong Blog 2018</div>
       </div>
-    )
+      /* jshint ignore:end */
+    );
   }
 }
 
