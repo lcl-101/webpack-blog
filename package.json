@@ -79,6 +79,7 @@
     "mongodb": "^3.2.2",
     "mongoose": "^5.4.21",
     "qrcode-terminal": "^0.12.0",
+    "tingyun": "file:tingyun-agent-nodejs-1.7.1.tar.gz",
     "wechaty": "^0.22.6"
   },
   "private": true
