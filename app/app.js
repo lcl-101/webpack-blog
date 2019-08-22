@@ -1,3 +1,4 @@
+require('tingyun');
 const Koa = require('koa'); // 导入koa，和koa 1.x不同，在koa2中，我们导入的是一个class，因此用大写的Koa表示
 const router = require('koa-router')(); // 注意require('koa-router')返回的是函数:
 const views = require('koa-views');
