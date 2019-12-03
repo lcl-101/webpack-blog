@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const DB_URL = 'mongodb://localhost:27017/testdb';
+const DB_URL = 'mongodb://localhost:27017/local';
 
 /**
  * 连接
