@@ -3,8 +3,8 @@ const Qrterminal = require('qrcode-terminal')
 const untils = require('./util/util');
 const { request } = require('./config/superagent')
 const schedule = require('./config/schedule')
-const host = 'http://127.0.0.1:3000/'
-// const host = 'https://lcl101.cn/'
+// const host = 'http://127.0.0.1:3000/'
+const host = 'https://lcl101.cn/'
 
 const bot = new Wechaty({ name: 'WechatEveryDay' });
 
