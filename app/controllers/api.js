@@ -39,7 +39,7 @@ function scheduleCronstyle(){
   });
 }
 scheduleCronstyle();
-// getList
+// subList
 module.exports.getList = async function (ctx, next) {
   let resData = '';
   const getIssuesData = getIssues();

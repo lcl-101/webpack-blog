@@ -27,7 +27,7 @@ gulp.task('move:admin',function(){
 })
 
 //默认生成环境任务
-gulp.task('default', function(callback) {
+gulp.task('default', function() {
     // 将你的默认的任务代码放在这
     plugins.sequence(
       'move:favicon.ico',
