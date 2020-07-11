@@ -12,9 +12,7 @@ const { formatDateTime, up } = require('../utils/util');
 client.set('hello', {a:1, b:2}) // 注意，value会被转为字符串,所以存的时候要先把value 转为json字符串
 client.get('hello', function(err, value){
   console.log('test:'+value)
-})
-
-// client.del('getList')
+});
 
 //获取redis中getList
 const getList = async () => {
@@ -23,7 +21,7 @@ const getList = async () => {
       resolve(value);
     })
   })
-}
+};
 // getIssues
 function getIssues(){
   return axios.get(service + '/repos/lcl-101/webpack-blog/issues?client_id=149613f6b828472ab126&client_secret=c003cfeeafa97ca0f4c756aab3c2051447ddaab7');
