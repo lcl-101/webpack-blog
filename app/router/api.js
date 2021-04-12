@@ -1,5 +1,6 @@
 const apiRouter = require('koa-router')();
 const apiHandlers = require('../controllers/api');
+const apiUploadHandlers = require('../controllers/api_upload');
 const authHandlers = require('../controllers/auth');
 const wechatHandlers = require('../controllers/wechat');
 
@@ -18,5 +19,7 @@ apiRouter.get('/api/getErrorlog', apiHandlers.getErrorlog);
 apiRouter.post('/api/login', authHandlers.login);
 apiRouter.post('/api/loginOut', authHandlers.loginOut);
 apiRouter.get('/api/userInfo', authHandlers.userInfo);
+
+apiRouter.get('/api/apiUploadHandlers', apiUploadHandlers.uploader);
 
 module.exports = apiRouter;

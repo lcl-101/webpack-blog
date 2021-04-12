@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>文件上传</title>
+</head>
+<body>
+    <input type="file" id="file_btn">
+    <script>
+        var uploadInput = document.getElementById('file_btn');
+        uploadInput.addEventListener('change', handleFiles, false);
+        function handleFiles(){
+            console.log(this.files);
+            var xhr  = new XMLHttpRequest();
+            xhr.open('GET','/api/getList',true);            //简历连接
+            xhr.send(null);
+            xhr.onreadystatechange = function (){
+                console.log('readyState:' + xhr.readyState);
+                console.log('responseText:' + xhr.responseText);
+            }
+        }
+    </script>
+</body>
+</html>
