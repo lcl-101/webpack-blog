@@ -133,7 +133,7 @@ module.exports = {
     open: true,
     proxy:{
       '/api': {
-        target: 'https://lcl101.cn',
+        target: 'http://127.0.0.1:3000',
         secure: true,
   			changeOrigin: true,
   			logLevel: 'error'

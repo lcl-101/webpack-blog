@@ -6,22 +6,97 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>文件上传</title>
+    <style>
+        #progress {
+            width: 500px;
+            height: 20px;
+            border: 1px solid #e9e9e9;
+            margin-top: 20px;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        #progress .red {
+            display: block;
+            width: 0;
+            height: 100%;
+            background: #ff5722;
+        }
+        #btn_submit {
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
     <input type="file" id="file_btn">
+    <div id="progress">
+        <span class="red"></span>
+    </div>
+    <button type="button" id="btn_submit">上 传</button>
     <script>
         var uploadInput = document.getElementById('file_btn');
         uploadInput.addEventListener('change', handleFiles, false);
         function handleFiles(){
             console.log(this.files);
+
+        }
+
+        //大文件分片上传（前端）
+        //思路
+        //1. 对大文件进行分片，这里以1m为一个单位
+        function slice(file, piece){        //文件对象，拆分粒度
+            var totalSize = file.size;
+            var start = 0;                  //每次上传的开始节点
+            var end = start + piece;        //每次上传的结束节点
+            var chunks = [];
+            while (start < totalSize){
+                var blob = file.slice(start, end);
+                chunks.push(blob);
+
+                start = end;
+                end = start + piece;
+            }
+            return chunks;
+        }
+
+        function submitUplad(){
+            var file = document.getElementById('file_btn').files[0];
+            if(!file){
+                alert('请选择文件');
+                return false;
+            }
+            var chunkSize=1*1024*1024; //1m
+            var sendChunkCount = 0;
+            var chunks = slice(file, chunkSize);
+
+            chunks.forEach(function (item){
+                var formData = new FormData();
+                formData.append("file", item);
+                xhrSend(formData, function (){
+                    sendChunkCount+=1;
+                    if(sendChunkCount == chunks.length){
+                        alert("上传完成");
+                    }
+                });
+            })
+        }
+
+        function xhrSend(formData, cb){
             var xhr  = new XMLHttpRequest();
-            xhr.open('GET','/api/getList',true);            //简历连接
-            xhr.send(null);
+            xhr.open('POST','/api/apiUploadHandlers',true);                     //建立连接
+            // xhr.setRequestHeader ('Content-type', 'multipart/form-data;');
             xhr.onreadystatechange = function (){
                 console.log('readyState:' + xhr.readyState);
                 console.log('responseText:' + xhr.responseText);
+                if (xhr.readyState === 4) {
+                    console.log(xhr.responseText);
+                    cb && cb();
+                }
             }
+
+            xhr.send(formData);
         }
+
+        document.getElementById('btn_submit').addEventListener('click', submitUplad)
     </script>
 </body>
 </html>

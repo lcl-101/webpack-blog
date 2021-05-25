@@ -20,6 +20,6 @@ apiRouter.post('/api/login', authHandlers.login);
 apiRouter.post('/api/loginOut', authHandlers.loginOut);
 apiRouter.get('/api/userInfo', authHandlers.userInfo);
 
-apiRouter.get('/api/apiUploadHandlers', apiUploadHandlers.uploader);
+apiRouter.post('/api/apiUploadHandlers', apiUploadHandlers.uploader);
 
 module.exports = apiRouter;

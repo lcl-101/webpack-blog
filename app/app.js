@@ -1,4 +1,4 @@
-require('tingyun');
+// require('tingyun');
 const Koa = require('koa'); // 导入koa，和koa 1.x不同，在koa2中，我们导入的是一个class，因此用大写的Koa表示
 const router = require('koa-router')(); // 注意require('koa-router')返回的是函数:
 const views = require('koa-views');
@@ -6,11 +6,25 @@ const path = require('path');
 const render = require('koa-ejs');
 const static = require('koa-static');
 const bodyParser = require('koa-bodyparser');
+const koaBody = require('koa-body');
 const app = new Koa();
 const logger = require('./utils/logger');
 
 // bodyParser //解析request的body
-app.use(bodyParser());
+// app.use(bodyParser());
+app.use(koaBody({
+    multipart:true, // 支持文件上传
+    encoding:'gzip',
+    formidable:{
+      uploadDir:path.join(__dirname,'../dist/'), // 设置文件上传目录
+      keepExtensions: true,    // 保持文件的后缀
+      maxFileSize: 52428800, // 文件上传大小
+      onFileBegin:(name,file) => { // 文件上传前的设置
+        console.log(`name: ${name}`);
+        console.log(file);
+      }
+    }
+}));
 
 // routes
 const viewRouter = require('./router/view');
