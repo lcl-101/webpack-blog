@@ -12,7 +12,8 @@ const dpsConfig = {
 	animation: 'opacity 1s linear infinite',
 	writePageStructure: function(html) {
 		//自己处理生成的骨架屏
-		fs.writeFileSync(config.filepath,'<style>@keyframes opacity { 0% {opacity: 1} 50% {opacity: .5} 100% {opacity: 1}}._ {transform: scale(0.95);}</style>' + html);
+		const style = '<style>@keyframes opacity { 0% {opacity: 1} 50% {opacity: .5} 100% {opacity: 1}}._ {transform: scale(0.95);}</style>';
+		fs.writeFileSync(config.filepath, style + html);
 	},
 	init: function() {
 		// 生成骨架屏之前的操作，比如删除干扰节点
