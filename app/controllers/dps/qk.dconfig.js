@@ -1,1 +1,1 @@
-module.exports = {"url":"https://jiazheng.daojia.com/common/qkd/complex/20963","filepath":"/Users/lichenglong/github/webpack-blog/app/controllers/dps/20963.html"}
+module.exports = {"url":"https://jz73.djtest.cn/common/qkd/complex/1593","filepath":"/Users/lichenglong/github/webpack-blog/app/controllers/dps/1593.html"}
