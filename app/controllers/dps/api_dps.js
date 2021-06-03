@@ -53,16 +53,16 @@ module.exports.dps = async function (ctx, next) {
 
     try {
         //获取id
-        let name = '';
-        if(ctx.query.url && ctx.query.url.split('/')){
-            name = ctx.query.url.split('/');
-            name = name[name.length - 1]
-        }
+        // let name = '';
+        // if(ctx.query.url && ctx.query.url.split('/')){
+        //     name = ctx.query.url.split('/');
+        //     name = name[name.length - 1]
+        // }
 
         //写入配置
         const info = {
-            url: ctx.query.url,                                                                         //访问url
-            filepath: `/Users/lichenglong/github/webpack-blog/app/controllers/dps/${name}.html`         //生成骨架图路径
+            url: `https://jz73.djtest.cn/common/qkd/complex/${ctx.query.pageId}#/`,                                                                         //访问url
+            filepath: `/Users/lichenglong/github/webpack-blog/app/controllers/dps/${ctx.query.pageId}.html`         //生成骨架图路径
         }
         await fs.writeFileSync('/Users/lichenglong/github/webpack-blog/app/controllers/dps/qk.dconfig.js', 'module.exports = ' + JSON.stringify(info))
 
