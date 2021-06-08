@@ -71,7 +71,8 @@ onMessage = async(msg) => {
     let keywordArray = content.replace(/\s+/g, ' ').split(" ") // 把多个空格替换成一个空格，并使用空格作为标记，拆分关键词
     console.log("分词后效果", keywordArray)
 
-    if (keywordArray[0] === "提醒" && contact.name() == "小鱼儿") {
+    // if (keywordArray[0] === "提醒" && contact.name() == "小鱼儿") {
+    if (keywordArray[0] === "提醒") {
       let scheduleObj = untils.contentDistinguish(contact, keywordArray)
       addSchedule(scheduleObj)
       contact.say('小助手已经把你的提醒牢记在小本本上了')
