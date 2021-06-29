@@ -82,6 +82,10 @@ onMessage = async(msg) => {
   }
 }
 
+onFriendship = async(obj) => {
+    console.log(obj)
+}
+
 // 添加定时提醒
 addSchedule = async(obj) => {
   request(host + 'api/addSchedule', 'POST', '', obj).then(async(res) => {
@@ -109,4 +113,5 @@ bot.on('scan',onScan);
 bot.on('login', onLogin);
 bot.on('logout', onLogout);
 bot.on('message', onMessage);
+bot.on('friendship',onFriendship);
 bot.start();
