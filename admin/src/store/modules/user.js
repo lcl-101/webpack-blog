@@ -31,21 +31,23 @@ const user = {
   actions: {
     // 登录
     Login({ commit }, userInfo) {
-      const username = userInfo.username.trim()
+      // const username = userInfo.username.trim()
       return new Promise((resolve, reject) => {
-        login(username, userInfo.password).then(response => {
-          if(response.status){
-            const data = response.data
-            setToken(data.token)
-            commit('SET_TOKEN', data.token)
-            resolve()
-          }else {
-            commit('ERR_TIP', response.message)
-            resolve()
-          }
-        }).catch(error => {
-          reject(error)
-        })
+        commit('SET_TOKEN', '234234234')
+        resolve()
+        // login(username, userInfo.password).then(response => {
+        //   if(response.status){
+        //     const data = response.data
+        //     setToken(data.token)
+        //     commit('SET_TOKEN', data.token)
+        //     resolve()
+        //   }else {
+        //     commit('ERR_TIP', response.message)
+        //     resolve()
+        //   }
+        // }).catch(error => {
+        //   reject(error)
+        // })
       })
     },
 
